@@ -1,0 +1,60 @@
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > val listA = [(0, "Alice"), (1, "Bob"), (3, "Carol"), (4, "Dan")]:
+   (int * string) list
+> poly: : error: Value or constructor (ListA) has not been declared Found near ListA
+Static Errors
+> val listA = [(0, "Alice"), (1, "Bob"), (3, "Carol"), (4, "Dan")]:
+   (int * string) list
+> poly: : error: Value or constructor (ListA) has not been declared Found near ListA
+Static Errors
+> val elB = (0, "Alice"): int * string
+val listB = [(1, "Bob"), (3, "Carol"), (4, "Dan")]: (int * string) list
+> val e1C1 = 0: int
+val e1C2 = "Alice": string
+> poly: : error: Pattern and expression have incompatible types.
+   Pattern: (e1C3, e1C4, e1C5) : 'a * 'b * 'c
+   Expression: listA : (int * string) list
+   Reason:
+      Can't unify (int * string) list to 'a * 'b * 'c (Incompatible types)
+Found near val (e1C3, e1C4, e1C5) = listA
+Static Errors
+> Exception- Bind raised
+> val e1C3 = (1, "Bob"): int * string
+val e1C4 = (3, "Carol"): int * string
+val e1C5 = (4, "Dan"): int * string
+> poly: : error: Pattern and expression have incompatible types.
+   Pattern: (e1C3, e1C4, e1C5) : 'a * 'b * 'c
+   Expression: listB : (int * string) list
+   Reason:
+      Can't unify (int * string) list to 'a * 'b * 'c (Incompatible types)
+Found near val (e1C3, e1C4, e1C5) = listB
+Static Errors
+> val e1C3 = (1, "Bob"): int * string
+val e1C4 = (3, "Carol"): int * string
+val e1C5 = (4, "Dan"): int * string
+> 
+Process HOL killed
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > val listA = [(0, "Alice"), (1, "Bob"), (3, "Carol"), (4, "Dan")]:
+   (int * string) list
+> val elB = (0, "Alice"): int * string
+val listB = [(1, "Bob"), (3, "Carol"), (4, "Dan")]: (int * string) list
+> val e1C1 = 0: int
+val e1C2 = "Alice": string
+> val e1C3 = (1, "Bob"): int * string
+val e1C4 = (3, "Carol"): int * string
+val e1C5 = (4, "Dan"): int * string
+> 
+> 
+Process HOL finished
