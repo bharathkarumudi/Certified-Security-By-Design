@@ -1,0 +1,11 @@
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > val it = fn: ('a -> bool) -> 'a list -> 'a list
+> # # # # # # # # val addPairsGreaterThan = fn: int -> (int * int) list -> int list
+> > val it = [5, 9]: int list
+> 

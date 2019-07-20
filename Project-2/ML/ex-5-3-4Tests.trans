@@ -1,0 +1,11 @@
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # # # # val Filter = fn: ('a -> bool) -> 'a list -> 'a list
+> > val testResults = [1, 2, 3, 4]: int list
+> val testResults2 = [4]: int list
+> 
