@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.16)  19 JUL 2019 21:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.16)  21 JUL 2019 10:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -313,20 +313,20 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 ) (./Project2.aux)
 \openout1 = `Project2.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -364,7 +364,7 @@ LaTeX Font Info:    ... okay on input line 15.
 
 \c@lstlisting=\count126
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring OFF on input line 15.
+Package hyperref Info: Link coloring OFF on input line 16.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -373,9 +373,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count127
 )
-LaTeX Info: Redefining \ref on input line 15.
-LaTeX Info: Redefining \pageref on input line 15.
-LaTeX Info: Redefining \nameref on input line 15.
+LaTeX Info: Redefining \ref on input line 16.
+LaTeX Info: Redefining \pageref on input line 16.
+LaTeX Info: Redefining \nameref on input line 16.
 
 (./Project2.out) (./Project2.out)
 \@outlinefile=\write4
@@ -401,12 +401,12 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2015/06/04 1.6 listings language file
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 17.
+LaTeX Font Info:    Try loading font information for U+msa on input line 18.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 17.
+LaTeX Font Info:    Try loading font information for U+msb on input line 18.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -417,12 +417,12 @@ ination with the same identifier (name{page.1}) has been already used, duplicat
 e ignored
 <to be read again> 
                    \relax 
-l.32  \end{abstract}
+l.33  \end{abstract}
                      [1]pdfTeX warning (ext4): destination with the same identi
 fier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.40  \tableofcontents
+l.41  \tableofcontents
                       {} [1] (./Project2.toc [2
 
 ])
@@ -435,12 +435,12 @@ Chapter 1.
 
 ]
 Chapter 2.
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 75.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 76.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 75.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 76.
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ú in font cmr10!
@@ -458,7 +458,7 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Overfull \hbox (32.98662pt too wide) in paragraph at lines 117--121
+Overfull \hbox (32.98662pt too wide) in paragraph at lines 118--122
 \OT1/cmr/m/n/10 where @ de-notes list ap-pend. For ex-am-ple [true,false] @ [fa
 lse, false, false] re-sults in the list [true,false,false,false,false]. 
  []
@@ -466,22 +466,22 @@ lse, false, false] re-sults in the list [true,false,false,false,false].
 [5
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 154.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 155.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 154.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 155.
  [6] [7]
 Chapter 3.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 298.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 299.
 pdfTeX warning (ext4): destination with the same identifier (name{sessioncount.
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.317 \begin{session}
+l.318 \begin{session}
                       [8
 
 ]
@@ -490,7 +490,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{sessioncount.
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.390 \begin{session}
+l.391 \begin{session}
                       [9
 
 ] [10]
@@ -499,14 +499,39 @@ pdfTeX warning (ext4): destination with the same identifier (name{sessioncount.
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.460 \begin{session}
+l.461 \begin{session}
                       [11
 
 ]
 Chapter 6.
+Missing character: There is no Œ in font cmr10!
+Missing character: There is no ± in font cmr10!
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no ¨ in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no à in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no à in font cmr10!
+Missing character: There is no ® in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no à in font cmr10!
+Missing character: There is no É in font cmr10!
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no ¨ in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no à in font cmr10!
+Missing character: There is no ß in font cmr10!
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no ¨ in font cmr10!
 [12
 
-]
+]pdfTeX warning (ext4): destination with the same identifier (name{sessioncount
+.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.562 \begin{session}
+                      [13]
 Chapter 7.
 (./ML/ex-4-6-3Tests.sml
 Overfull \hbox (10.2499pt too wide) in paragraph at lines 3--4
@@ -563,7 +588,7 @@ Overfull \hbox (10.2499pt too wide) in paragraph at lines 16--18
 [][][][][][] 
  []
 
-[13
+[14
 
 ]
 Overfull \hbox (10.2499pt too wide) in paragraph at lines 47--49
@@ -595,7 +620,7 @@ Overfull \hbox (10.2499pt too wide) in paragraph at lines 90--92
 [][][][][][][][] 
  []
 
-[14]
+[15]
 Overfull \hbox (10.2499pt too wide) in paragraph at lines 103--104
 [][][][][][][][] 
  []
@@ -620,7 +645,7 @@ Overfull \hbox (10.2499pt too wide) in paragraph at lines 130--132
 [][][][][][][][] 
  []
 
-) [15]
+) [16]
 Chapter 8.
 (./ML/ex-4-6-4Tests.sml
 Overfull \hbox (10.2499pt too wide) in paragraph at lines 1--2
@@ -662,7 +687,7 @@ Overfull \hbox (10.2499pt too wide) in paragraph at lines 18--21
 [][][][][][][][] 
  []
 
-) [16
+) [17
 
 ]
 Chapter 9.
@@ -711,7 +736,7 @@ Overfull \hbox (10.2499pt too wide) in paragraph at lines 24--27
 [][][][][][][][] 
  []
 
-) [17
+) [18
 
 ]
 Chapter 10.
@@ -755,24 +780,58 @@ Overfull \hbox (10.2499pt too wide) in paragraph at lines 22--24
 [][][][][][][][] 
  []
 
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 525.
- [18
+) [19
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 525.
+Chapter 11.
+(./ML/ex-6-2-1.sml
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 1--2
+[][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 2--3
+[][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 3--4
+[][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 4--5
+[][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 5--8
+[][][][][][] 
+ []
+
+
+Overfull \hbox (40.2502pt too wide) in paragraph at lines 26--27
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 661.
+ [20
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 661.
  (./Project2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 525.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 525.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 661.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 661.
 Package rerunfilecheck Info: File `Project2.out' has not changed.
-(rerunfilecheck)             Checksum: C10693CBADBD1E40A6EB1AF6E0786EF0;2215.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 525.
+(rerunfilecheck)             Checksum: E23265404C1BB06588C5D321ED2F4D9C;2798.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 661.
  ) 
 Here is how much of TeX's memory you used:
- 8814 strings out of 494953
- 125793 string characters out of 6180977
- 256892 words of memory out of 5000000
- 11594 multiletter control sequences out of 15000+600000
+ 8910 strings out of 494953
+ 127222 string characters out of 6180977
+ 257315 words of memory out of 5000000
+ 11622 multiletter control sequences out of 15000+600000
  14053 words of font info for 54 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,12n,47p,266b,1682s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -790,10 +849,10 @@ sy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb>
-Output written on Project2.pdf (20 pages, 204934 bytes).
+Output written on Project2.pdf (22 pages, 216573 bytes).
 PDF statistics:
- 751 PDF objects out of 1000 (max. 8388607)
- 706 compressed objects within 8 object streams
- 389 named destinations out of 1000 (max. 500000)
- 289 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 873 PDF objects out of 1000 (max. 8388607)
+ 825 compressed objects within 9 object streams
+ 454 named destinations out of 1000 (max. 500000)
+ 361 words of extra memory for PDF output out of 10000 (max. 10000000)
 

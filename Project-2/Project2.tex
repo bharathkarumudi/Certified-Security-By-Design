@@ -10,6 +10,7 @@
 \usepackage{hyperref}
 \usepackage{holtex}
 \usepackage{holtexbasic}
+\usepackage{amssymb}
 \input{commands}
 
 \begin{document}
@@ -485,18 +486,146 @@ The above transcript shows the given tests has been passed.
 \section{Problem Statement}
 \label{sec:problem-statement-5}
 
-For the given sub-problems show the HOL equivalent code.
+In this exercise we have to show the HOL equivalent code for the given sub-problems:
 
 \subsection{6.2.1.1}
 \label{sec:6.2.1.1}
 
-Enter the HOL equivalent of P(x). Show what HOL returns. What are the types of x, y, P, and Q?
+ HOL equivalent of P(x)  Q(y):
 
 \lstset{frameround=tttt}
 \begin{lstlisting}[frame=tRBL]
-
+``P x ==> Q y``;
 \end{lstlisting}
 
+\subsection{6.2.1.2}
+\label{sec:6.2.1.2}
+P(x) supset Q(y) with x constrain to HOL type :num and y to Hol type :bool 
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+``(P:num -> bool) (x:num)  ==> (Q:bool->bool) (y:bool)``;
+\end{lstlisting}
+
+\subsection{6.2.1.3}
+\label{sec:6.2.1.3}
+forall x y P(x) supset Q(y) without specifying types
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+``!x y.(P x) ==> (Q y)``;
+\end{lstlisting}
+
+\subsection{6.2.1.4}
+\label{sec:6.2.1.4}
+forsome (x : num).R(x : α).
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+``?(x :num).(R (x :`a))``;
+\end{lstlisting}
+
+\subsection{6.2.1.5}
+\label{sec:6.2.1.5}
+¬∀x.P(x) ∨ Q(x) = ∃x.¬P(x) ∧ ¬Q(x)
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+``(~!x.(P x)\/(Q x))=(?x.(~(P x))/\~(Q x))``;
+\end{lstlisting}
+
+\subsection{6.2.1.6}
+\label{sec:6.2.1.6}
+
+All people are mortal, where P(x) represents x is a person and M(x) represents x is mortal.
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+``!x.(P x) ==> (M x)``;
+\end{lstlisting}
+
+\subsection{6.2.1.7}
+\label{sec:6.2.1.7}
+
+Some people are funny, where Funny(x) denotes x is funny.
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+``?x.(P x) ==> (Funny x)``;
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-5}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> # # # # # # # # # ** Unicode trace now off
+> <<HOL message: inventing new type variable names: 'a, 'b>>
+val it =
+   ``(P :'a -> bool) (x :'a) ==> (Q :'b -> bool) (y :'b)``:
+   term
+> val it =
+   ``(P :num -> bool) (x :num) ==> (Q :bool -> bool) (y :bool)``:
+   term
+> <<HOL message: inventing new type variable names: 'a, 'b>>
+val it =
+   ``!(x :'a) (y :'b). (P :'a -> bool) x ==> (Q :'b -> bool) y``:
+   term
+> <<HOL message: inventing new type variable names: 'a>>
+
+Type inference failure: unable to infer a type for the application of
+
+(x :num)
+
+at line 22, character 16
+
+to
+
+(:` :'a)
+
+on line 22, characters 18-22
+
+unification failure message: Attempt to unify different type operators: num$num and min$fun
+Exception-
+   HOL_ERR
+     {message =
+      "on line 22, characters 18-22:\n\nType inference failure: unable to infer a type for the application of\n\n(x :num)
+\n\nat line 22, character 16\n\nto\n\n(:` :'a)\n\non line 22, characters 18-22\n\nunification failure message:
+ Attempt to unify different type operators: num$num and min$fun\n",
+      origin_function = "type-analysis", origin_structure = "Preterm"} raised
+> <<HOL message: inventing new type variable names: 'a>>
+val it =
+   ``~(!(x :'a). (P :'a -> bool) x \/ (Q :'a -> bool) x) <=>
+  ?(x :'a). ~P x /\ ~Q x``:
+   term
+> <<HOL message: inventing new type variable names: 'a>>
+val it =
+   ``!(x :'a). (P :'a -> bool) x ==> (M :'a -> bool) x``:
+   term
+> <<HOL message: inventing new type variable names: 'a>>
+val it =
+   ``?(x :'a). (P :'a -> bool) x ==> (Funny :'a -> bool) x``:
+   term
+> 
+ 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Error for 6.2.1.4}
+\label{sec:error-explanation}
+ This cannot be evaluated, because x is specified to num then specify to alpha, So there is a type error
 
 \chapter{Appendix A: Exercise 4.6.3}
 \label{cha:appendix-a:-exercise463}
@@ -521,6 +650,13 @@ The following code is from the file ex-5-3-4Tests.sml.
 
 The following code is from the file ex-5-3-5Tests.sml.
 \lstinputlisting{ML/ex-5-3-5Tests.sml}
+
+\chapter{Appendix E: Exercise 6.2.1}
+\label{cha:appendix-e:-exercise621}
+
+The following code is from the file ex-6-2-1.sml
+\lstinputlisting{ML/ex-6-2-1.sml}
+
 
 \end{document}
 
