@@ -3,6 +3,9 @@
 \author{Bharath Karumudi}
 \date{\today}
 
+%%........................................%%
+%% Loading the Packages 
+%%........................................%%
 \usepackage{634format}
 \usepackage{enumerate}
 \usepackage{listings}
@@ -12,6 +15,8 @@
 \usepackage{holtexbasic}
 \usepackage{amssymb}
 \input{commands}
+%.........................................%%
+%.........................................%%
 
 \begin{document}
  \lstset{language=ML}
@@ -43,13 +48,57 @@
  \chapter{Executive Summary}
  \label{cha:executive-summary}
 
- \textbf{All the requirements for this project are statisfied.}
+\textbf{All the requirements for this project are statisfied specifically,}
 
+\begin{description}
+\item[Contents] \ \\
+Our report has the following content:
+\begin{enumerate}
+ \item Chapter~\ref{cha:executive-summary}: Executive Summary
+ \item Chapter~\ref{cha:exercise-4.6.3}: Exercise 4.6.3
+   \begin{enumerate}
+    \item Section~\ref{sec:problem-statement-1} Problem Statement
+    \item Sectino~\ref{sec:relevant-code-1} Relevant Code
+    \item Section~\ref{sec:test-cases} Test Cases
+    \item Section~\ref{sec:exec-transcr} Execution Transcripts
+    \item Section~\ref{sec:explanation-results} Explanation of Results
+   \end{enumerate}
+ \item Chapter~\ref{cha:exercise-4.6.4} Exercise 4.6.4
+   \begin{enumerate}
+    \item Section~\ref{sec:problem-statement-2} Problem Statement
+    \item Section~\ref{sec:relevant-code-2} Relevant Code
+    \item Section~\ref{sec:test-cases-2} Test Cases
+    \item Section~\ref{sec:exec-transcr-2} Execution Transcripts
+    \item Section~\ref{sec:explanation-results-2} Explanation of Results
+    \end{enumerate}
+ \item Chapter~\ref{cha:exercise-5.3.4} Exercise 5.3.4
+   \begin{enumerate}
+    \item Section~\ref{sec:problem-statement-3} Problem Statement
+    \item Section~\ref{sec:relevant-code-3} Relevant Code
+     \item Section~\ref{sec:test-cases-3} Test Cases
+    \item Section~\ref{sec:exec-transcr-3} Execution Transcripts
+    \item Section~\ref{sec:explanation-results-3} Explanation of Results
+   \end{enumerate}
+ \item Chapter~\ref{cha:exercise-5.3.5} Exercise 5.3.5
+   \begin{enumerate}
+    \item Section~\ref{sec:problem-statement-4} Problem Statement
+    \item Section~\ref{sec:relevant-code-4} Relevant Code
+     \item Section~\ref{sec:test-cases-4} Test Cases
+    \item Section~\ref{sec:exec-transcr-4} Execution Transcripts
+    \item Section~\ref{sec:explanation-results-4} Explanation of Results
+   \end{enumerate}
+ \item Chapter~\ref{cha:exercise-5.3.4} Exercise 6.2.1
+   \begin{enumerate}
+    \item Section~\ref{sec:problem-statement-5} Problem Statement
+    \item Section~\ref{sec:relevant-code-5} Relevant Code
+    \item Section~\ref{sec:exec-transcr-5} Execution Transcripts
+    \item Section~\ref{sec:error-explanation} Explanation of Error for 6.2.1.4
+   \end{enumerate}
+\end{enumerate}
+\item[Reproducibility in ML and \LaTeX{}] \ \\
+ Our ML and \LaTeX{} source files compile with no errors.
+\end{description}
 
- \begin{description}
-   \item[Reproducibility in ML and \LaTeX{}] \ \\
-      Our ML and \LaTeX{} source files compile with no errors.
- \end{description}
 
 
 %%------ Exercise 4.6.3 -------%%
@@ -61,6 +110,10 @@
  \label{sec:problem-statement-1}
 
   In this exercise we define five ML functions using \texttt{fun} and \texttt{val}.
+
+\section{Relevant Code}
+\label{sec:relevant-code-1}
+
 
  %%--- Problem A ---%%
  \subsection{4.6.3A}
@@ -147,7 +200,7 @@ z) as input and returns the value corresponding to the sum x + y + z.
      fun funE2 (x,y) = if (x>y) then x else y;
     \end{lstlisting}
 
-\subsection{Test Cases}
+\section{Test Cases}
 \label{sec:test-cases}
 
 Below are the test cases to evaluate.
@@ -486,7 +539,10 @@ The above transcript shows the given tests has been passed.
 \section{Problem Statement}
 \label{sec:problem-statement-5}
 
-In this exercise we have to show the HOL equivalent code for the given sub-problems:
+In this exercise we have to show the HOL equivalent code for the given sub-problems.
+
+\section{Relevant Code}
+\label{sec:relevant-code-5}
 
 \subsection{6.2.1.1}
 \label{sec:6.2.1.1}
