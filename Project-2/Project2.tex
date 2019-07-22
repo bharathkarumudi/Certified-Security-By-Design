@@ -412,17 +412,18 @@ and filter.
 
 \lstset{frameround=tttt}
 \begin{lstlisting}[frame=tRBL]
-fun Filter l list=
+
+fun Filter li list=
 let
 
-fun fnA l []=[]
-  | fnA l xs=map l xs
+fun fnA li []=[]
+  | fnA li xs=map li xs
 
-fun fnB [] fail=[]
+fun fnB [] data=[]
   | fnB fail []=[]
   | fnB (b::bs) (x::xs)=if b then x::(fnB bs xs) else fnB bs xs
 in
-fnB (fnA l list) list
+fnB (fnA li list) list
 end;
 
 \end{lstlisting}

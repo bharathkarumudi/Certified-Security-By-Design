@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.16)  21 JUL 2019 11:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.16)  21 JUL 2019 23:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -491,7 +491,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{sessioncount.
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.444 \begin{session}
+l.445 \begin{session}
                       [9
 
 ] [10]
@@ -500,7 +500,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{sessioncount.
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.514 \begin{session}
+l.515 \begin{session}
                       [11
 
 ]
@@ -531,7 +531,7 @@ Missing character: There is no ¬ in font cmr10!
 .1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.618 \begin{session}
+l.619 \begin{session}
                       [13]
 Chapter 7.
 (./ML/ex-4-6-3Tests.sml
@@ -821,23 +821,23 @@ Overfull \hbox (40.2502pt too wide) in paragraph at lines 26--27
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 717.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 718.
  [20
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 717.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 718.
  (./Project2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 717.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 717.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 718.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 718.
 Package rerunfilecheck Info: File `Project2.out' has not changed.
 (rerunfilecheck)             Checksum: AFB507F6911F0E3A8266940A2B2FE5DB;2911.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 717.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 718.
  ) 
 Here is how much of TeX's memory you used:
- 8947 strings out of 494953
- 127524 string characters out of 6180977
+ 8949 strings out of 494953
+ 127549 string characters out of 6180977
  257389 words of memory out of 5000000
- 11626 multiletter control sequences out of 15000+600000
+ 11627 multiletter control sequences out of 15000+600000
  14053 words of font info for 54 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,12n,48p,266b,1682s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -855,10 +855,10 @@ sy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb>
-Output written on Project2.pdf (22 pages, 219311 bytes).
+Output written on Project2.pdf (22 pages, 219414 bytes).
 PDF statistics:
- 952 PDF objects out of 1000 (max. 8388607)
- 903 compressed objects within 10 object streams
- 487 named destinations out of 1000 (max. 500000)
+ 953 PDF objects out of 1000 (max. 8388607)
+ 904 compressed objects within 10 object streams
+ 488 named destinations out of 1000 (max. 500000)
  377 words of extra memory for PDF output out of 10000 (max. 10000000)
 
