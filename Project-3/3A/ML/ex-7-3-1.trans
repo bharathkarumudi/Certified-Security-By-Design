@@ -1,0 +1,19 @@
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> # # # # # # # val andImp2Imp = fn: term -> term
+> > 
+> 
+> andImp2Imp ``(p/\q) ==> r``;
+val it =
+   ``(p :bool) ==> (q :bool) ==> (r :bool)``:
+   term
+> 

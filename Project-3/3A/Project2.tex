@@ -1,0 +1,720 @@
+\documentclass{report}
+\title{Project 2}
+\author{Bharath Karumudi}
+\date{\today}
+
+%%........................................%%
+%% Loading the Packages 
+%%........................................%%
+\usepackage{634format}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{holtex}
+\usepackage{holtexbasic}
+\usepackage{amssymb}
+\input{commands}
+%.........................................%%
+%.........................................%%
+
+\begin{document}
+ \lstset{language=ML}
+ \maketitle{}
+
+ \begin{abstract}
+   This project is to demonstrate the capabilities of functional
+   programming using the tools and techniques - \LaTeX{}, AcuTeX,
+   emacs and ML. Each chapter documents the given problems with a
+   structure of:
+   \begin{enumerate}
+   \item Problem Statement
+   \item Relevant Code
+   \item Test Cases
+   \item Execution Transcripts
+   \item Explanation of results
+   \end{enumerate}
+
+ \end{abstract}
+
+
+ \begin{acknowledgments}
+  Professor Marvine Hamner and Professor Shiu-Kai Chin who taught the
+  Certified Security By Design.
+ \end{acknowledgments}
+
+ \tableofcontents{}
+
+ \chapter{Executive Summary}
+ \label{cha:executive-summary}
+
+\textbf{All the requirements for this project are statisfied specifically,}
+
+\begin{description}
+\item[Contents] \ \\
+Our report has the following content:
+\begin{enumerate}
+ \item Chapter~\ref{cha:executive-summary}: Executive Summary
+ \item Chapter~\ref{cha:exercise-4.6.3}: Exercise 4.6.3
+   \begin{enumerate}
+    \item Section~\ref{sec:problem-statement-1} Problem Statement
+    \item Sectino~\ref{sec:relevant-code-1} Relevant Code
+    \item Section~\ref{sec:test-cases} Test Cases
+    \item Section~\ref{sec:exec-transcr} Execution Transcripts
+    \item Section~\ref{sec:explanation-results} Explanation of Results
+   \end{enumerate}
+ \item Chapter~\ref{cha:exercise-4.6.4} Exercise 4.6.4
+   \begin{enumerate}
+    \item Section~\ref{sec:problem-statement-2} Problem Statement
+    \item Section~\ref{sec:relevant-code-2} Relevant Code
+    \item Section~\ref{sec:test-cases-2} Test Cases
+    \item Section~\ref{sec:exec-transcr-2} Execution Transcripts
+    \item Section~\ref{sec:explanation-results-2} Explanation of Results
+    \end{enumerate}
+ \item Chapter~\ref{cha:exercise-5.3.4} Exercise 5.3.4
+   \begin{enumerate}
+    \item Section~\ref{sec:problem-statement-3} Problem Statement
+    \item Section~\ref{sec:relevant-code-3} Relevant Code
+     \item Section~\ref{sec:test-cases-3} Test Cases
+    \item Section~\ref{sec:exec-transcr-3} Execution Transcripts
+    \item Section~\ref{sec:explanation-results-3} Explanation of Results
+   \end{enumerate}
+ \item Chapter~\ref{cha:exercise-5.3.5} Exercise 5.3.5
+   \begin{enumerate}
+    \item Section~\ref{sec:problem-statement-4} Problem Statement
+    \item Section~\ref{sec:relevant-code-4} Relevant Code
+     \item Section~\ref{sec:test-cases-4} Test Cases
+    \item Section~\ref{sec:exec-transcr-4} Execution Transcripts
+    \item Section~\ref{sec:explanation-results-4} Explanation of Results
+   \end{enumerate}
+ \item Chapter~\ref{cha:exercise-5.3.4} Exercise 6.2.1
+   \begin{enumerate}
+    \item Section~\ref{sec:problem-statement-5} Problem Statement
+    \item Section~\ref{sec:relevant-code-5} Relevant Code
+    \item Section~\ref{sec:exec-transcr-5} Execution Transcripts
+    \item Section~\ref{sec:error-explanation} Explanation of Error for 6.2.1.4
+   \end{enumerate}
+\end{enumerate}
+\item[Reproducibility in ML and \LaTeX{}] \ \\
+ Our ML and \LaTeX{} source files compile with no errors.
+\end{description}
+
+
+
+%%------ Exercise 4.6.3 -------%%
+
+ \chapter{Exercise 4.6.3}
+ \label{cha:exercise-4.6.3}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-1}
+
+  In this exercise we define five ML functions using \texttt{fun} and \texttt{val}.
+
+\section{Relevant Code}
+\label{sec:relevant-code-1}
+
+
+ %%--- Problem A ---%%
+ \subsection{4.6.3A}
+ \label{sec:4.6.3a}
+
+ In this we define a function that takes a 3-tuple of integers (x, y,
+z) as input and returns the value corresponding to the sum x + y + z.
+
+
+ %%--- Relevant Code ---%
+  \lstset{frameround=tttt}
+   \begin{lstlisting}[frame=tRBL]
+    val funA1 = (fn (x,y,z) => x+y+z);
+    fun funA2 (x,y,z) = x+y+z;
+   \end{lstlisting}
+
+ %%--- Problem B ---%%
+ 
+ \subsection{4.6.3B}
+ \label{sec:4.6.3b}
+
+ In this we define a function that takes two integer inputs x and y
+ (where x is supplied first followed by y) and returns the boolean
+ value corresponding to x < y.
+
+ %%--- Relevant Code ---%
+
+   \lstset{frameround=tttt}
+    \begin{lstlisting}[frame=tRBL]
+     val funB1 = (fn x => (fn y => x < y));
+     fun funB2 x y = x < y;
+    \end{lstlisting}
+ 
+ %%--- Problem C ---%%
+ 
+ \subsection{4.6.3C}
+ \label{sec:4.6.3c}
+
+ In this we define a function that takes two strings s 1 and s 2 (where s 1 is supplied first followed by s 2 ) and concatentates them, where “ˆ” denotes string concatenation. For example, "Hi" ˆ " there" results in the string "Hi there".
+
+
+ %%--- Relevant Code ---%
+
+   \lstset{frameround=tttt}
+    \begin{lstlisting}[frame=tRBL]
+     val funC1 = (fn s1 => (fn s2 => s1 ^ s2));
+     fun funC2 s1 s2 = s1 ^ s2;
+    \end{lstlisting}
+
+ %%--- Problem D ---%%
+
+ \subsection{4.6.3D}
+ \label{sec:4.6.3d}
+
+ In this we define a function that takes two lists list 1 and list 2
+ (where list 1 comes first) and appends them, where “@” denotes list
+ append. For example [true,false] @ [false, false, false] results in
+ the list [true,false,false,false,false].
+
+ %%--- Relevant Code ---%
+
+   \lstset{frameround=tttt}
+    \begin{lstlisting}[frame=tRBL]
+     val funD1 = (fn l1 => (fn l2 => l1@l2));
+     fun funD2 l1 l2 = l1@l2; 
+    \end{lstlisting}
+
+
+ %%--- Problem E ---%%
+
+ \subsection{4.6.3E}
+ \label{sec:4.6.3e}
+
+ In this we define a function that takes a pair of integers (x, y) and
+ returns the larger of the two values. You note that the conditional
+ statement if condition then a else b returns a if condition is true,
+ other-wise it returns b.
+
+ %%--- Relevant Code ---%
+
+   \lstset{frameround=tttt}
+    \begin{lstlisting}[frame=tRBL]
+     val funE1 = (fn (x,y) => if (x>y) then x else y);
+     fun funE2 (x,y) = if (x>y) then x else y;
+    \end{lstlisting}
+
+\section{Test Cases}
+\label{sec:test-cases}
+
+Below are the test cases to evaluate.
+\begin{lstlisting}[frame = TB]
+(**********)
+(* Part A *)
+(**********)
+
+val testListA = [(1,2,3),(4,5,6),(7,8,9)]
+
+val outputsA = map funA2 testListA
+
+val testResultA = test463A funA1 funA2 testListA
+
+(**********)
+(* Part B *)
+(**********)
+
+val testListB = [(0,0),(1,2),(4,3)]
+
+val outputsB = map (f2P funB1) testListB
+
+val testResultB = test463B funB1 funB2 testListB
+
+(**********)
+(* Part C *)
+(**********)
+
+val testListC = [("Hi"," there!"),("Oh ","no!"),("What"," the ...")]
+
+val outputsC = map (f2P funC1) testListC
+
+val testResultC = test463B funC1 funC2 testListC
+
+
+(**********)
+(* Part D *)
+(**********)
+
+val testListD1 = [([0,1],[2,3,4]),([],[0,1])]
+val testListD2 = [([true,true],[])]
+
+val outputsD1 = map (f2P funD1) testListD1
+val outputsD2 = map (f2P funD2) testListD2
+
+val testResultD1 = test463B funD1 funD2 testListD1
+val testResultD2 = test463B funD1 funD2 testListD2
+
+(**********)
+(* Part E *)
+(**********)
+
+val testListE = [(2,1),(5,5),(5,10)]
+
+val sampleResultE = map funE1 testListE
+
+val testResultE = test463A funE1 funE2 testListE
+
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > > > # # # # # # # # # val test463A = fn: ('a -> ''b) -> ('a -> ''b) -> 'a list -> bool
+> > # # # # # # # # # # # val f2P = fn: ('a -> 'b -> 'c) -> 'a * 'b -> 'c
+val test463B = fn:
+   ('a -> 'b -> ''c) -> ('a -> 'b -> ''c) -> ('a * 'b) list -> bool
+> 
+*** Emacs/HOL command completed ***
+
+> val funA1 = fn: int * int * int -> int
+> val funA2 = fn: int * int * int -> int
+> # # # # val outputsA = [6, 15, 24]: int list
+val testListA = [(1, 2, 3), (4, 5, 6), (7, 8, 9)]: (int * int * int) list
+val testResultA = true: bool
+> val funB1 = fn: int -> int -> bool
+> val funB2 = fn: int -> int -> bool
+> > # # # # # val outputsB = [false, true, false]: bool list
+val testListB = [(0, 0), (1, 2), (4, 3)]: (int * int) list
+val testResultB = true: bool
+> val funC1 = fn: string -> string -> string
+> val funC2 = fn: string -> string -> string
+> > # # # # val outputsC = ["Hi there!", "Oh no!", "What the ..."]: string list
+val testListC = [("Hi", " there!"), ("Oh ", "no!"), ("What", " the ...")]:
+   (string * string) list
+val testResultC = true: bool
+> val funD1 = fn: 'a list -> 'a list -> 'a list
+> val funD2 = fn: 'a list -> 'a list -> 'a list
+> # # # # # # # # val outputsD1 = [[0, 1, 2, 3, 4], [0, 1]]: int list list
+val outputsD2 = [[true, true]]: bool list list
+val testListD1 = [([0, 1], [2, 3, 4]), ([], [0, 1])]:
+   (int list * int list) list
+val testListD2 = [([true, true], [])]: (bool list * 'a list) list
+val testResultD1 = true: bool
+val testResultD2 = true: bool
+> val funE1 = fn: int * int -> int
+> val funE2 = fn: int * int -> int
+> # # # # # val sampleResultE = [2, 5, 10]: int list
+val testListE = [(2, 1), (5, 5), (5, 10)]: (int * int) list
+val testResultE = true: bool
+> 
+
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results}
+All the results in the test cases shows they are passed against the given test function.
+
+%%---- Exercise 4.6.4 -----%
+
+\chapter{Exercise 4.6.4}
+\label{cha:exercise-4.6.4}
+
+\section{Problem Statement}
+\label{sec:problem-statement-2}
+In this exercise we need to solve the list concatenation as stated below:
+
+  In ML, define a function listSquares that when applied to the empty
+  list of integers returns the empty list, and when applied to a
+  non-empty list of integers returns a list where each element is
+  squared. For example, listSquares [2,3,4] returns [4,9,16]. Define
+  the function using a let expression in ML. A function that takes two
+  lists list 1 and list 2 (where list 1 comes first) and appends them,
+  where '@' denotes list append. For example [true,false] @ [false,
+  false, false] results in the list [true,false,false,false,false].
+
+
+\section{Relevant Code}
+\label{sec:relevant-code-2}
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+ fun listSquares list =
+let
+  fun squareNum x = x*x
+   in
+    map squareNum list
+end;
+\end{lstlisting}
+
+\section{Test Cases}
+\label{sec:test-cases-2}
+
+The required test cases are:
+\begin{lstlisting}[frame = tRBL ]
+val testList = [1,2,3,4,5]
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-2}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # val listSquares = fn: int list -> int list
+> val testList = [1, 2, 3, 4, 5]: int list
+> val testResults = [1, 4, 9, 16, 25]: int list
+> 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-2}
+
+The above transcript shows the given tests has been passed.
+
+
+%%---- Exercise 5.3.4 -----%
+
+\chapter{Exercise 5.3.4}
+\label{cha:exercise-5.3.4}
+
+\section{Problem Statement}
+\label{sec:problem-statement-3}
+In this exercise we need to define a function Filter in ML, whose
+behavior is identical to filter. Note: you cannot use filter in the
+definition of Filter. However, you can adapt the definition of filter
+and use it in your definition.  Show test cases of your function
+returning the expected results by comparing the outputs of both Filter
+and filter.
+
+\section{Relevant Code}
+\label{sec:relevant-code-3}
+
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+
+fun Filter li list=
+let
+
+fun fnA li []=[]
+  | fnA li xs=map li xs
+
+fun fnB [] data=[]
+  | fnB fail []=[]
+  | fnB (b::bs) (x::xs)=if b then x::(fnB bs xs) else fnB bs xs
+in
+fnB (fnA li list) list
+end;
+
+\end{lstlisting}
+
+\section{Test Cases}
+\label{sec:test-cases-3}
+
+The required test cases are:
+\begin{lstlisting}[frame = tRBL ]
+val testResults = Filter (fn x => x < 5) [1,2,3,4,5,6,7,8,9]
+val testResults2 = Filter (fn x => x<5)[4,6]
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-3}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # # # # val Filter = fn: ('a -> bool) -> 'a list -> 'a list
+> > val testResults = [1, 2, 3, 4]: int list
+> val testResults2 = [4]: int list
+> 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-3}
+
+The above transcript shows the given tests has been passed.
+
+%%---- Exercise 5.3.5 -----%
+
+\chapter{Exercise 5.3.5}
+\label{cha:exercise-5.3.5}
+
+\section{Problem Statement}
+\label{sec:problem-statement-4}
+In this exercise we need to define a ML function addPairsGreaterThan n list, whose behavior is defined
+as follows: (1) given an integer n, and (2) given a list of pairs of integers list, addPairsGreaterThan
+n list will return a list of integers where each element is the sum of integer pairs in list where both
+elements of the pairs are greater than n.
+
+\section{Relevant Code}
+\label{sec:relevant-code-4}
+
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+
+filter;
+
+fun addPairsGreaterThan n list =
+let
+fun sumList [] = []
+   |sumList ((x,y) :: xs) = (x+y) :: (sumList xs)
+
+fun fil n (x,y) = (x>n andalso y>n)
+in
+sumList (filter (fil n) list)
+end;
+
+
+\end{lstlisting}
+
+\section{Test Cases}
+\label{sec:test-cases-4}
+
+The required test cases are:
+\begin{lstlisting}[frame = tRBL ]
+addPairsGreaterThan 0 [(0,1),(2,0),(2,3),(4,5)];
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-4}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > val it = fn: ('a -> bool) -> 'a list -> 'a list
+> # # # # # # # # val addPairsGreaterThan = fn: int -> (int * int) list -> int list
+> > val it = [5, 9]: int list
+> 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-4}
+The above transcript shows the given tests has been passed.
+
+\chapter{Exercise 6.2.1}
+\label{cha:exercise-6.2.1}
+
+\section{Problem Statement}
+\label{sec:problem-statement-5}
+
+In this exercise we have to show the HOL equivalent code for the given sub-problems.
+
+\section{Relevant Code}
+\label{sec:relevant-code-5}
+
+\subsection{6.2.1.1}
+\label{sec:6.2.1.1}
+
+ HOL equivalent of P(x) supset Q(y):
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+``P x ==> Q y``;
+\end{lstlisting}
+
+\subsection{6.2.1.2}
+\label{sec:6.2.1.2}
+P(x) supset Q(y) with x constrain to HOL type :num and y to Hol type :bool 
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+``(P:num -> bool) (x:num)  ==> (Q:bool->bool) (y:bool)``;
+\end{lstlisting}
+
+\subsection{6.2.1.3}
+\label{sec:6.2.1.3}
+forall x y P(x) supset Q(y) without specifying types
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+``!x y.(P x) ==> (Q y)``;
+\end{lstlisting}
+
+\subsection{6.2.1.4}
+\label{sec:6.2.1.4}
+forsome (x : num).R(x : α).
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+``?(x :num).(R (x :`a))``;
+\end{lstlisting}
+
+\subsection{6.2.1.5}
+\label{sec:6.2.1.5}
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+``(~!x.(P x)\/(Q x))=(?x.(~(P x))/\~(Q x))``;
+\end{lstlisting}
+
+\subsection{6.2.1.6}
+\label{sec:6.2.1.6}
+
+All people are mortal, where P(x) represents x is a person and M(x) represents x is mortal.
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+``!x.(P x) ==> (M x)``;
+\end{lstlisting}
+
+\subsection{6.2.1.7}
+\label{sec:6.2.1.7}
+
+Some people are funny, where Funny(x) denotes x is funny.
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+``?x.(P x) ==> (Funny x)``;
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-5}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> # # # # # # # # # ** Unicode trace now off
+> <<HOL message: inventing new type variable names: 'a, 'b>>
+val it =
+   ``(P :'a -> bool) (x :'a) ==> (Q :'b -> bool) (y :'b)``:
+   term
+> val it =
+   ``(P :num -> bool) (x :num) ==> (Q :bool -> bool) (y :bool)``:
+   term
+> <<HOL message: inventing new type variable names: 'a, 'b>>
+val it =
+   ``!(x :'a) (y :'b). (P :'a -> bool) x ==> (Q :'b -> bool) y``:
+   term
+> <<HOL message: inventing new type variable names: 'a>>
+
+Type inference failure: unable to infer a type for the application of
+
+(x :num)
+
+at line 22, character 16
+
+to
+
+(:` :'a)
+
+on line 22, characters 18-22
+
+unification failure message: Attempt to unify different type operators: num$num and min$fun
+Exception-
+   HOL_ERR
+     {message =
+      "on line 22, characters 18-22:\n\nType inference failure: unable to infer a type for the application of\n\n(x :num)
+\n\nat line 22, character 16\n\nto\n\n(:` :'a)\n\non line 22, characters 18-22\n\nunification failure message:
+ Attempt to unify different type operators: num$num and min$fun\n",
+      origin_function = "type-analysis", origin_structure = "Preterm"} raised
+> <<HOL message: inventing new type variable names: 'a>>
+val it =
+   ``~(!(x :'a). (P :'a -> bool) x \/ (Q :'a -> bool) x) <=>
+  ?(x :'a). ~P x /\ ~Q x``:
+   term
+> <<HOL message: inventing new type variable names: 'a>>
+val it =
+   ``!(x :'a). (P :'a -> bool) x ==> (M :'a -> bool) x``:
+   term
+> <<HOL message: inventing new type variable names: 'a>>
+val it =
+   ``?(x :'a). (P :'a -> bool) x ==> (Funny :'a -> bool) x``:
+   term
+> 
+ 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Error for 6.2.1.4}
+\label{sec:error-explanation}
+ This cannot be evaluated, because x is specified to num then specify to alpha, So there is a type error
+
+\chapter{Appendix A: Exercise 4.6.3}
+\label{cha:appendix-a:-exercise463}
+
+The following code is from the file ex-4-6-3Tests.sml.
+\lstinputlisting{ML/ex-4-6-3Tests.sml}
+
+\chapter{Appendix B: Exercise 4.6.4}
+\label{cha:appendix-a:-exercise464}
+
+The following code is from the file ex-4-6-4Tests.sml.
+\lstinputlisting{ML/ex-4-6-4Tests.sml}
+
+\chapter{Appendix C: Exercise 5.3.4}
+\label{cha:appendix-a:-exercise534}
+
+The following code is from the file ex-5-3-4Tests.sml.
+\lstinputlisting{ML/ex-5-3-4Tests.sml}
+
+\chapter{Appendix D: Exercise 5.3.5}
+\label{cha:appendix-a:-exercise535}
+
+The following code is from the file ex-5-3-5Tests.sml.
+\lstinputlisting{ML/ex-5-3-5Tests.sml}
+
+\chapter{Appendix E: Exercise 6.2.1}
+\label{cha:appendix-e:-exercise621}
+
+The following code is from the file ex-6-2-1.sml
+\lstinputlisting{ML/ex-6-2-1.sml}
+
+
+\end{document}
+
+
+
