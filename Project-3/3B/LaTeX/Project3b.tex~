@@ -1,0 +1,306 @@
+\documentclass{report}
+\title{Project 3B}
+\author{Bharath Karumudi}
+\date{\today}
+
+%%........................................%%
+%% Loading the Packages 
+%%........................................%%
+\usepackage{634format}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{holtex}
+\usepackage{holtexbasic}
+\usepackage{amssymb}
+\input{commands}
+\input{../HOL/HOLReports/HOLprojectThreeb}
+%.........................................%%
+%.........................................%%
+
+\begin{document}
+ \lstset{language=ML}
+ \maketitle{}
+
+ \begin{abstract}
+   This project is to demonstrate the capabilities of implementiong
+   constructing and deconstructing HOL Terms using the tools and
+   techniques - \LaTeX{}, AcuTeX, emacs and ML. 
+
+   Each chapter documents the given problems with a structure of:
+   \begin{enumerate}
+   \item Problem Statement
+   \item Relevant Code
+   \item Execution Transcripts
+   \item Explanation of results
+   \end{enumerate}
+
+ \end{abstract}
+
+
+ \begin{acknowledgments}
+  Professor Marvine Hamner and Professor Shiu-Kai Chin who taught the
+  Certified Security By Design.
+ \end{acknowledgments}
+
+ \tableofcontents{}
+
+ \chapter{Executive Summary}
+ \label{cha:executive-summary}
+
+\textbf{All the requirements for this project are statisfied specifically,}
+and used HOL to prove the below theorems:
+\begin{quote}
+\HOLprojectThreebTheorems
+\end{quote}
+
+
+%%------ Exercise 8.4.1 -------%%
+
+ \chapter{Exercise 8.4.1}
+ \label{cha:exercise-8.4.1}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-1}
+
+In this exercise we need to prove the theorem:
+\HOLTokenTurnstile{} \HOLFreeVar{p} \HOLSymConst{\HOLTokenImp{}} (\HOLFreeVar{p} \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{q}) \HOLSymConst{\HOLTokenImp{}} (\HOLFreeVar{q} \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{r}) \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{r}
+
+\section{Relevant Code}
+\label{sec:relevant-code-1}
+ \lstset{frameround=fftt}
+\begin{lstlisting}[frame=tRBL]
+val problem1Thm =
+let
+ val th1 = ASSUME ``p:bool``
+ val th2 = ASSUME ``p ==> q``
+ val th3 = ASSUME ``q ==> r``
+ val th4 = MP th2 th1
+ val th5 = MP th3 th4
+ val th6 = DISCH (hd(hyp th3)) th5
+ val th7 = DISCH (hd(hyp th2)) th6
+in
+  DISCH (hd(hyp th1)) th7
+end;
+
+val _ = save_thm("problem1Thm", problem1Thm);
+
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-1}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> 
+> # # # # # # # # # # # val problem1Thm =
+    [] |- (p :bool) ==> (p ==> (q :bool)) ==> (q ==> (r :bool)) ==> r:
+   thm
+> 
+> > 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-1}
+The above results shows that theorem is proved.
+
+%%------ Exercise 8.4.2 -------%%
+
+ \chapter{Exercise 8.4.2}
+ \label{cha:exercise-8.4.2}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-2}
+
+In this exercise we need to prove the theorem:
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{p} \HOLBoundVar{q}. \HOLBoundVar{p} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{q} \HOLSymConst{\HOLTokenEquiv{}} \HOLBoundVar{q} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{p}
+
+\section{Relevant Code}
+\label{sec:relevant-code-2}
+ \lstset{frameround=fftt}
+\begin{lstlisting}[frame=tRBL]
+
+val conj1Thm =
+let
+ val th1 = ASSUME ``p /\ q``
+ val th2 = CONJUNCT1 th1
+ val th3 = CONJUNCT2 th1
+ val th4 = CONJ th3 th2
+in
+ DISCH (hd(hyp th1)) th4
+end;
+
+val conj2Thm =
+let
+ val th1 = ASSUME ``q /\ p``
+ val th2 = CONJUNCT1 th1
+ val th3 = CONJUNCT2 th1
+ val th4 = CONJ th3 th2
+in
+ DISCH (hd(hyp th1)) th4
+end;
+
+val conjSymThm =
+IMP_ANTISYM_RULE conj1Thm conj2Thm;
+
+val _ = save_thm("conjSymThm", conjSymThm);
+
+
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-2}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> # # # # # # # # val conj1Thm =
+    [] |- (p :bool) /\ (q :bool) ==> q /\ p:
+   thm
+> > # # # # # # # # val conj2Thm =
+    [] |- (q :bool) /\ (p :bool) ==> p /\ q:
+   thm
+> > # val conjSymThm =
+    [] |- (p :bool) /\ (q :bool) <=> q /\ p:
+   thm
+> > > > 
+*** Emacs/HOL command completed ***
+
+> 
+
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-2}
+The above results shows that theorem is proved.
+
+
+
+%%%%
+
+%%------ Exercise 8.4.3 -------%%
+
+ \chapter{Exercise 8.4.3}
+ \label{cha:exercise-8.4.3}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-3}
+
+In this exercise we need to prove the theorem:
+\HOLTokenTurnstile{} \HOLFreeVar{p} \HOLSymConst{\HOLTokenImp{}} (\HOLFreeVar{p} \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{q}) \HOLSymConst{\HOLTokenImp{}} (\HOLFreeVar{q} \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{r}) \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{r}
+
+\section{Relevant Code}
+\label{sec:relevant-code-1}
+ \lstset{frameround=fftt}
+\begin{lstlisting}[frame=tRBL]
+val conj1Thm =
+let
+val th1 = ASSUME ``p /\ q``
+val th2 = CONJUNCT1 th1
+val th3 = CONJUNCT2 th1
+val th4 = CONJ th3 th2
+in
+DISCH (hd(hyp th1)) th4
+end;
+
+val conj2Thm =
+let
+val th1 = ASSUME ``q /\ p``
+val th2 = CONJUNCT1 th1
+val th3 = CONJUNCT2 th1
+val th4 = CONJ th3 th2
+in
+DISCH (hd(hyp th1)) th4
+end;
+
+val conjSymThm =
+IMP_ANTISYM_RULE conj1Thm conj2Thm;
+
+val conjSymThmAll = GENL[``p:bool``, ``q:bool``] conjSymThm;
+
+val _ = save_thm("conjSymThmAll", conjSymThmAll)
+
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-3}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> # # # # # # # # val conj1Thm =
+    [] |- (p :bool) /\ (q :bool) ==> q /\ p:
+   thm
+> > # # # # # # # # val conj2Thm =
+    [] |- (q :bool) /\ (p :bool) ==> p /\ q:
+   thm
+> > # val conjSymThm =
+    [] |- (p :bool) /\ (q :bool) <=> q /\ p:
+   thm
+> > val conjSymThmAll =
+    [] |- !(p :bool) (q :bool). p /\ q <=> q /\ p:
+   thm
+> > # > 
+*** Emacs/HOL command completed ***
+
+> 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-1}
+The above results shows that theorem is proved.
+
+\chapter{Appendix A: Chapter 8}
+\label{cha:appendix-a:chapter8}
+
+The following code is from the file ex-7-3-1.sml.
+\lstinputlisting{../HOL/project3bScript.sml}
+
+\end{document}

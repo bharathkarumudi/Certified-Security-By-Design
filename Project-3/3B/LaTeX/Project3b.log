@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.16)  25 JUL 2019 22:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.16)  26 JUL 2019 22:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**\input Project3.tex
-(./Project3.tex (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+**\input Project3b.tex
+(./Project3b.tex (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
@@ -310,23 +310,30 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 \minipagewidth=\skip56
 \hsbw=\skip57
 \c@sessioncount=\count125
-) (./Project3.aux)
-\openout1 = `Project3.aux'.
+) (../HOL/HOLReports/HOLprojectThreeb.tex) (./Project3b.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
+LaTeX Warning: Label `sec:relevant-code-1' multiply defined.
+
+
+LaTeX Warning: Label `sec:explanation-results-1' multiply defined.
+
+)
+\openout1 = `Project3b.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -364,7 +371,7 @@ LaTeX Font Info:    ... okay on input line 21.
 
 \c@lstlisting=\count126
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring OFF on input line 21.
+Package hyperref Info: Link coloring OFF on input line 22.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -373,13 +380,13 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count127
 )
-LaTeX Info: Redefining \ref on input line 21.
-LaTeX Info: Redefining \pageref on input line 21.
-LaTeX Info: Redefining \nameref on input line 21.
+LaTeX Info: Redefining \ref on input line 22.
+LaTeX Info: Redefining \pageref on input line 22.
+LaTeX Info: Redefining \nameref on input line 22.
 
-(./Project3.out) (./Project3.out)
+(./Project3b.out) (./Project3b.out)
 \@outlinefile=\write4
-\openout4 = `Project3.out'.
+\openout4 = `Project3b.out'.
 
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -401,12 +408,12 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2015/06/04 1.6 listings language file
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 23.
+LaTeX Font Info:    Try loading font information for U+msa on input line 24.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 23.
+LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -423,9 +430,9 @@ fier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.47  \tableofcontents
-                      {} [1] (./Project3.toc)
+                      {} [1] (./Project3b.toc)
 \tf@toc=\write5
-\openout5 = `Project3.toc'.
+\openout5 = `Project3b.toc'.
 
  [2
 
@@ -435,166 +442,237 @@ Chapter 1.
 
 ]
 Chapter 2.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 128.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 77.
+(/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 77.
+ [4
+
+]
+Chapter 3.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 142.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 128.
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 128.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
-File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 128.
- [4
-
-] [5]
-Chapter 3.
-LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 187.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 142.
 pdfTeX warning (ext4): destination with the same identifier (name{sessioncount.
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.225 \begin{session}
-                      [6
+l.173 \begin{session}
+                      [5
 
-] [7]
+] [6]
 Chapter 4.
 pdfTeX warning (ext4): destination with the same identifier (name{sessioncount.
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.302 \begin{session}
-                      [8
+l.262 \begin{session}
+                      [7
 
-]
+] [8]
 Chapter 5.
-(./ML/ex-7-3-1.sml
-Overfull \hbox (10.2499pt too wide) in paragraph at lines 2--3
+(../HOL/project3bScript.sml
+LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1.
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 1--2
 [][][][][][] 
  []
 
 
-Overfull \hbox (10.2499pt too wide) in paragraph at lines 3--4
-[][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (10.2499pt too wide) in paragraph at lines 4--5
-[][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (10.2499pt too wide) in paragraph at lines 5--6
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 2--3
 [][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (10.2499pt too wide) in paragraph at lines 6--8
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 3--4
+[][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 4--5
+[][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 5--7
 [][][][][][] 
  []
 
-) [9
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 12--13
+[][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 13--14
+[][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 14--15
+[][][][][][][][][][][][][][][][] 
+ []
+
+LaTeX Font Info:    Font shape `OML/cmr/m/it' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 15.
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 15--16
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 16--17
+[][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 17--18
+[][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 18--20
+[][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 36--37
+[][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 37--38
+[][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 38--39
+[][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 39--40
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (4.24983pt too wide) in paragraph at lines 40--41
+[][][][][][][][][][][][]
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 41--42
+[][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 42--44
+[][][][][][] 
+ []
+
+[9
 
 ]
-Chapter 6.
-(./ML/ex-7-3-2.sml
-Overfull \hbox (10.2499pt too wide) in paragraph at lines 2--3
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 70--71
 [][][][][][] 
  []
 
 
-Overfull \hbox (10.2499pt too wide) in paragraph at lines 3--4
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 71--72
+[][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 72--73
+[][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 73--74
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 74--75
+[][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 75--76
+[][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 76--78
+[][][][][][] 
+ []
+
+[10]
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 106--107
+[][][][][][] 
+ []
+
+
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 107--108
 [][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (10.2499pt too wide) in paragraph at lines 4--5
-[][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (10.2499pt too wide) in paragraph at lines 5--6
-[][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (10.2499pt too wide) in paragraph at lines 6--8
-[][][][][][] 
- []
-
-) [10
-
-]
-Chapter 7.
-(./ML/ex-7-3-3.sml
-Overfull \hbox (10.2499pt too wide) in paragraph at lines 2--3
-[][][][][][] 
- []
-
-
-Overfull \hbox (10.2499pt too wide) in paragraph at lines 3--4
-[][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (10.2499pt too wide) in paragraph at lines 4--5
-[][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (10.2499pt too wide) in paragraph at lines 5--6
-[][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (10.2499pt too wide) in paragraph at lines 6--9
+Overfull \hbox (10.2499pt too wide) in paragraph at lines 108--110
 [][][][][][] 
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 354.
- [11
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 306.
+ [11]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 306.
+ (./Project3b.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 306.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 306.
+Package rerunfilecheck Info: File `Project3b.out' has not changed.
+(rerunfilecheck)             Checksum: 65782DD9D837902C3F47245AD15CA99D;1055.
 
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 354.
- (./Project3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 354.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 354.
-Package rerunfilecheck Info: File `Project3.out' has not changed.
-(rerunfilecheck)             Checksum: B5DE585306CEF121B97ABEBAC98F1D56;1355.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 354.
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 306.
  ) 
 Here is how much of TeX's memory you used:
- 8528 strings out of 494953
- 121245 string characters out of 6180977
- 248263 words of memory out of 5000000
- 11519 multiletter control sequences out of 15000+600000
- 13885 words of font info for 53 fonts, out of 8000000 for 9000
+ 8591 strings out of 494953
+ 122486 string characters out of 6180977
+ 255478 words of memory out of 5000000
+ 11544 multiletter control sequences out of 15000+600000
+ 16548 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 39i,11n,45p,232b,1165s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,12n,45p,342b,1618s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsl8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb>
-Output written on Project3.pdf (13 pages, 176363 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsl8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb>
+Output written on Project3b.pdf (13 pages, 200851 bytes).
 PDF statistics:
- 437 PDF objects out of 1000 (max. 8388607)
- 403 compressed objects within 5 object streams
- 182 named destinations out of 1000 (max. 500000)
- 177 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 449 PDF objects out of 1000 (max. 8388607)
+ 412 compressed objects within 5 object streams
+ 216 named destinations out of 1000 (max. 500000)
+ 137 words of extra memory for PDF output out of 10000 (max. 10000000)
 
