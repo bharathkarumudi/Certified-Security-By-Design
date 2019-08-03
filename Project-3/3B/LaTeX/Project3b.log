@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.16)  27 JUL 2019 17:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.16)  2 AUG 2019 20:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -646,10 +646,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 303.
  ) 
 Here is how much of TeX's memory you used:
- 8591 strings out of 494953
- 122486 string characters out of 6180977
+ 8593 strings out of 494953
+ 122534 string characters out of 6180977
  255478 words of memory out of 5000000
- 11544 multiletter control sequences out of 15000+600000
+ 11546 multiletter control sequences out of 15000+600000
  16548 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,12n,45p,342b,1618s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -669,7 +669,7 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb>
-Output written on Project3b.pdf (13 pages, 200792 bytes).
+Output written on Project3b.pdf (13 pages, 200881 bytes).
 PDF statistics:
  449 PDF objects out of 1000 (max. 8388607)
  412 compressed objects within 5 object streams
