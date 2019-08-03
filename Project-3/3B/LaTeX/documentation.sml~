@@ -1,9 +1,0 @@
-
-app
- load
- ["example1Theory", "EmitTeX"];
-
-open EmitTeX;
-
-print_theories_as_tex_doc
-["example1"] "example1Report";

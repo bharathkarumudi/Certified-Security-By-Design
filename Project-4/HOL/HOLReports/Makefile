@@ -18,7 +18,7 @@ report:
 # ===================================================
 # Change example1Report to the appropriate report name
 # ===================================================
-	${PDFLATEX} chapter8Report
-	${MAKEINDEX} chapter8Report
-	${PDFLATEX} chapter8Report
+	${PDFLATEX} project4Report
+	${MAKEINDEX} project4Report
+	${PDFLATEX} project4Report
 

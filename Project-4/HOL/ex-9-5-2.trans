@@ -5,11 +5,14 @@
        For introductory HOL help, type: help "hol";
        To exit type <Control>-D
 ---------------------------------------------------------------------
-> > > > # # # # # # # val andImp2Imp = fn: term -> term
-> > 
-> andImp2Imp ``(p/\q) ==> r``
-# ;
-val it =
-   “p ⇒ q ⇒ r”:
-   term
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> # # # # # # # # # val constructiveDilemmaRule =
+    []
+|- !(p :bool) (q :bool) (r :bool) (s :bool).
+     (p ==> q) /\ (r ==> s) ==> p \/ r ==> q \/ s:
+   thm
+> 
 > 
