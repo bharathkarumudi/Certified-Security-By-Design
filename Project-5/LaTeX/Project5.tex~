@@ -1,0 +1,220 @@
+\documentclass{report}
+\title{Project 5}
+\author{Bharath Karumudi}
+\date{\today}
+
+%%........................................%%
+%% Loading the Packages 
+%%........................................%%
+\usepackage{634format}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{holtex}
+\usepackage{holtexbasic}
+\usepackage{amssymb}
+\input{commands}
+\input{../HOL/HOLReports/HOLexType}
+\input{../HOL/HOLReports/HOLnexp}
+%.........................................%%
+%.........................................%%
+
+\begin{document}
+ \lstset{language=ML}
+ \maketitle{}
+
+ \begin{abstract}
+   This project is to demonstrate the capabilities of implementing
+   constructing and deconstructing HOL Terms using the tools and
+   techniques - \LaTeX{}, AcuTeX, emacs and ML. 
+
+   Each chapter documents the given problems with a structure of:
+   \begin{enumerate}
+   \item Problem Statement
+   \item Relevant Code
+   \item Execution Transcripts
+   \item Explanation of results
+   \end{enumerate}
+
+ \end{abstract}
+
+
+ \begin{acknowledgments}
+  Professor Marvine Hamner and Professor Shiu-Kai Chin who taught the
+  Certified Security By Design.
+ \end{acknowledgments}
+
+ \tableofcontents{}
+
+ \chapter{Executive Summary}
+ \label{cha:executive-summary}
+
+\textbf{All requirements for this project are statisfied specifically,}
+ and by using HOL proved the below theorems:
+\begin{quote}
+\HOLexTypeTheorems
+\HOLnexpTheorems
+\end{quote}
+
+
+%%------ Exercise 11.6.1 -------%%
+
+ \chapter{Exercise 11.6.1}
+ \label{cha:exercise-11.6.1}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-1}
+
+In this exercise we need to prove the theorem:
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{l\sb{\mathrm{1}}} \HOLBoundVar{l\sb{\mathrm{2}}}. \HOLConst{LENGTH} (\HOLConst{APP} \HOLBoundVar{l\sb{\mathrm{1}}} \HOLBoundVar{l\sb{\mathrm{2}}}) \HOLSymConst{=} \HOLConst{LENGTH} \HOLBoundVar{l\sb{\mathrm{1}}} \HOLSymConst{+} \HOLConst{LENGTH} \HOLBoundVar{l\sb{\mathrm{2}}}
+
+\section{Relevant Code}
+\label{sec:relevant-code-1}
+ \lstset{frameround=fftt}
+\begin{lstlisting}[frame=tRBL]
+val LENGTH_APP=
+TAC_PROOF(
+([],
+``!(l1: 'a list)(l2: 'a list).
+   (LENGTH (APP l1 l2)) =(LENGTH l1 + LENGTH l2)``),
+Induct_on `l1` THEN
+ASM_REWRITE_TAC[ADD_CLAUSES,APP_def,LENGTH])
+
+val _ = save_thm("LENGTH_APP", LENGTH_APP);
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-1}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+ 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-1}
+The above results shows that the requirements are satisfied.
+
+%%------ Exercise 11.6.2 -------%%
+
+ \chapter{Exercise 11.6.2}
+ \label{cha:exercise-11.6.2}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-2}
+
+In this exercise we need to prove the theorem:
+\HOLTokenTurnstile{} \HOLConst{Map} \HOLFreeVar{f} (\HOLConst{APP} \HOLFreeVar{l\sb{\mathrm{1}}} \HOLFreeVar{l\sb{\mathrm{2}}}) \HOLSymConst{=} \HOLConst{APP} (\HOLConst{Map} \HOLFreeVar{f} \HOLFreeVar{l\sb{\mathrm{1}}}) (\HOLConst{Map} \HOLFreeVar{f} \HOLFreeVar{l\sb{\mathrm{2}}})
+
+\section{Relevant Code}
+\label{sec:relevant-code-2}
+ \lstset{frameround=fftt}
+\begin{lstlisting}[frame=tRBL]
+
+val Map_def =
+Define
+`(Map f [] = []) /\ (Map f (x::f1) = f x::Map f (f1))`;
+
+val Map_APP =
+TAC_PROOF(
+([],
+``Map f (APP l1 l2) = APP (Map f l1) (Map f l2) ``),
+Induct_on `l1` THEN
+ASM_REWRITE_TAC[ADD_CLAUSES,Map_def,APP_def])
+
+val _ = save_thm("Map_APP", Map_APP);
+
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-2}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+> 
+
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-2}
+The above results shows that the requirements are satisfied.
+
+
+%%------ Exercise 11.6.3 -------%%
+
+ \chapter{Exercise 11.6.3}
+ \label{cha:exercise-11.6.3}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-3}
+
+In this exercise we need to prove the theorem:  
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{f}. \HOLConst{nexpVal} (\HOLConst{Add} (\HOLConst{Num} \HOLNumLit{0}) \HOLBoundVar{f}) \HOLSymConst{=} \HOLConst{nexpVal} \HOLBoundVar{f}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{f\sb{\mathrm{1}}} \HOLBoundVar{f\sb{\mathrm{2}}}. \HOLConst{nexpVal} (\HOLConst{Add} \HOLBoundVar{f\sb{\mathrm{1}}} \HOLBoundVar{f\sb{\mathrm{2}}}) \HOLSymConst{=} \HOLConst{nexpVal} (\HOLConst{Add} \HOLBoundVar{f\sb{\mathrm{2}}} \HOLBoundVar{f\sb{\mathrm{1}}})
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{f}.
+     (\HOLConst{nexpVal} (\HOLConst{Sub} (\HOLConst{Num} \HOLNumLit{0}) \HOLBoundVar{f}) \HOLSymConst{=} \HOLNumLit{0}) \HOLSymConst{\HOLTokenConj{}}
+     (\HOLConst{nexpVal} (\HOLConst{Sub} \HOLBoundVar{f} (\HOLConst{Num} \HOLNumLit{0})) \HOLSymConst{=} \HOLConst{nexpVal} \HOLBoundVar{f})
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{a\sb{\mathrm{1}}} \HOLBoundVar{a\sb{\mathrm{0}}} \HOLBoundVar{a}. \HOLConst{Num} \HOLBoundVar{a} \HOLSymConst{\HOLTokenNotEqual{}} \HOLConst{Add} \HOLBoundVar{a\sb{\mathrm{0}}} \HOLBoundVar{a\sb{\mathrm{1}}}) \HOLSymConst{\HOLTokenConj{}}
+   (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{a\sb{\mathrm{1}}} \HOLBoundVar{a\sb{\mathrm{0}}} \HOLBoundVar{a}. \HOLConst{Num} \HOLBoundVar{a} \HOLSymConst{\HOLTokenNotEqual{}} \HOLConst{Sub} \HOLBoundVar{a\sb{\mathrm{0}}} \HOLBoundVar{a\sb{\mathrm{1}}}) \HOLSymConst{\HOLTokenConj{}}
+   (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{a\sb{\mathrm{1}}} \HOLBoundVar{a\sb{\mathrm{0}}} \HOLBoundVar{a}. \HOLConst{Num} \HOLBoundVar{a} \HOLSymConst{\HOLTokenNotEqual{}} \HOLConst{Mult} \HOLBoundVar{a\sb{\mathrm{0}}} \HOLBoundVar{a\sb{\mathrm{1}}}) \HOLSymConst{\HOLTokenConj{}}
+   (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{a\sb{\mathrm{1}}\sp{\prime}} \HOLBoundVar{a\sb{\mathrm{1}}} \HOLBoundVar{a\sb{\mathrm{0}}\sp{\prime}} \HOLBoundVar{a\sb{\mathrm{0}}}. \HOLConst{Add} \HOLBoundVar{a\sb{\mathrm{0}}} \HOLBoundVar{a\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenNotEqual{}} \HOLConst{Sub} \HOLBoundVar{a\sb{\mathrm{0}}\sp{\prime}} \HOLBoundVar{a\sb{\mathrm{1}}\sp{\prime}}) \HOLSymConst{\HOLTokenConj{}}
+   (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{a\sb{\mathrm{1}}\sp{\prime}} \HOLBoundVar{a\sb{\mathrm{1}}} \HOLBoundVar{a\sb{\mathrm{0}}\sp{\prime}} \HOLBoundVar{a\sb{\mathrm{0}}}. \HOLConst{Add} \HOLBoundVar{a\sb{\mathrm{0}}} \HOLBoundVar{a\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenNotEqual{}} \HOLConst{Mult} \HOLBoundVar{a\sb{\mathrm{0}}\sp{\prime}} \HOLBoundVar{a\sb{\mathrm{1}}\sp{\prime}}) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{a\sb{\mathrm{1}}\sp{\prime}} \HOLBoundVar{a\sb{\mathrm{1}}} \HOLBoundVar{a\sb{\mathrm{0}}\sp{\prime}} \HOLBoundVar{a\sb{\mathrm{0}}}. \HOLConst{Sub} \HOLBoundVar{a\sb{\mathrm{0}}} \HOLBoundVar{a\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenNotEqual{}} \HOLConst{Mult} \HOLBoundVar{a\sb{\mathrm{0}}\sp{\prime}} \HOLBoundVar{a\sb{\mathrm{1}}\sp{\prime}}
+
+\section{Relevant Code}
+\label{sec:relevant-code-3}
+ \lstset{frameround=fftt}
+\begin{lstlisting}[frame=tRBL]
+
+\lstinputlisting{../HOL/nexpScript.sml}
+
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-3}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-3}
+The above results shows that the requirements are satisfied.
+
+
+\chapter{Appendix A: Exercise 11.6.1 and 11.6.2}
+\label{cha:appendix-a:chapter9}
+
+The following code is from the file exTypeScript.sml
+\lstinputlisting{../HOL/exTypeScript.sml}
+
+\chapter{Appendix B: Exercise 11.6.3}
+\label{cha:appendix-a:chapter10}
+
+The following code is from the file nexpScript.sml
+\lstinputlisting{../HOL/nexpScript.sml}
+
+\end{document}

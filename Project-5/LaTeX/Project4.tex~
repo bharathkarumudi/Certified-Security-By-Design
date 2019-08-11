@@ -1,0 +1,417 @@
+\documentclass{report}
+\title{Project 4}
+\author{Bharath Karumudi}
+\date{\today}
+
+%%........................................%%
+%% Loading the Packages 
+%%........................................%%
+\usepackage{634format}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{holtex}
+\usepackage{holtexbasic}
+\usepackage{amssymb}
+\input{commands}
+\input{../HOL/HOLReports/HOLexerciseNine}
+\input{../HOL/HOLReports/HOLexerciseOneZero}
+%.........................................%%
+%.........................................%%
+
+\begin{document}
+ \lstset{language=ML}
+ \maketitle{}
+
+ \begin{abstract}
+   This project is to demonstrate the capabilities of implementing
+   constructing and deconstructing HOL Terms using the tools and
+   techniques - \LaTeX{}, AcuTeX, emacs and ML. 
+
+   Each chapter documents the given problems with a structure of:
+   \begin{enumerate}
+   \item Problem Statement
+   \item Relevant Code
+   \item Execution Transcripts
+   \item Explanation of results
+   \end{enumerate}
+
+ \end{abstract}
+
+
+ \begin{acknowledgments}
+  Professor Marvine Hamner and Professor Shiu-Kai Chin who taught the
+  Certified Security By Design.
+ \end{acknowledgments}
+
+ \tableofcontents{}
+
+ \chapter{Executive Summary}
+ \label{cha:executive-summary}
+
+\textbf{Some requirements for this project are statisfied specifically,}
+ and by using HOL proved the below theorems:
+\begin{quote}
+\HOLexerciseNineTheorems
+\HOLexerciseOneZeroTheorems
+\end{quote}
+10.4.3 is not included.
+
+%%------ Exercise 9.5.1 -------%%
+
+ \chapter{Exercise 9.5.1}
+ \label{cha:exercise-9.5.1}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-1}
+
+In this exercise we need to prove the theorem:
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{p} \HOLBoundVar{q}. (\HOLBoundVar{p} \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{q}) \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{p} \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{p} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{q}
+
+\section{Relevant Code}
+\label{sec:relevant-code-1}
+ \lstset{frameround=fftt}
+\begin{lstlisting}[frame=tRBL]
+val absorptionRule =
+TAC_PROOF (
+([],``!p q. (p ==> q) ==> p ==> p/\q``),
+(REPEAT STRIP_TAC THEN
+ASM_REWRITE_TAC [] THEN
+RES_TAC) );
+
+val _ = save_thm("absorptionRule",absorptionRule);
+
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-1}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> # # # # # val absorptionRule =
+    [] |- !(p :bool) (q :bool). (p ==> q) ==> p ==> p /\ q:
+   thm
+>  
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-1}
+The above results shows that the requirements are satisfied.
+
+%%------ Exercise 9.5.2 -------%%
+
+ \chapter{Exercise 9.5.2}
+ \label{cha:exercise-9.5.2}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-2}
+
+In this exercise we need to prove the theorem:
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{p} \HOLBoundVar{q} \HOLBoundVar{r} \HOLBoundVar{s}. (\HOLBoundVar{p} \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{q}) \HOLSymConst{\HOLTokenConj{}} (\HOLBoundVar{r} \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{s}) \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{p} \HOLSymConst{\HOLTokenDisj{}} \HOLBoundVar{r} \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{q} \HOLSymConst{\HOLTokenDisj{}} \HOLBoundVar{s}
+
+\section{Relevant Code}
+\label{sec:relevant-code-2}
+ \lstset{frameround=fftt}
+\begin{lstlisting}[frame=tRBL]
+
+val constructiveDilemmaRule =
+ TAC_PROOF (
+([], ``!p q r s.(p ==> q) /\ (r ==> s) ==> (p\/r) ==> (q\/s)``),
+REPEAT STRIP_TAC THEN
+ASM_REWRITE_TAC [] THEN
+RES_TAC THEN
+ASM_REWRITE_TAC [] THEN
+RES_TAC THEN
+ASM_REWRITE_TAC []
+);
+
+val _ = save_thm("constructiveDilemmaRule",constructiveDilemmaRule);
+
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-2}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> # # # # # # # # # val constructiveDilemmaRule =
+    []
+|- !(p :bool) (q :bool) (r :bool) (s :bool).
+     (p ==> q) /\ (r ==> s) ==> p \/ r ==> q \/ s:
+   thm
+> 
+> 
+
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-2}
+The above results shows that the requirements are satisfied.
+
+
+%%------ Exercise 9.5.3 -------%%
+
+ \chapter{Exercise 9.5.3}
+ \label{cha:exercise-9.5.3}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-3}
+
+In this exercise we need to prove the theorem:  
+
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{p} \HOLBoundVar{q} \HOLBoundVar{r} \HOLBoundVar{s}. (\HOLBoundVar{p} \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{q}) \HOLSymConst{\HOLTokenConj{}} (\HOLBoundVar{r} \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{s}) \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{p} \HOLSymConst{\HOLTokenDisj{}} \HOLBoundVar{r} \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{q} \HOLSymConst{\HOLTokenDisj{}} \HOLBoundVar{s}
+
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{p} \HOLBoundVar{q} \HOLBoundVar{r} \HOLBoundVar{s}. (\HOLBoundVar{p} \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{q}) \HOLSymConst{\HOLTokenConj{}} (\HOLBoundVar{r} \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{s}) \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{p} \HOLSymConst{\HOLTokenDisj{}} \HOLBoundVar{r} \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{q} \HOLSymConst{\HOLTokenDisj{}} \HOLBoundVar{s}
+
+\section{Relevant Code}
+\label{sec:relevant-code-3}
+ \lstset{frameround=fftt}
+\begin{lstlisting}[frame=tRBL]
+
+val absorptionRule2 =
+ TAC_PROOF (
+([], ``!p q r s.(p ==> q) /\ (r ==> s) ==> (p\/r) ==> (q\/s)``),
+PROVE_TAC []
+);
+
+val _= save_thm("absorptionRule2",absorptionRule2);
+
+val constructiveDilemmaRule2=
+ TAC_PROOF (
+([],``!p q r s.(p ==> q) /\ (r ==> s) ==> (p\/r) ==> (q\/s)``),
+PROVE_TAC []
+);
+
+val _ = save_thm("constructiveDilemmaRule2",constructiveDilemmaRule2);
+
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-3}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> # # # # Meson search level: ................
+val absorptionRule2 =
+    []
+|- !(p :bool) (q :bool) (r :bool) (s :bool).
+     (p ==> q) /\ (r ==> s) ==> p \/ r ==> q \/ s:
+   thm
+> 
+> # # # # Meson search level: ................
+val constructiveDilemmaRule2 =
+    []
+|- !(p :bool) (q :bool) (r :bool) (s :bool).
+     (p ==> q) /\ (r ==> s) ==> p \/ r ==> q \/ s:
+   thm
+> 
+> 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-3}
+The above results shows that the requirements are satisfied.
+
+
+
+%%------ Exercise 10.4.1 -------%%
+
+ \chapter{Exercise 10.4.1}
+ \label{cha:exercise-10.4.1}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-4}
+
+In this exercise we need to prove the theorem:
+\HOLTokenTurnstile{} \HOLFreeVar{M} \HOLFreeVar{s}
+
+\section{Relevant Code}
+\label{sec:relevant-code-4}
+ \lstset{frameround=fftt}
+\begin{lstlisting}[frame=tRBL]
+val problemonethm=
+TAC_PROOF(
+([ `` !x: 'a.P(x) ==> M(x) ``, ``(P: 'a->bool) (s: 'a)``],
+``(M:'a->bool) (s: 'a)``),
+RES_TAC
+);
+
+val _=save_thm("problemonethm",problemonethm);
+
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-4}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> # # # # # val problemonethm =
+   
+[(P :'a -> bool) (s :'a),
+ !(x :'a). (P :'a -> bool) x ==> (M :'a -> bool) x]
+|- (M :'a -> bool) (s :'a):
+   thm
+> > 
+> 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-4}
+The above results shows that the requirements are satisfied.
+
+
+%%------ Exercise 10.4.2 -------%%
+
+ \chapter{Exercise 10.4.2}
+ \label{cha:exercise-10.4.2}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-5}
+
+In this exercise we need to prove the theorem:
+\HOLTokenTurnstile{} \HOLFreeVar{p} \HOLSymConst{\HOLTokenImp{}} \HOLSymConst{\HOLTokenNeg{}}\HOLFreeVar{q}
+
+\section{Relevant Code}
+\label{sec:relevant-code-5}
+ \lstset{frameround=fftt}
+\begin{lstlisting}[frame=tRBL]
+
+val  problemtwothm=
+TAC_PROOF(
+([``p /\ q ==> r``, ``r ==> s``, ``~s``], ``p ==> ~q``),
+(PAT_ASSUM ``r  ==>s``
+	    (fn th =>
+     	    ASSUME_TAC
+     	      (DISJ_IMP (ONCE_REWRITE_RULE [DISJ_SYM] (IMP_ELIM th) )
+              )
+            )
+) THEN
+(PAT_ASSUM ``p /\ q ==> r``
+	   (fn th2 =>
+     	   ASSUME_TAC
+     	   (DISJ_IMP (ONCE_REWRITE_RULE [DISJ_SYM] (IMP_ELIM th2))))) THEN
+REPEAT STRIP_TAC THEN
+RES_TAC
+)
+val _=save_thm("problemtwothm",problemtwothm);
+
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-5}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> # # # # # # # # # # # # # # # # val problemtwothm =
+   
+[~(s :bool), (r :bool) ==> (s :bool),
+ (p :bool) /\ (q :bool) ==> (r :bool)] |- (p :bool) ==> ~(q :bool):
+   thm
+> 
+*** Emacs/HOL command completed ***
+
+> 
+> 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-5}
+The above results shows that the requirements are satisfied.
+
+%%------ Exercise 10.4.3 -------%%
+
+
+\chapter{Appendix A: Chapter 9}
+\label{cha:appendix-a:chapter9}
+
+The following code is from the file project3bScript.sml
+\lstinputlisting{../HOL/exercise9Script.sml}
+
+\chapter{Appendix B: Chapter 10}
+\label{cha:appendix-a:chapter10}
+
+The following code is from the file project3bScript.sml
+\lstinputlisting{../HOL/exercise10Script.sml}
+
+\end{document}

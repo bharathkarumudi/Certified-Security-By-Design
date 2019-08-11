@@ -1,0 +1,3968 @@
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> # # # # # # # # # ** Unicode trace now off
+> > val ALL_DISTINCT =
+   |- (ALL_DISTINCT ([] :'a list) <=> T) /\
+   !(h :'a) (t :'a list).
+     ALL_DISTINCT (h::t) <=> ~MEM h t /\ ALL_DISTINCT t:
+   thm
+val ALL_DISTINCT_APPEND =
+   |- !(l1 :'a list) (l2 :'a list).
+     ALL_DISTINCT ((l1 ++ l2) :'a list) <=>
+     ALL_DISTINCT l1 /\ ALL_DISTINCT l2 /\
+     !(e :'a). MEM e l1 ==> ~MEM e l2:
+   thm
+val ALL_DISTINCT_CARD_LIST_TO_SET =
+   |- !(ls :'a list). ALL_DISTINCT ls ==> (CARD (set ls) = LENGTH ls):
+   thm
+val ALL_DISTINCT_DROP =
+   |- !(ls :'a list) (n :num). ALL_DISTINCT ls ==> ALL_DISTINCT (DROP n ls):
+   thm
+val ALL_DISTINCT_EL_IMP =
+   |- !(l :'a list) (n1 :num) (n2 :num).
+     ALL_DISTINCT l /\ n1 < LENGTH l /\ n2 < LENGTH l ==>
+     ((EL n1 l = EL n2 l) <=> (n1 = n2)):
+   thm
+val ALL_DISTINCT_FILTER =
+   |- !(l :'a list).
+     ALL_DISTINCT l <=> !(x :'a). MEM x l ==> (FILTER ($= x) l = [x]):
+   thm
+val ALL_DISTINCT_FILTER_EL_IMP =
+   |- !(P :'a -> bool) (l :'a list) (n1 :num) (n2 :num).
+     ALL_DISTINCT (FILTER P l) /\ n1 < LENGTH l /\ n2 < LENGTH l /\
+     P (EL n1 l) /\ (EL n1 l = EL n2 l) ==>
+     (n1 = n2):
+   thm
+val ALL_DISTINCT_FLAT_REVERSE =
+   |- !(xs :'a list list).
+     ALL_DISTINCT (FLAT (REVERSE xs)) <=> ALL_DISTINCT (FLAT xs):
+   thm
+val ALL_DISTINCT_GENLIST =
+   |- ALL_DISTINCT (GENLIST (f :num -> 'a) (n :num)) <=>
+   !(m1 :num) (m2 :num). m1 < n /\ m2 < n /\ (f m1 = f m2) ==> (m1 = m2):
+   thm
+val ALL_DISTINCT_MAP =
+   |- !(f :'a -> 'b) (ls :'a list).
+     ALL_DISTINCT (MAP f ls) ==> ALL_DISTINCT ls:
+   thm
+val ALL_DISTINCT_MAP_INJ =
+   |- !(ls :'a list) (f :'a -> 'b).
+     (!(x :'a) (y :'a).
+        MEM x ls /\ MEM y ls /\ (f x = f y) ==> (x = y)) /\
+     ALL_DISTINCT ls ==>
+     ALL_DISTINCT (MAP f ls):
+   thm
+val ALL_DISTINCT_REVERSE =
+   |- !(l :'a list). ALL_DISTINCT (REVERSE l) <=> ALL_DISTINCT l:
+   thm
+val ALL_DISTINCT_SET_TO_LIST =
+   |- !(s :'a -> bool). FINITE s ==> ALL_DISTINCT (SET_TO_LIST s):
+   thm
+val ALL_DISTINCT_SING =
+   |- !(x :'a). ALL_DISTINCT [x]:
+   thm
+val ALL_DISTINCT_SNOC =
+   |- !(x :'a) (l :'a list).
+     ALL_DISTINCT (SNOC x l) <=> ~MEM x l /\ ALL_DISTINCT l:
+   thm
+val ALL_DISTINCT_ZIP =
+   |- !(l1 :'a list) (l2 :'b list).
+     ALL_DISTINCT l1 /\ (LENGTH l1 = LENGTH l2) ==>
+     ALL_DISTINCT (ZIP (l1,l2)):
+   thm
+val ALL_DISTINCT_ZIP_SWAP =
+   |- !(l1 :'a list) (l2 :'b list).
+     ALL_DISTINCT (ZIP (l1,l2)) /\ (LENGTH l1 = LENGTH l2) ==>
+     ALL_DISTINCT (ZIP (l2,l1)):
+   thm
+val APPEND =
+   |- (!(l :'a list). ((([] :'a list) ++ l) :'a list) = l) /\
+   !(l1 :'a list) (l2 :'a list) (h :'a).
+     ((h::l1 ++ l2) :'a list) = h::((l1 ++ l2) :'a list):
+   thm
+val APPEND_11 =
+   |- (!(l1 :'a list) (l2 :'a list) (l3 :'a list).
+      (((l1 ++ l2) :'a list) = ((l1 ++ l3) :'a list)) <=> (l2 = l3)) /\
+   !(l1 :'a list) (l2 :'a list) (l3 :'a list).
+     (((l2 ++ l1) :'a list) = ((l3 ++ l1) :'a list)) <=> (l2 = l3):
+   thm
+val APPEND_11_LENGTH =
+   |- (!(l1 :'a list) (l2 :'a list) (l1' :'a list) (l2' :'a list).
+      (LENGTH l1 = LENGTH l1') ==>
+      ((((l1 ++ l2) :'a list) = ((l1' ++ l2') :'a list)) <=>
+       (l1 = l1') /\ (l2 = l2'))) /\
+   !(l1 :'a list) (l2 :'a list) (l1' :'a list) (l2' :'a list).
+     (LENGTH l2 = LENGTH l2') ==>
+     ((((l1 ++ l2) :'a list) = ((l1' ++ l2') :'a list)) <=>
+      (l1 = l1') /\ (l2 = l2')):
+   thm
+val APPEND_ASSOC =
+   |- !(l1 :'a list) (l2 :'a list) (l3 :'a list).
+     ((l1 ++ ((l2 ++ l3) :'a list)) :'a list) =
+     ((((l1 ++ l2) :'a list) ++ l3) :'a list):
+   thm
+val APPEND_EQ_APPEND =
+   |- ((((l1 :'a list) ++ (l2 :'a list)) :'a list) =
+    (((m1 :'a list) ++ (m2 :'a list)) :'a list)) <=>
+   (?(l :'a list).
+      (l1 = ((m1 ++ l) :'a list)) /\ (m2 = ((l ++ l2) :'a list))) \/
+   ?(l :'a list).
+     (m1 = ((l1 ++ l) :'a list)) /\ (l2 = ((l ++ m2) :'a list)):
+   thm
+val APPEND_EQ_APPEND_MID =
+   |- ((((((l1 :'a list) ++ [(e :'a)]) :'a list) ++ (l2 :'a list))
+       :'a list) =
+    (((m1 :'a list) ++ (m2 :'a list)) :'a list)) <=>
+   (?(l :'a list).
+      (m1 = ((((l1 ++ [e]) :'a list) ++ l) :'a list)) /\
+      (l2 = ((l ++ m2) :'a list))) \/
+   ?(l :'a list).
+     (l1 = ((m1 ++ l) :'a list)) /\
+     (m2 = ((((l ++ [e]) :'a list) ++ l2) :'a list)):
+   thm
+val APPEND_EQ_CONS =
+   |- ((((l1 :'a list) ++ (l2 :'a list)) :'a list) =
+    (h :'a)::(t :'a list)) <=>
+   (l1 = ([] :'a list)) /\ (l2 = h::t) \/
+   ?(lt :'a list). (l1 = h::lt) /\ (t = ((lt ++ l2) :'a list)):
+   thm
+val APPEND_EQ_SELF =
+   |- (!(l1 :'a list) (l2 :'a list).
+      (((l1 ++ l2) :'a list) = l1) <=> (l2 = ([] :'a list))) /\
+   (!(l1 :'a list) (l2 :'a list).
+      (((l1 ++ l2) :'a list) = l2) <=> (l1 = ([] :'a list))) /\
+   (!(l1 :'a list) (l2 :'a list).
+      (l1 = ((l1 ++ l2) :'a list)) <=> (l2 = ([] :'a list))) /\
+   !(l1 :'a list) (l2 :'a list).
+     (l2 = ((l1 ++ l2) :'a list)) <=> (l1 = ([] :'a list)):
+   thm
+val APPEND_EQ_SING =
+   |- ((((l1 :'a list) ++ (l2 :'a list)) :'a list) = [(e :'a)]) <=>
+   (l1 = [e]) /\ (l2 = ([] :'a list)) \/
+   (l1 = ([] :'a list)) /\ (l2 = [e]):
+   thm
+val APPEND_FRONT_LAST =
+   |- !(l :'a list).
+     l <> ([] :'a list) ==> (((FRONT l ++ [LAST l]) :'a list) = l):
+   thm
+val APPEND_LENGTH_EQ =
+   |- !(l1 :'a list) (l1' :'a list).
+     (LENGTH l1 = LENGTH l1') ==>
+     !(l2 :'a list) (l2' :'a list).
+       (LENGTH l2 = LENGTH l2') ==>
+       ((((l1 ++ l2) :'a list) = ((l1' ++ l2') :'a list)) <=>
+        (l1 = l1') /\ (l2 = l2')):
+   thm
+val APPEND_NIL =
+   |- !(l :'a list). ((l ++ ([] :'a list)) :'a list) = l:
+   thm
+val APPEND_SNOC =
+   |- !(l1 :'a list) (x :'a) (l2 :'a list).
+     ((l1 ++ SNOC x l2) :'a list) = SNOC x ((l1 ++ l2) :'a list):
+   thm
+val APPEND_eq_NIL =
+   |- (!(l1 :'a list) (l2 :'a list).
+      (([] :'a list) = ((l1 ++ l2) :'a list)) <=>
+      (l1 = ([] :'a list)) /\ (l2 = ([] :'a list))) /\
+   !(l1 :'a list) (l2 :'a list).
+     (((l1 ++ l2) :'a list) = ([] :'a list)) <=>
+     (l1 = ([] :'a list)) /\ (l2 = ([] :'a list)):
+   thm
+val BIGUNION_IMAGE_set_SUBSET =
+   |- BIGUNION (IMAGE (f :'b -> 'a -> bool) (set (ls :'b list))) SUBSET
+   (s :'a -> bool) <=> !(x :'b). MEM x ls ==> f x SUBSET s:
+   thm
+val CARD_LIST_TO_SET =
+   |- CARD (set (ls :'a list)) <= LENGTH ls:
+   thm
+val CARD_LIST_TO_SET_ALL_DISTINCT =
+   |- !(ls :'a list). (CARD (set ls) = LENGTH ls) ==> ALL_DISTINCT ls:
+   thm
+val CONS =
+   |- !(l :'a list). ~NULL l ==> (HD l::TL l = l):
+   thm
+val CONS_11 =
+   |- !(a0 :'a) (a1 :'a list) (a0' :'a) (a1' :'a list).
+     (a0::a1 = a0'::a1') <=> (a0 = a0') /\ (a1 = a1'):
+   thm
+val CONS_ACYCLIC =
+   |- !(l :'a list) (x :'a). l <> x::l /\ x::l <> l:
+   thm
+val DISJOINT_GENLIST_PLUS =
+   |- DISJOINT (x :num -> bool)
+     (set (GENLIST ($+ (n :num)) ((a :num) + (b :num)))) ==>
+   DISJOINT x (set (GENLIST ($+ n) a)) /\
+   DISJOINT x (set (GENLIST ($+ (n + a)) b)):
+   thm
+val DROP_0 =
+   |- DROP (0 :num) (l :'a list) = l:
+   thm
+val DROP_LENGTH_TOO_LONG =
+   |- !(l :'a list) (n :num). LENGTH l <= n ==> (DROP n l = ([] :'a list)):
+   thm
+val DROP_NIL =
+   |- !(ls :'a list) (n :num).
+     (DROP n ls = ([] :'a list)) <=> n >= LENGTH ls:
+   thm
+val DROP_compute =
+   |- (!(l :'a list). DROP (0 :num) l = l) /\
+   (!(n :num). DROP (NUMERAL (BIT1 n)) ([] :'b list) = ([] :'b list)) /\
+   (!(n :num). DROP (NUMERAL (BIT2 n)) ([] :'b list) = ([] :'b list)) /\
+   (!(n :num) (h :'c) (t :'c list).
+      DROP (NUMERAL (BIT1 n)) (h::t) =
+      DROP (NUMERAL (BIT1 n) - (1 :num)) t) /\
+   !(n :num) (h :'c) (t :'c list).
+     DROP (NUMERAL (BIT2 n)) (h::t) = DROP (NUMERAL (BIT1 n)) t:
+   thm
+val DROP_cons =
+   |- (0 :num) < (n :num) ==>
+   (DROP n ((x :'a)::(xs :'a list)) = DROP (n - (1 :num)) xs):
+   thm
+val DROP_def =
+   |- (!(n :num). DROP n ([] :'a list) = ([] :'a list)) /\
+   !(n :num) (x :'a) (xs :'a list).
+     DROP n (x::xs) =
+     if n = (0 :num) then x::xs else DROP (n - (1 :num)) xs:
+   thm
+val DROP_nil =
+   |- !(n :num). DROP n ([] :'a list) = ([] :'a list):
+   thm
+val DROP_splitAtPki =
+   |- DROP (n :num) (l :'a list) =
+   splitAtPki ((K :bool -> 'a -> bool) o $= n)
+     (K (I :'a list -> 'a list) :'a list -> 'a list -> 'a list) l:
+   thm
+val EL =
+   |- (!(l :'a list). EL (0 :num) l = HD l) /\
+   !(l :'a list) (n :num). EL (SUC n) l = EL n (TL l):
+   thm
+val EL_ALL_DISTINCT_EL_EQ =
+   |- !(l :'a list).
+     ALL_DISTINCT l <=>
+     !(n1 :num) (n2 :num).
+       n1 < LENGTH l /\ n2 < LENGTH l ==>
+       ((EL n1 l = EL n2 l) <=> (n1 = n2)):
+   thm
+val EL_APPEND_EQN =
+   |- !(l1 :'a list) (l2 :'a list) (n :num).
+     EL n ((l1 ++ l2) :'a list) =
+     if n < LENGTH l1 then EL n l1 else EL (n - LENGTH l1) l2:
+   thm
+val EL_GENLIST =
+   |- !(f :num -> 'a) (n :num) (x :num).
+     x < n ==> (EL x (GENLIST f n) = f x):
+   thm
+val EL_LENGTH_SNOC =
+   |- !(l :'a list) (x :'a). EL (LENGTH l) (SNOC x l) = x:
+   thm
+val EL_LENGTH_dropWhile_REVERSE =
+   |- !(P :'a -> bool) (ls :'a list) (k :num).
+     LENGTH (dropWhile P (REVERSE ls)) <= k /\ k < LENGTH ls ==>
+     P (EL k ls):
+   thm
+val EL_LUPDATE =
+   |- !(ys :'a list) (x :'a) (i :num) (k :num).
+     EL i (LUPDATE x k ys) =
+     if (i = k) /\ k < LENGTH ys then x else EL i ys:
+   thm
+val EL_MAP =
+   |- !(n :num) (l :'a list).
+     n < LENGTH l ==> !(f :'a -> 'b). EL n (MAP f l) = f (EL n l):
+   thm
+val EL_REVERSE =
+   |- !(n :num) (l :'a list).
+     n < LENGTH l ==> (EL n (REVERSE l) = EL (PRE (LENGTH l - n)) l):
+   thm
+val EL_SNOC =
+   |- !(n :num) (l :'a list).
+     n < LENGTH l ==> !(x :'a). EL n (SNOC x l) = EL n l:
+   thm
+val EL_ZIP =
+   |- !(l1 :'a list) (l2 :'b list) (n :num).
+     (LENGTH l1 = LENGTH l2) /\ n < LENGTH l1 ==>
+     (EL n (ZIP (l1,l2)) = (EL n l1,EL n l2)):
+   thm
+val EL_compute =
+   |- !(n :num).
+     EL n (l :'a list) =
+     if n = (0 :num) then HD l else EL (PRE n) (TL l):
+   thm
+val EL_restricted =
+   |- ((EL (0 :num) :'a list -> 'a) = (HD :'a list -> 'a)) /\
+   (EL (SUC (n :num)) ((l :'b)::(ls :'b list)) = EL n ls):
+   thm
+val EL_simp =
+   |- (EL (NUMERAL (BIT1 (n :num))) (l :'a list) =
+    EL (PRE (NUMERAL (BIT1 n))) (TL l)) /\
+   (EL (NUMERAL (BIT2 n)) l = EL (NUMERAL (BIT1 n)) (TL l)):
+   thm
+val EL_simp_restricted =
+   |- (EL (NUMERAL (BIT1 (n :num))) ((l :'a)::(ls :'a list)) =
+    EL (PRE (NUMERAL (BIT1 n))) ls) /\
+   (EL (NUMERAL (BIT2 n)) (l::ls) = EL (NUMERAL (BIT1 n)) ls):
+   thm
+val EQ_LIST =
+   |- !(h1 :'a) (h2 :'a).
+     (h1 = h2) ==>
+     !(l1 :'a list) (l2 :'a list). (l1 = l2) ==> (h1::l1 = h2::l2):
+   thm
+val EVERY2_EVERY =
+   |- !(l1 :'a list) (l2 :'b list) (f :'a -> 'b -> bool).
+     LIST_REL f l1 l2 <=>
+     (LENGTH l1 = LENGTH l2) /\ EVERY (UNCURRY f) (ZIP (l1,l2)):
+   thm
+val EVERY2_LENGTH =
+   |- !(P :'a -> 'b -> bool) (l1 :'a list) (l2 :'b list).
+     LIST_REL P l1 l2 ==> (LENGTH l1 = LENGTH l2):
+   thm
+val EVERY2_LUPDATE_same =
+   |- !(P :'a -> 'b -> bool) (l1 :'a list) (l2 :'b list) (v1 :'a) (v2 :'b)
+      (n :num).
+     P v1 v2 /\ LIST_REL P l1 l2 ==>
+     LIST_REL P (LUPDATE v1 n l1) (LUPDATE v2 n l2):
+   thm
+val EVERY2_MAP =
+   |- (LIST_REL (P :'a -> 'b -> bool) (MAP (f :'c -> 'a) (l1 :'c list))
+      (l2 :'b list) <=> LIST_REL (\(x :'c) (y :'b). P (f x) y) l1 l2) /\
+   (LIST_REL (Q :'c -> 'd -> bool) l1 (MAP (g :'b -> 'd) l2) <=>
+    LIST_REL (\(x :'c) (y :'b). Q x (g y)) l1 l2):
+   thm
+val EVERY2_MEM_MONO =
+   |- !(P :'a -> 'b -> bool) (Q :'a -> 'b -> bool) (l1 :'a list)
+      (l2 :'b list).
+     (!(x :'a # 'b).
+        MEM x (ZIP (l1,l2)) /\ UNCURRY P x ==> UNCURRY Q x) /\
+     LIST_REL P l1 l2 ==>
+     LIST_REL Q l1 l2:
+   thm
+val EVERY2_REVERSE =
+   |- !(R :'a -> 'b -> bool) (l1 :'a list) (l2 :'b list).
+     LIST_REL R l1 l2 ==> LIST_REL R (REVERSE l1) (REVERSE l2):
+   thm
+val EVERY2_THM =
+   |- (!(P :'a -> 'b -> bool) (ys :'b list).
+      LIST_REL P ([] :'a list) ys <=> (ys = ([] :'b list))) /\
+   (!(P :'c -> 'd -> bool) (yys :'d list) (x :'c) (xs :'c list).
+      LIST_REL P (x::xs) yys <=>
+      ?(y :'d) (ys :'d list).
+        (yys = y::ys) /\ P x y /\ LIST_REL P xs ys) /\
+   (!(P :'e -> 'f -> bool) (xs :'e list).
+      LIST_REL P xs ([] :'f list) <=> (xs = ([] :'e list))) /\
+   !(P :'g -> 'h -> bool) (xxs :'g list) (y :'h) (ys :'h list).
+     LIST_REL P xxs (y::ys) <=>
+     ?(x :'g) (xs :'g list). (xxs = x::xs) /\ P x y /\ LIST_REL P xs ys:
+   thm
+val EVERY2_cong =
+   |- !(l1 :'a list) (l1' :'a list) (l2 :'b list) (l2' :'b list)
+      (P :'a -> 'b -> bool) (P' :'a -> 'b -> bool).
+     (l1 = l1') /\ (l2 = l2') /\
+     (!(x :'a) (y :'b).
+        MEM x l1' /\ MEM y l2' ==> (P x y <=> P' x y)) ==>
+     (LIST_REL P l1 l2 <=> LIST_REL P' l1' l2'):
+   thm
+val EVERY2_mono =
+   |- (!(x :'a) (y :'b).
+      (R1 :'a -> 'b -> bool) x y ==> (R2 :'a -> 'b -> bool) x y) ==>
+   LIST_REL R1 (l1 :'a list) (l2 :'b list) ==>
+   LIST_REL R2 l1 l2:
+   thm
+val EVERY2_refl =
+   |- (!(x :'a). MEM x (ls :'a list) ==> (R :'a -> 'a -> bool) x x) ==>
+   LIST_REL R ls ls:
+   thm
+val EVERY2_sym =
+   |- (!(x :'a) (y :'b).
+      (R1 :'a -> 'b -> bool) x y ==> (R2 :'b -> 'a -> bool) y x) ==>
+   !(x :'a list) (y :'b list). LIST_REL R1 x y ==> LIST_REL R2 y x:
+   thm
+val EVERY2_trans =
+   |- (!(x :'a) (y :'a) (z :'a).
+      (R :'a -> 'a -> bool) x y /\ R y z ==> R x z) ==>
+   !(x :'a list) (y :'a list) (z :'a list).
+     LIST_REL R x y /\ LIST_REL R y z ==> LIST_REL R x z:
+   thm
+val EVERY_APPEND =
+   |- !(P :'a -> bool) (l1 :'a list) (l2 :'a list).
+     EVERY P ((l1 ++ l2) :'a list) <=> EVERY P l1 /\ EVERY P l2:
+   thm
+val EVERY_CONG =
+   |- !(l1 :'a list) (l2 :'a list) (P :'a -> bool) (P' :'a -> bool).
+     (l1 = l2) /\ (!(x :'a). MEM x l2 ==> (P x <=> P' x)) ==>
+     (EVERY P l1 <=> EVERY P' l2):
+   thm
+val EVERY_CONJ =
+   |- !(P :'a -> bool) (Q :'a -> bool) (l :'a list).
+     EVERY (\(x :'a). P x /\ Q x) l <=> EVERY P l /\ EVERY Q l:
+   thm
+val EVERY_DEF =
+   |- (!(P :'a -> bool). EVERY P ([] :'a list) <=> T) /\
+   !(P :'a -> bool) (h :'a) (t :'a list).
+     EVERY P (h::t) <=> P h /\ EVERY P t:
+   thm
+val EVERY_EL =
+   |- !(l :'a list) (P :'a -> bool).
+     EVERY P l <=> !(n :num). n < LENGTH l ==> P (EL n l):
+   thm
+val EVERY_FILTER =
+   |- !(P1 :'a -> bool) (P2 :'a -> bool) (l :'a list).
+     EVERY P1 (FILTER P2 l) <=> EVERY (\(x :'a). P2 x ==> P1 x) l:
+   thm
+val EVERY_FILTER_IMP =
+   |- !(P1 :'a -> bool) (P2 :'a -> bool) (l :'a list).
+     EVERY P1 l ==> EVERY P1 (FILTER P2 l):
+   thm
+val EVERY_GENLIST =
+   |- !(n :num).
+     EVERY (P :'a -> bool) (GENLIST (f :num -> 'a) n) <=>
+     !(i :num). i < n ==> P (f i):
+   thm
+val EVERY_MAP =
+   |- !(P :'b -> bool) (f :'a -> 'b) (l :'a list).
+     EVERY P (MAP f l) <=> EVERY (\(x :'a). P (f x)) l:
+   thm
+val EVERY_MEM =
+   |- !(P :'a -> bool) (l :'a list).
+     EVERY P l <=> !(e :'a). MEM e l ==> P e:
+   thm
+val EVERY_MEM_MONO =
+   |- !(P :'a -> bool) (Q :'a -> bool) (l :'a list).
+     (!(x :'a). MEM x l /\ P x ==> Q x) /\ EVERY P l ==> EVERY Q l:
+   thm
+val EVERY_MONOTONIC =
+   |- !(P :'a -> bool) (Q :'a -> bool).
+     (!(x :'a). P x ==> Q x) ==> !(l :'a list). EVERY P l ==> EVERY Q l:
+   thm
+val EVERY_NOT_EXISTS =
+   |- !(P :'a -> bool) (l :'a list).
+     EVERY P l <=> ~EXISTS (\(x :'a). ~P x) l:
+   thm
+val EVERY_SIMP =
+   |- !(c :bool) (l :'a list).
+     EVERY (\(x :'a). c) l <=> (l = ([] :'a list)) \/ c:
+   thm
+val EVERY_SNOC =
+   |- !(P :'a -> bool) (x :'a) (l :'a list).
+     EVERY P (SNOC x l) <=> EVERY P l /\ P x:
+   thm
+val EVERYi_def =
+   |- (!(P :num -> 'a -> bool). EVERYi P ([] :'a list) <=> T) /\
+   !(P :num -> 'a -> bool) (h :'a) (t :'a list).
+     EVERYi P (h::t) <=> P (0 :num) h /\ EVERYi (P o SUC) t:
+   thm
+val EXISTS_APPEND =
+   |- !(P :'a -> bool) (l1 :'a list) (l2 :'a list).
+     EXISTS P ((l1 ++ l2) :'a list) <=> EXISTS P l1 \/ EXISTS P l2:
+   thm
+val EXISTS_CONG =
+   |- !(l1 :'a list) (l2 :'a list) (P :'a -> bool) (P' :'a -> bool).
+     (l1 = l2) /\ (!(x :'a). MEM x l2 ==> (P x <=> P' x)) ==>
+     (EXISTS P l1 <=> EXISTS P' l2):
+   thm
+val EXISTS_DEF =
+   |- (!(P :'a -> bool). EXISTS P ([] :'a list) <=> F) /\
+   !(P :'a -> bool) (h :'a) (t :'a list).
+     EXISTS P (h::t) <=> P h \/ EXISTS P t:
+   thm
+val EXISTS_GENLIST =
+   |- !(n :num).
+     EXISTS (P :'a -> bool) (GENLIST (f :num -> 'a) n) <=>
+     ?(i :num). i < n /\ P (f i):
+   thm
+val EXISTS_LIST =
+   |- (?(l :'a list). (P :'a list -> bool) l) <=>
+   P ([] :'a list) \/ ?(h :'a) (t :'a list). P (h::t):
+   thm
+val EXISTS_LIST_EQ_MAP =
+   |- !(ls :'a list) (f :'b -> 'a).
+     EVERY (\(x :'a). ?(y :'b). x = f y) ls ==>
+     ?(l :'b list). ls = MAP f l:
+   thm
+val EXISTS_MAP =
+   |- !(P :'b -> bool) (f :'a -> 'b) (l :'a list).
+     EXISTS P (MAP f l) <=> EXISTS (\(x :'a). P (f x)) l:
+   thm
+val EXISTS_MEM =
+   |- !(P :'a -> bool) (l :'a list).
+     EXISTS P l <=> ?(e :'a). MEM e l /\ P e:
+   thm
+val EXISTS_NOT_EVERY =
+   |- !(P :'a -> bool) (l :'a list).
+     EXISTS P l <=> ~EVERY (\(x :'a). ~P x) l:
+   thm
+val EXISTS_SIMP =
+   |- !(c :bool) (l :'a list).
+     EXISTS (\(x :'a). c) l <=> l <> ([] :'a list) /\ c:
+   thm
+val EXISTS_SNOC =
+   |- !(P :'a -> bool) (x :'a) (l :'a list).
+     EXISTS P (SNOC x l) <=> P x \/ EXISTS P l:
+   thm
+val FILTER =
+   |- (!(P :'a -> bool). FILTER P ([] :'a list) = ([] :'a list)) /\
+   !(P :'a -> bool) (h :'a) (t :'a list).
+     FILTER P (h::t) = if P h then h::FILTER P t else FILTER P t:
+   thm
+val FILTER_ALL_DISTINCT =
+   |- !(P :'a -> bool) (l :'a list).
+     ALL_DISTINCT l ==> ALL_DISTINCT (FILTER P l):
+   thm
+val FILTER_APPEND_DISTRIB =
+   |- !(P :'a -> bool) (L :'a list) (M :'a list).
+     FILTER P ((L ++ M) :'a list) =
+     ((FILTER P L ++ FILTER P M) :'a list):
+   thm
+val FILTER_COND_REWRITE =
+   |- (FILTER (P :'a -> bool) ([] :'a list) = ([] :'a list)) /\
+   (!(h :'a). P h ==> (FILTER P (h::(l :'a list)) = h::FILTER P l)) /\
+   !(h :'a). ~P h ==> (FILTER P (h::l) = FILTER P l):
+   thm
+val FILTER_EQ_APPEND =
+   |- !(P :'a -> bool) (l :'a list) (l1 :'a list) (l2 :'a list).
+     (FILTER P l = ((l1 ++ l2) :'a list)) <=>
+     ?(l3 :'a list) (l4 :'a list).
+       (l = ((l3 ++ l4) :'a list)) /\ (FILTER P l3 = l1) /\
+       (FILTER P l4 = l2):
+   thm
+val FILTER_EQ_CONS =
+   |- !(P :'a -> bool) (l :'a list) (h :'a) (lr :'a list).
+     (FILTER P l = h::lr) <=>
+     ?(l1 :'a list) (l2 :'a list).
+       (l = ((((l1 ++ [h]) :'a list) ++ l2) :'a list)) /\
+       (FILTER P l1 = ([] :'a list)) /\ (FILTER P l2 = lr) /\ P h:
+   thm
+val FILTER_EQ_ID =
+   |- !(P :'a -> bool) (l :'a list). (FILTER P l = l) <=> EVERY P l:
+   thm
+val FILTER_EQ_NIL =
+   |- !(P :'a -> bool) (l :'a list).
+     (FILTER P l = ([] :'a list)) <=> EVERY (\(x :'a). ~P x) l:
+   thm
+val FILTER_NEQ_ID =
+   |- !(P :'a -> bool) (l :'a list).
+     FILTER P l <> l <=> ?(x :'a). MEM x l /\ ~P x:
+   thm
+val FILTER_NEQ_NIL =
+   |- !(P :'a -> bool) (l :'a list).
+     FILTER P l <> ([] :'a list) <=> ?(x :'a). MEM x l /\ P x:
+   thm
+val FILTER_REVERSE =
+   |- !(l :'a list) (P :'a -> bool).
+     FILTER P (REVERSE l) = REVERSE (FILTER P l):
+   thm
+val FIND_def =
+   |- !(P :'a -> bool).
+     FIND P = OPTION_MAP (SND :num # 'a -> 'a) o INDEX_FIND (0 :num) P:
+   thm
+val FINITE_LIST_TO_SET =
+   |- !(l :'a list). FINITE (set l):
+   thm
+val FLAT =
+   |- (FLAT ([] :'a list list) = ([] :'a list)) /\
+   !(h :'a list) (t :'a list list).
+     FLAT (h::t) = ((h ++ FLAT t) :'a list):
+   thm
+val FLAT_APPEND =
+   |- !(l1 :'a list list) (l2 :'a list list).
+     FLAT ((l1 ++ l2) :'a list list) = ((FLAT l1 ++ FLAT l2) :'a list):
+   thm
+val FLAT_EQ_NIL =
+   |- !(ls :'a list list).
+     (FLAT ls = ([] :'a list)) <=> EVERY ($= ([] :'a list)) ls:
+   thm
+val FLAT_compute =
+   |- (FLAT ([] :'a list list) = ([] :'a list)) /\
+   (FLAT (([] :'b list)::(t :'b list list)) = FLAT t) /\
+   (FLAT (((h :'c)::(t1 :'c list))::(t2 :'c list list)) =
+    h::FLAT (t1::t2)):
+   thm
+val FOLDL =
+   |- (!(f :'b -> 'a -> 'b) (e :'b). FOLDL f e ([] :'a list) = e) /\
+   !(f :'b -> 'a -> 'b) (e :'b) (x :'a) (l :'a list).
+     FOLDL f e (x::l) = FOLDL f (f e x) l:
+   thm
+val FOLDL2_FOLDL =
+   |- !(l1 :'a list) (l2 :'b list).
+     (LENGTH l1 = LENGTH l2) ==>
+     !(f :'c -> 'a -> 'b -> 'c) (a :'c).
+       FOLDL2 f a l1 l2 =
+       FOLDL (\(a :'c). UNCURRY (f a)) a (ZIP (l1,l2)):
+   thm
+val FOLDL2_cong =
+   |- !(l1 :'a list) (l1' :'a list) (l2 :'b list) (l2' :'b list) (a :'c)
+      (a' :'c) (f :'c -> 'a -> 'b -> 'c) (f' :'c -> 'a -> 'b -> 'c).
+     (l1 = l1') /\ (l2 = l2') /\ (a = a') /\
+     (!(z :'c) (b :'a) (c :'b).
+        MEM b l1' /\ MEM c l2' ==> (f z b c = f' z b c)) ==>
+     (FOLDL2 f a l1 l2 = FOLDL2 f' a' l1' l2'):
+   thm
+val FOLDL2_def =
+   |- (!(f :'a -> 'b -> 'c -> 'a) (cs :'c list) (c :'c) (bs :'b list)
+       (b :'b) (a :'a).
+      FOLDL2 f a (b::bs) (c::cs) = FOLDL2 f (f a b c) bs cs) /\
+   (!(f :'a -> 'b -> 'c -> 'a) (cs :'c list) (a :'a).
+      FOLDL2 f a ([] :'b list) cs = a) /\
+   !(v7 :'b list) (v6 :'b) (f :'a -> 'b -> 'c -> 'a) (a :'a).
+     FOLDL2 f a (v6::v7) ([] :'c list) = a:
+   thm
+val FOLDL2_ind =
+   |- !(P :('a -> 'b -> 'c -> 'a) -> 'a -> 'b list -> 'c list -> bool).
+     (!(f :'a -> 'b -> 'c -> 'a) (a :'a) (b :'b) (bs :'b list) (c :'c)
+         (cs :'c list).
+        P f (f a b c) bs cs ==> P f a (b::bs) (c::cs)) /\
+     (!(f :'a -> 'b -> 'c -> 'a) (a :'a) (cs :'c list).
+        P f a ([] :'b list) cs) /\
+     (!(f :'a -> 'b -> 'c -> 'a) (a :'a) (v6 :'b) (v7 :'b list).
+        P f a (v6::v7) ([] :'c list)) ==>
+     !(v :'a -> 'b -> 'c -> 'a) (v1 :'a) (v2 :'b list) (v3 :'c list).
+       P v v1 v2 v3:
+   thm
+val FOLDL_CONG =
+   |- !(l :'a list) (l' :'a list) (b :'b) (b' :'b) (f :'b -> 'a -> 'b)
+      (f' :'b -> 'a -> 'b).
+     (l = l') /\ (b = b') /\
+     (!(x :'a) (a :'b). MEM x l' ==> (f a x = f' a x)) ==>
+     (FOLDL f b l = FOLDL f' b' l'):
+   thm
+val FOLDL_EQ_FOLDR =
+   |- !(f :'a -> 'a -> 'a) (l :'a list) (e :'a).
+     ASSOC f /\ COMM f ==> (FOLDL f e l = FOLDR f e l):
+   thm
+val FOLDL_SNOC =
+   |- !(f :'b -> 'a -> 'b) (e :'b) (x :'a) (l :'a list).
+     FOLDL f e (SNOC x l) = f (FOLDL f e l) x:
+   thm
+val FOLDL_UNION_BIGUNION =
+   |- !(f :'a -> 'b -> bool) (ls :'a list) (s :'b -> bool).
+     FOLDL (\(s :'b -> bool) (x :'a). s UNION f x) s ls =
+     s UNION BIGUNION (IMAGE f (set ls)):
+   thm
+val FOLDL_UNION_BIGUNION_paired =
+   |- !(f :'a -> 'b -> 'c -> bool) (ls :('a # 'b) list) (s :'c -> bool).
+     FOLDL (\(s :'c -> bool) ((x :'a),(y :'b)). s UNION f x y) s ls =
+     s UNION BIGUNION (IMAGE (UNCURRY f) (set ls)):
+   thm
+val FOLDL_ZIP_SAME =
+   |- !(ls :'a list) (f :'b -> 'a # 'a -> 'b) (e :'b).
+     FOLDL f e (ZIP (ls,ls)) = FOLDL (\(x :'b) (y :'a). f x (y,y)) e ls:
+   thm
+val FOLDR =
+   |- (!(f :'a -> 'b -> 'b) (e :'b). FOLDR f e ([] :'a list) = e) /\
+   !(f :'a -> 'b -> 'b) (e :'b) (x :'a) (l :'a list).
+     FOLDR f e (x::l) = f x (FOLDR f e l):
+   thm
+val FOLDR_CONG =
+   |- !(l :'a list) (l' :'a list) (b :'b) (b' :'b) (f :'a -> 'b -> 'b)
+      (f' :'a -> 'b -> 'b).
+     (l = l') /\ (b = b') /\
+     (!(x :'a) (a :'b). MEM x l' ==> (f x a = f' x a)) ==>
+     (FOLDR f b l = FOLDR f' b' l'):
+   thm
+val FOLDR_CONS =
+   |- !(f :'a -> 'b) (ls :'a list) (a :'b list).
+     FOLDR (\(x :'a) (y :'b list). f x::y) a ls =
+     ((MAP f ls ++ a) :'b list):
+   thm
+val FORALL_LIST =
+   |- (!(l :'a list). (P :'a list -> bool) l) <=>
+   P ([] :'a list) /\ !(h :'a) (t :'a list). P (h::t):
+   thm
+val FRONT_CONS =
+   |- (!(x :'a). FRONT [x] = ([] :'a list)) /\
+   !(x :'a) (y :'a) (z :'a list). FRONT (x::y::z) = x::FRONT (y::z):
+   thm
+val FRONT_CONS_EQ_NIL =
+   |- (!(x :'a) (xs :'a list).
+      (FRONT (x::xs) = ([] :'a list)) <=> (xs = ([] :'a list))) /\
+   (!(x :'a) (xs :'a list).
+      (([] :'a list) = FRONT (x::xs)) <=> (xs = ([] :'a list))) /\
+   !(x :'a) (xs :'a list). NULL (FRONT (x::xs)) <=> NULL xs:
+   thm
+val FRONT_DEF =
+   |- !(h :'a) (t :'a list).
+     FRONT (h::t) =
+     if t = ([] :'a list) then ([] :'a list) else h::FRONT t:
+   thm
+val FRONT_SNOC =
+   |- !(x :'a) (l :'a list). FRONT (SNOC x l) = l:
+   thm
+val GENLIST =
+   |- (!(f :num -> 'a). GENLIST f (0 :num) = ([] :'a list)) /\
+   !(f :num -> 'a) (n :num).
+     GENLIST f (SUC n) = SNOC (f n) (GENLIST f n):
+   thm
+val GENLIST_APPEND =
+   |- !(f :num -> 'a) (a :num) (b :num).
+     GENLIST f (a + b) =
+     ((GENLIST f b ++ GENLIST (\(t :num). f (t + b)) a) :'a list):
+   thm
+val GENLIST_AUX =
+   |- (!(f :num -> 'a) (l :'a list). GENLIST_AUX f (0 :num) l = l) /\
+   !(f :num -> 'a) (n :num) (l :'a list).
+     GENLIST_AUX f (SUC n) l = GENLIST_AUX f n (f n::l):
+   thm
+val GENLIST_AUX_compute =
+   |- (!(f :num -> 'a) (l :'a list). GENLIST_AUX f (0 :num) l = l) /\
+   (!(f :num -> 'a) (n :num) (l :'a list).
+      GENLIST_AUX f (NUMERAL (BIT1 n)) l =
+      GENLIST_AUX f (NUMERAL (BIT1 n) - (1 :num))
+        (f (NUMERAL (BIT1 n) - (1 :num))::l)) /\
+   !(f :num -> 'a) (n :num) (l :'a list).
+     GENLIST_AUX f (NUMERAL (BIT2 n)) l =
+     GENLIST_AUX f (NUMERAL (BIT1 n)) (f (NUMERAL (BIT1 n))::l):
+   thm
+val GENLIST_CONS =
+   |- GENLIST (f :num -> 'a) (SUC (n :num)) =
+   f (0 :num)::GENLIST (f o SUC) n:
+   thm
+val GENLIST_EL =
+   |- !(ls :'a list) (f :num -> 'a) (n :num).
+     (n = LENGTH ls) /\ (!(i :num). i < n ==> (f i = EL i ls)) ==>
+     (GENLIST f n = ls):
+   thm
+val GENLIST_EL_MAP =
+   |- !(f :'a -> 'b) (ls :'a list).
+     GENLIST (\(n :num). f (EL n ls)) (LENGTH ls) = MAP f ls:
+   thm
+val GENLIST_FUN_EQ =
+   |- !(n :num) (f :num -> 'a) (g :num -> 'a).
+     (GENLIST f n = GENLIST g n) <=> !(x :num). x < n ==> (f x = g x):
+   thm
+val GENLIST_GENLIST_AUX =
+   |- !(n :num). GENLIST (f :num -> 'a) n = GENLIST_AUX f n ([] :'a list):
+   thm
+val GENLIST_NUMERALS =
+   |- (GENLIST (f :num -> 'a) (0 :num) = ([] :'a list)) /\
+   (GENLIST f (NUMERAL (n :num)) =
+    GENLIST_AUX f (NUMERAL n) ([] :'a list)):
+   thm
+val GENLIST_PLUS_APPEND =
+   |- ((GENLIST ($+ (a :num)) (n1 :num) ++ GENLIST ($+ (n1 + a)) (n2 :num))
+      :num list) =
+   GENLIST ($+ a) (n1 + n2):
+   thm
+val HD =
+   |- !(h :'a) (t :'a list). HD (h::t) = h:
+   thm
+val HD_GENLIST =
+   |- HD (GENLIST (f :num -> 'a) (SUC (n :num))) = f (0 :num):
+   thm
+val HD_GENLIST_COR =
+   |- !(n :num) (f :num -> 'a).
+     (0 :num) < n ==> (HD (GENLIST f n) = f (0 :num)):
+   thm
+val HD_REVERSE =
+   |- !(x :'a list). x <> ([] :'a list) ==> (HD (REVERSE x) = LAST x):
+   thm
+val HD_dropWhile =
+   |- !(P :'a -> bool) (ls :'a list).
+     EXISTS ($~ o P) ls ==> ~P (HD (dropWhile P ls)):
+   thm
+val IMAGE_EL_count_LENGTH =
+   |- !(f :'a -> 'b) (ls :'a list).
+     IMAGE (\(n :num). f (EL n ls)) (count (LENGTH ls)) =
+     IMAGE f (set ls):
+   thm
+val IMP_EVERY_LUPDATE =
+   |- !(xs :'a list) (h :'a) (i :num).
+     (P :'a -> bool) h /\ EVERY P xs ==> EVERY P (LUPDATE h i xs):
+   thm
+val INDEX_FIND_def =
+   |- (!(i :num) (P :'a -> bool).
+      INDEX_FIND i P ([] :'a list) = (NONE :(num # 'a) option)) /\
+   !(i :num) (P :'a -> bool) (h :'a) (t :'a list).
+     INDEX_FIND i P (h::t) =
+     if P h then SOME (i,h) else INDEX_FIND (SUC i) P t:
+   thm
+val INDEX_OF_def =
+   |- !(x :'a).
+     INDEX_OF x =
+     OPTION_MAP (FST :num # 'a -> num) o INDEX_FIND (0 :num) ($= x):
+   thm
+val INFINITE_LIST_UNIV =
+   |- INFINITE univ((:'a list) :'a list itself):
+   thm
+val INJ_MAP_EQ =
+   |- !(f :'a -> 'b) (l1 :'a list) (l2 :'a list).
+     INJ f (set l1 UNION set l2) univ((:'b) :'b itself) /\
+     (MAP f l1 = MAP f l2) ==>
+     (l1 = l2):
+   thm
+val INJ_MAP_EQ_IFF =
+   |- !(f :'a -> 'b) (l1 :'a list) (l2 :'a list).
+     INJ f (set l1 UNION set l2) univ((:'b) :'b itself) ==>
+     ((MAP f l1 = MAP f l2) <=> (l1 = l2)):
+   thm
+val ITSET_eq_FOLDL_SET_TO_LIST =
+   |- !(s :'a -> bool).
+     FINITE s ==>
+     !(f :'a -> 'b -> 'b) (a :'b).
+       ITSET f s a = FOLDL (combin$C f) a (SET_TO_LIST s):
+   thm
+val LAST_APPEND_CONS =
+   |- !(h :'a) (l1 :'a list) (l2 :'a list).
+     LAST ((l1 ++ h::l2) :'a list) = LAST (h::l2):
+   thm
+val LAST_CONS =
+   |- (!(x :'a). LAST [x] = x) /\
+   !(x :'a) (y :'a) (z :'a list). LAST (x::y::z) = LAST (y::z):
+   thm
+val LAST_CONS_cond =
+   |- LAST ((h :'a)::(t :'a list)) =
+   if t = ([] :'a list) then h else LAST t:
+   thm
+val LAST_DEF =
+   |- !(h :'a) (t :'a list).
+     LAST (h::t) = if t = ([] :'a list) then h else LAST t:
+   thm
+val LAST_EL =
+   |- !(ls :'a list).
+     ls <> ([] :'a list) ==> (LAST ls = EL (PRE (LENGTH ls)) ls):
+   thm
+val LAST_MAP =
+   |- !(l :'a list) (f :'a -> 'b).
+     l <> ([] :'a list) ==> (LAST (MAP f l) = f (LAST l)):
+   thm
+val LAST_REVERSE =
+   |- !(ls :'a list). ls <> ([] :'a list) ==> (LAST (REVERSE ls) = HD ls):
+   thm
+val LAST_SNOC =
+   |- !(x :'a) (l :'a list). LAST (SNOC x l) = x:
+   thm
+val LAST_compute =
+   |- (!(x :'a). LAST [x] = x) /\
+   !(h1 :'b) (h2 :'b) (t :'b list). LAST (h1::h2::t) = LAST (h2::t):
+   thm
+val LENGTH =
+   |- (LENGTH ([] :'a list) = (0 :num)) /\
+   !(h :'a) (t :'a list). LENGTH (h::t) = SUC (LENGTH t):
+   thm
+val LENGTH_APPEND =
+   |- !(l1 :'a list) (l2 :'a list).
+     LENGTH ((l1 ++ l2) :'a list) = LENGTH l1 + LENGTH l2:
+   thm
+val LENGTH_CONS =
+   |- !(l :'a list) (n :num).
+     (LENGTH l = SUC n) <=>
+     ?(h :'a) (l' :'a list). (LENGTH l' = n) /\ (l = h::l'):
+   thm
+val LENGTH_DROP =
+   |- !(n :num) (l :'a list). LENGTH (DROP n l) = LENGTH l - n:
+   thm
+val LENGTH_EQ_CONS =
+   |- !(P :'a list -> bool) (n :num).
+     (!(l :'a list). (LENGTH l = SUC n) ==> P l) <=>
+     !(l :'a list).
+       (LENGTH l = n) ==> (\(l :'a list). !(x :'a). P (x::l)) l:
+   thm
+val LENGTH_EQ_NIL =
+   |- !(P :'a list -> bool).
+     (!(l :'a list). (LENGTH l = (0 :num)) ==> P l) <=> P ([] :'a list):
+   thm
+val LENGTH_EQ_NUM =
+   |- (!(l :'a list). (LENGTH l = (0 :num)) <=> (l = ([] :'a list))) /\
+   (!(l :'a list) (n :num).
+      (LENGTH l = SUC n) <=>
+      ?(h :'a) (l' :'a list). (LENGTH l' = n) /\ (l = h::l')) /\
+   !(l :'a list) (n1 :num) (n2 :num).
+     (LENGTH l = n1 + n2) <=>
+     ?(l1 :'a list) (l2 :'a list).
+       (LENGTH l1 = n1) /\ (LENGTH l2 = n2) /\
+       (l = ((l1 ++ l2) :'a list)):
+   thm
+val LENGTH_EQ_NUM_compute =
+   |- (!(l :'a list). (LENGTH l = (0 :num)) <=> (l = ([] :'a list))) /\
+   (!(l :'a list) (n :num).
+      (LENGTH l = NUMERAL (BIT1 n)) <=>
+      ?(h :'a) (l' :'a list).
+        (LENGTH l' = NUMERAL (BIT1 n) - (1 :num)) /\ (l = h::l')) /\
+   (!(l :'a list) (n :num).
+      (LENGTH l = NUMERAL (BIT2 n)) <=>
+      ?(h :'a) (l' :'a list).
+        (LENGTH l' = NUMERAL (BIT1 n)) /\ (l = h::l')) /\
+   !(l :'a list) (n1 :num) (n2 :num).
+     (LENGTH l = n1 + n2) <=>
+     ?(l1 :'a list) (l2 :'a list).
+       (LENGTH l1 = n1) /\ (LENGTH l2 = n2) /\
+       (l = ((l1 ++ l2) :'a list)):
+   thm
+val LENGTH_EQ_SUM =
+   |- !(l :'a list) (n1 :num) (n2 :num).
+     (LENGTH l = n1 + n2) <=>
+     ?(l1 :'a list) (l2 :'a list).
+       (LENGTH l1 = n1) /\ (LENGTH l2 = n2) /\
+       (l = ((l1 ++ l2) :'a list)):
+   thm
+val LENGTH_FILTER_LEQ_MONO =
+   |- !(P :'a -> bool) (Q :'a -> bool).
+     (!(x :'a). P x ==> Q x) ==>
+     !(ls :'a list). LENGTH (FILTER P ls) <= LENGTH (FILTER Q ls):
+   thm
+val LENGTH_FRONT_CONS =
+   |- !(x :'a) (xs :'a list). LENGTH (FRONT (x::xs)) = LENGTH xs:
+   thm
+val LENGTH_GENLIST =
+   |- !(f :num -> 'a) (n :num). LENGTH (GENLIST f n) = n:
+   thm
+val LENGTH_LEN =
+   |- !(L :'a list). LENGTH L = LEN L (0 :num):
+   thm
+val LENGTH_LUPDATE =
+   |- !(x :'a) (n :num) (ys :'a list). LENGTH (LUPDATE x n ys) = LENGTH ys:
+   thm
+val LENGTH_MAP =
+   |- !(l :'a list) (f :'a -> 'b). LENGTH (MAP f l) = LENGTH l:
+   thm
+val LENGTH_NIL =
+   |- !(l :'a list). (LENGTH l = (0 :num)) <=> (l = ([] :'a list)):
+   thm
+val LENGTH_NIL_SYM =
+   |- ((0 :num) = LENGTH (l :'a list)) <=> (l = ([] :'a list)):
+   thm
+val LENGTH_REVERSE =
+   |- !(l :'a list). LENGTH (REVERSE l) = LENGTH l:
+   thm
+val LENGTH_SNOC =
+   |- !(x :'a) (l :'a list). LENGTH (SNOC x l) = SUC (LENGTH l):
+   thm
+val LENGTH_TAKE =
+   |- !(n :num) (l :'a list). n <= LENGTH l ==> (LENGTH (TAKE n l) = n):
+   thm
+val LENGTH_TAKE_EQ =
+   |- LENGTH (TAKE (n :num) (xs :'a list)) =
+   if n <= LENGTH xs then n else LENGTH xs:
+   thm
+val LENGTH_TL =
+   |- !(l :'a list).
+     (0 :num) < LENGTH l ==> (LENGTH (TL l) = LENGTH l - (1 :num)):
+   thm
+val LENGTH_UNZIP =
+   |- !(pl :('a # 'b) list).
+     (LENGTH (FST (UNZIP pl)) = LENGTH pl) /\
+     (LENGTH (SND (UNZIP pl)) = LENGTH pl):
+   thm
+val LENGTH_ZIP =
+   |- !(l1 :'a list) (l2 :'b list).
+     (LENGTH l1 = LENGTH l2) ==>
+     (LENGTH (ZIP (l1,l2)) = LENGTH l1) /\
+     (LENGTH (ZIP (l1,l2)) = LENGTH l2):
+   thm
+val LENGTH_dropWhile_LESS_EQ =
+   |- !(P :'a -> bool) (ls :'a list). LENGTH (dropWhile P ls) <= LENGTH ls:
+   thm
+val LENGTH_o_REVERSE =
+   |- ((LENGTH :'a list -> num) o (REVERSE :'a list -> 'a list) =
+    (LENGTH :'a list -> num)) /\
+   ((LENGTH :'c list -> num) o (REVERSE :'c list -> 'c list) o
+    (f :'b -> 'c list) =
+    (LENGTH :'c list -> num) o f):
+   thm
+val LEN_DEF =
+   |- (!(n :num). LEN ([] :'a list) n = n) /\
+   !(h :'a) (t :'a list) (n :num). LEN (h::t) n = LEN t (n + (1 :num)):
+   thm
+val LEN_LENGTH_LEM =
+   |- !(L :'a list) (n :num). LEN L n = LENGTH L + n:
+   thm
+val LIST_APPLY_def =
+   |- !(fs :('b -> 'a) list) (xs :'b list).
+     ((fs <*> xs) :'a list) =
+     LIST_BIND fs (combin$C (MAP :('b -> 'a) -> 'b list -> 'a list) xs):
+   thm
+val LIST_APPLY_o =
+   |- (((((([($o :('c -> 'a) -> ('b -> 'c) -> 'b -> 'a)] <*>
+        (fs :('c -> 'a) list))
+          :(('b -> 'c) -> 'b -> 'a) list) <*>
+      (gs :('b -> 'c) list))
+        :('b -> 'a) list) <*> (xs :'b list))
+      :'a list) =
+   ((fs <*> ((gs <*> xs) :'c list)) :'a list):
+   thm
+val LIST_BIND_APPEND =
+   |- LIST_BIND (((l1 :'b list) ++ (l2 :'b list)) :'b list)
+     (f :'b -> 'a list) =
+   ((LIST_BIND l1 f ++ LIST_BIND l2 f) :'a list):
+   thm
+val LIST_BIND_ID =
+   |- (LIST_BIND (l :'a list list) (\(x :'a list). x) = FLAT l) /\
+   (LIST_BIND l (I :'a list -> 'a list) = FLAT l):
+   thm
+val LIST_BIND_LIST_BIND =
+   |- LIST_BIND (LIST_BIND (l :'c list) (g :'c -> 'b list))
+     (f :'b -> 'a list) =
+   LIST_BIND l
+     (combin$C (LIST_BIND :'b list -> ('b -> 'a list) -> 'a list) f o g):
+   thm
+val LIST_BIND_MAP =
+   |- LIST_BIND (MAP (f :'c -> 'b) (l :'c list)) (g :'b -> 'a list) =
+   LIST_BIND l (g o f):
+   thm
+val LIST_BIND_THM =
+   |- (LIST_BIND ([] :'b list) (f :'b -> 'a list) = ([] :'a list)) /\
+   (LIST_BIND ((h :'b)::(t :'b list)) f =
+    ((f h ++ LIST_BIND t f) :'a list)):
+   thm
+val LIST_BIND_def =
+   |- !(l :'b list) (f :'b -> 'a list). LIST_BIND l f = FLAT (MAP f l):
+   thm
+val LIST_EQ =
+   |- !(l1 :'a list) (l2 :'a list).
+     (LENGTH l1 = LENGTH l2) /\
+     (!(x :num). x < LENGTH l1 ==> (EL x l1 = EL x l2)) ==>
+     (l1 = l2):
+   thm
+val LIST_EQ_MAP_PAIR =
+   |- !(l1 :('a # 'b) list) (l2 :('a # 'b) list).
+     (MAP (FST :'a # 'b -> 'a) l1 = MAP (FST :'a # 'b -> 'a) l2) /\
+     (MAP (SND :'a # 'b -> 'b) l1 = MAP (SND :'a # 'b -> 'b) l2) ==>
+     (l1 = l2):
+   thm
+val LIST_EQ_REWRITE =
+   |- !(l1 :'a list) (l2 :'a list).
+     (l1 = l2) <=>
+     (LENGTH l1 = LENGTH l2) /\
+     !(x :num). x < LENGTH l1 ==> (EL x l1 = EL x l2):
+   thm
+val LIST_IGNORE_BIND_def =
+   |- !(m1 :'b list) (m2 :'a list).
+     LIST_IGNORE_BIND m1 m2 = LIST_BIND m1 (K m2 :'b -> 'a list):
+   thm
+val LIST_LIFT2_def =
+   |- !(f :'b -> 'c -> 'a) (xs :'b list) (ys :'c list).
+     LIST_LIFT2 f xs ys = ((MAP f xs <*> ys) :'a list):
+   thm
+val LIST_NOT_EQ =
+   |- !(l1 :'a list) (l2 :'a list).
+     l1 <> l2 ==> !(h1 :'a) (h2 :'a). h1::l1 <> h2::l2:
+   thm
+val LIST_REL_CONJ =
+   |- LIST_REL
+     (\(a :'a) (b :'b).
+        (P :'a -> 'b -> bool) a b /\ (Q :'a -> 'b -> bool) a b)
+     (l1 :'a list) (l2 :'b list) <=>
+   LIST_REL (\(a :'a) (b :'b). P a b) l1 l2 /\
+   LIST_REL (\(a :'a) (b :'b). Q a b) l1 l2:
+   thm
+val LIST_REL_CONS1 =
+   |- LIST_REL (R :'a -> 'b -> bool) ((h :'a)::(t :'a list))
+     (xs :'b list) <=>
+   ?(h' :'b) (t' :'b list). (xs = h'::t') /\ R h h' /\ LIST_REL R t t':
+   thm
+val LIST_REL_CONS2 =
+   |- LIST_REL (R :'a -> 'b -> bool) (xs :'a list)
+     ((h :'b)::(t :'b list)) <=>
+   ?(h' :'a) (t' :'a list). (xs = h'::t') /\ R h' h /\ LIST_REL R t' t:
+   thm
+val LIST_REL_EL_EQN =
+   |- !(R :'a -> 'b -> bool) (l1 :'a list) (l2 :'b list).
+     LIST_REL R l1 l2 <=>
+     (LENGTH l1 = LENGTH l2) /\
+     !(n :num). n < LENGTH l1 ==> R (EL n l1) (EL n l2):
+   thm
+val LIST_REL_EVERY_ZIP =
+   |- !(R :'a -> 'b -> bool) (l1 :'a list) (l2 :'b list).
+     LIST_REL R l1 l2 <=>
+     (LENGTH l1 = LENGTH l2) /\ EVERY (UNCURRY R) (ZIP (l1,l2)):
+   thm
+val LIST_REL_LENGTH =
+   |- !(x :'a list) (y :'b list).
+     LIST_REL (R :'a -> 'b -> bool) x y ==> (LENGTH x = LENGTH y):
+   thm
+val LIST_REL_MAP1 =
+   |- LIST_REL (R :'a -> 'b -> bool) (MAP (f :'c -> 'a) (l1 :'c list))
+     (l2 :'b list) <=> LIST_REL (R o f) l1 l2:
+   thm
+val LIST_REL_MAP2 =
+   |- LIST_REL (\(a :'a) (b :'b). (R :'a -> 'b -> bool) a b) (l1 :'a list)
+     (MAP (f :'c -> 'b) (l2 :'c list)) <=>
+   LIST_REL (\(a :'a) (b :'c). R a (f b)) l1 l2:
+   thm
+val LIST_REL_NIL =
+   |- (LIST_REL (R :'a -> 'b -> bool) ([] :'a list) (x :'b list) <=>
+    (x = ([] :'b list))) /\
+   (LIST_REL R ([] :'a list) (y :'b list) <=> (y = ([] :'b list))):
+   thm
+val LIST_REL_cases =
+   |- !(R :'a -> 'b -> bool) (a0 :'a list) (a1 :'b list).
+     LIST_REL R a0 a1 <=>
+     (a0 = ([] :'a list)) /\ (a1 = ([] :'b list)) \/
+     ?(h1 :'a) (h2 :'b) (t1 :'a list) (t2 :'b list).
+       (a0 = h1::t1) /\ (a1 = h2::t2) /\ R h1 h2 /\ LIST_REL R t1 t2:
+   thm
+val LIST_REL_def =
+   |- (LIST_REL (R :'a -> 'b -> bool) ([] :'a list) ([] :'b list) <=> T) /\
+   (LIST_REL R ((a :'a)::(as :'a list)) ([] :'b list) <=> F) /\
+   (LIST_REL R ([] :'a list) ((b :'b)::(bs :'b list)) <=> F) /\
+   (LIST_REL R (a::as) (b::bs) <=> R a b /\ LIST_REL R as bs):
+   thm
+val LIST_REL_ind =
+   |- !(R :'a -> 'b -> bool) (LIST_REL' :'a list -> 'b list -> bool).
+     LIST_REL' ([] :'a list) ([] :'b list) /\
+     (!(h1 :'a) (h2 :'b) (t1 :'a list) (t2 :'b list).
+        R h1 h2 /\ LIST_REL' t1 t2 ==> LIST_REL' (h1::t1) (h2::t2)) ==>
+     !(a0 :'a list) (a1 :'b list). LIST_REL R a0 a1 ==> LIST_REL' a0 a1:
+   thm
+val LIST_REL_mono =
+   |- (!(x :'a) (y :'b).
+      (R1 :'a -> 'b -> bool) x y ==> (R2 :'a -> 'b -> bool) x y) ==>
+   LIST_REL R1 (l1 :'a list) (l2 :'b list) ==>
+   LIST_REL R2 l1 l2:
+   thm
+val LIST_REL_rules =
+   |- !(R :'a -> 'b -> bool).
+     LIST_REL R ([] :'a list) ([] :'b list) /\
+     !(h1 :'a) (h2 :'b) (t1 :'a list) (t2 :'b list).
+       R h1 h2 /\ LIST_REL R t1 t2 ==> LIST_REL R (h1::t1) (h2::t2):
+   thm
+val LIST_REL_strongind =
+   |- !(R :'a -> 'b -> bool) (LIST_REL' :'a list -> 'b list -> bool).
+     LIST_REL' ([] :'a list) ([] :'b list) /\
+     (!(h1 :'a) (h2 :'b) (t1 :'a list) (t2 :'b list).
+        R h1 h2 /\ LIST_REL R t1 t2 /\ LIST_REL' t1 t2 ==>
+        LIST_REL' (h1::t1) (h2::t2)) ==>
+     !(a0 :'a list) (a1 :'b list). LIST_REL R a0 a1 ==> LIST_REL' a0 a1:
+   thm
+val LIST_REL_trans =
+   |- !(l1 :'a list) (l2 :'a list) (l3 :'a list).
+     (!(n :num).
+        n < LENGTH l1 /\ (R :'a -> 'a -> bool) (EL n l1) (EL n l2) /\
+        R (EL n l2) (EL n l3) ==>
+        R (EL n l1) (EL n l3)) /\ LIST_REL R l1 l2 /\
+     LIST_REL R l2 l3 ==>
+     LIST_REL R l1 l3:
+   thm
+val LIST_TO_SET =
+   |- (set ([] :'a list) = ({} :'a -> bool)) /\
+   (set ((h :'b)::(t :'b list)) = h INSERT set t):
+   thm
+val LIST_TO_SET_APPEND =
+   |- !(l1 :'a list) (l2 :'a list).
+     set ((l1 ++ l2) :'a list) = set l1 UNION set l2:
+   thm
+val LIST_TO_SET_DEF =
+   |- (!(x :'a). set ([] :'a list) x <=> F) /\
+   !(h :'a) (t :'a list) (x :'a). set (h::t) x <=> (x = h) \/ set t x:
+   thm
+val LIST_TO_SET_EQ_EMPTY =
+   |- ((set (l :'a list) = ({} :'a -> bool)) <=> (l = ([] :'a list))) /\
+   ((({} :'a -> bool) = set l) <=> (l = ([] :'a list))):
+   thm
+val LIST_TO_SET_FILTER =
+   |- set (FILTER (P :'a -> bool) (l :'a list)) = {x | P x} INTER set l:
+   thm
+val LIST_TO_SET_FLAT =
+   |- !(ls :'a list list).
+     set (FLAT ls) =
+     BIGUNION (set (MAP (set :'a list -> 'a -> bool) ls)):
+   thm
+val LIST_TO_SET_GENLIST =
+   |- !(f :num -> 'a) (n :num). set (GENLIST f n) = IMAGE f (count n):
+   thm
+val LIST_TO_SET_MAP =
+   |- !(f :'a -> 'b) (l :'a list). set (MAP f l) = IMAGE f (set l):
+   thm
+val LIST_TO_SET_REVERSE =
+   |- !(ls :'a list). set (REVERSE ls) = set ls:
+   thm
+val LIST_TO_SET_SNOC =
+   |- set (SNOC (x :'a) (ls :'a list)) = x INSERT set ls:
+   thm
+val LIST_TO_SET_THM =
+   |- (set ([] :'a list) = ({} :'a -> bool)) /\
+   (set ((h :'b)::(t :'b list)) = h INSERT set t):
+   thm
+val LLEX_CONG =
+   |- !(R :'a -> 'a -> bool) (l1 :'a list) (l2 :'a list)
+      (R' :'a -> 'a -> bool) (l1' :'a list) (l2' :'a list).
+     (l1 = l1') /\ (l2 = l2') /\
+     (!(a :'a) (b :'a).
+        MEM a l1' /\ MEM b l2' ==> (R a b <=> R' a b)) ==>
+     (LLEX R l1 l2 <=> LLEX R' l1' l2'):
+   thm
+val LLEX_EL_THM =
+   |- !(R :'a -> 'a -> bool) (l1 :'a list) (l2 :'a list).
+     LLEX R l1 l2 <=>
+     ?(n :num).
+       n <= LENGTH l1 /\ n < LENGTH l2 /\ (TAKE n l1 = TAKE n l2) /\
+       (n < LENGTH l1 ==> R (EL n l1) (EL n l2)):
+   thm
+val LLEX_MONO =
+   |- (!(x :'a) (y :'a).
+      (R1 :'a -> 'a -> bool) x y ==> (R2 :'a -> 'a -> bool) x y) ==>
+   LLEX R1 (x :'a list) (y :'a list) ==>
+   LLEX R2 x y:
+   thm
+val LLEX_NIL2 =
+   |- ~LLEX (R :'a -> 'a -> bool) (l :'a list) ([] :'a list):
+   thm
+val LLEX_THM =
+   |- (~LLEX (R :'a -> 'a -> bool) ([] :'a list) ([] :'a list) /\
+    ~LLEX R ((h1 :'a)::(t1 :'a list)) ([] :'a list)) /\
+   LLEX R ([] :'a list) ((h2 :'a)::(t2 :'a list)) /\
+   (LLEX R (h1::t1) (h2::t2) <=> R h1 h2 \/ (h1 = h2) /\ LLEX R t1 t2):
+   thm
+val LLEX_def =
+   |- (!(R :'a -> 'a -> bool) (l2 :'a list).
+      LLEX R ([] :'a list) l2 <=> l2 <> ([] :'a list)) /\
+   !(R :'a -> 'a -> bool) (h1 :'a) (t1 :'a list) (l2 :'a list).
+     LLEX R (h1::t1) l2 <=>
+     case l2 of
+       ([] :'a list) => F
+     | h2::t2 =>
+         if R h1 h2 then T else if h1 = h2 then LLEX R t1 t2 else F:
+   thm
+val LLEX_not_WF =
+   |- (?(a :'a) (b :'a). (R :'a -> 'a -> bool) a b) ==> ~WF (LLEX R):
+   thm
+val LLEX_total =
+   |- total (RC (R :'a -> 'a -> bool)) ==> total (RC (LLEX R)):
+   thm
+val LLEX_transitive =
+   |- transitive (R :'a -> 'a -> bool) ==> transitive (LLEX R):
+   thm
+val LRC_MEM =
+   |- LRC (R :'a -> 'a -> bool) (ls :'a list) (x :'a) (y :'a) /\
+   MEM (e :'a) ls ==>
+   ?(z :'a) (t :'a list). R e z /\ LRC R t z y:
+   thm
+val LRC_MEM_right =
+   |- LRC (R :'a -> 'a -> bool) ((h :'a)::(t :'a list)) (x :'a) (y :'a) /\
+   MEM (e :'a) t ==>
+   ?(z :'a) (p :'a list). R z e /\ LRC R p x z:
+   thm
+val LRC_def =
+   |- (!(R :'a -> 'a -> bool) (x :'a) (y :'a).
+      LRC R ([] :'a list) x y <=> (x = y)) /\
+   !(R :'a -> 'a -> bool) (h :'a) (t :'a list) (x :'a) (y :'a).
+     LRC R (h::t) x y <=> (x = h) /\ ?(z :'a). R x z /\ LRC R t z y:
+   thm
+val LUPDATE_LENGTH =
+   |- !(xs :'a list) (x :'a) (y :'a) (ys :'a list).
+     LUPDATE x (LENGTH xs) ((xs ++ y::ys) :'a list) =
+     ((xs ++ x::ys) :'a list):
+   thm
+val LUPDATE_MAP =
+   |- !(x :'a) (n :num) (l :'a list) (f :'a -> 'b).
+     MAP f (LUPDATE x n l) = LUPDATE (f x) n (MAP f l):
+   thm
+val LUPDATE_NIL =
+   |- !(xs :'a list) (n :num) (x :'a).
+     (LUPDATE x n xs = ([] :'a list)) <=> (xs = ([] :'a list)):
+   thm
+val LUPDATE_SAME =
+   |- !(n :num) (ls :'a list).
+     n < LENGTH ls ==> (LUPDATE (EL n ls) n ls = ls):
+   thm
+val LUPDATE_SEM =
+   |- (!(e :'a) (n :num) (l :'a list).
+      LENGTH (LUPDATE e n l) = LENGTH l) /\
+   !(e :'a) (n :num) (l :'a list) (p :num).
+     p < LENGTH l ==>
+     (EL p (LUPDATE e n l) = if p = n then e else EL p l):
+   thm
+val LUPDATE_SNOC =
+   |- !(ys :'a list) (k :num) (x :'a) (y :'a).
+     LUPDATE x k (SNOC y ys) =
+     if k = LENGTH ys then SNOC x ys else SNOC y (LUPDATE x k ys):
+   thm
+val LUPDATE_SOME_MAP =
+   |- !(xs :'a option list) (n :num) (f :'a -> 'b) (h :'a).
+     LUPDATE (SOME (f h)) n (MAP (OPTION_MAP f) xs) =
+     MAP (OPTION_MAP f) (LUPDATE (SOME h) n xs):
+   thm
+val LUPDATE_compute =
+   |- (!(e :'a) (n :num). LUPDATE e n ([] :'a list) = ([] :'a list)) /\
+   (!(e :'a) (x :'a) (l :'a list). LUPDATE e (0 :num) (x::l) = e::l) /\
+   (!(e :'a) (n :num) (x :'a) (l :'a list).
+      LUPDATE e (NUMERAL (BIT1 n)) (x::l) =
+      x::LUPDATE e (NUMERAL (BIT1 n) - (1 :num)) l) /\
+   !(e :'a) (n :num) (x :'a) (l :'a list).
+     LUPDATE e (NUMERAL (BIT2 n)) (x::l) =
+     x::LUPDATE e (NUMERAL (BIT1 n)) l:
+   thm
+val LUPDATE_def =
+   |- (!(e :'a) (n :num). LUPDATE e n ([] :'a list) = ([] :'a list)) /\
+   (!(e :'a) (x :'a) (l :'a list). LUPDATE e (0 :num) (x::l) = e::l) /\
+   !(e :'a) (n :num) (x :'a) (l :'a list).
+     LUPDATE e (SUC n) (x::l) = x::LUPDATE e n l:
+   thm
+val MAP =
+   |- (!(f :'a -> 'b). MAP f ([] :'a list) = ([] :'b list)) /\
+   !(f :'a -> 'b) (h :'a) (t :'a list). MAP f (h::t) = f h::MAP f t:
+   thm
+val MAP2 =
+   |- (!(f :'a -> 'b -> 'c).
+      MAP2 f ([] :'a list) ([] :'b list) = ([] :'c list)) /\
+   !(f :'d -> 'e -> 'f) (h1 :'d) (t1 :'d list) (h2 :'e) (t2 :'e list).
+     MAP2 f (h1::t1) (h2::t2) = f h1 h2::MAP2 f t1 t2:
+   thm
+val MAP2_CONG =
+   |- !(l1 :'a list) (l1' :'a list) (l2 :'b list) (l2' :'b list)
+      (f :'a -> 'b -> 'c) (f' :'a -> 'b -> 'c).
+     (l1 = l1') /\ (l2 = l2') /\
+     (!(x :'a) (y :'b). MEM x l1' /\ MEM y l2' ==> (f x y = f' x y)) ==>
+     (MAP2 f l1 l2 = MAP2 f' l1' l2'):
+   thm
+val MAP2_DEF =
+   |- (!(t2 :'c list) (t1 :'b list) (h2 :'c) (h1 :'b) (f :'b -> 'c -> 'a).
+      MAP2 f (h1::t1) (h2::t2) = f h1 h2::MAP2 f t1 t2) /\
+   (!(y :'c list) (f :'b -> 'c -> 'a).
+      MAP2 f ([] :'b list) y = ([] :'a list)) /\
+   !(v5 :'b list) (v4 :'b) (f :'b -> 'c -> 'a).
+     MAP2 f (v4::v5) ([] :'c list) = ([] :'a list):
+   thm
+val MAP2_MAP =
+   |- !(l1 :'a list) (l2 :'b list).
+     (LENGTH l1 = LENGTH l2) ==>
+     !(f :'a -> 'b -> 'c). MAP2 f l1 l2 = MAP (UNCURRY f) (ZIP (l1,l2)):
+   thm
+val MAP2_ZIP =
+   |- !(l1 :'a list) (l2 :'b list).
+     (LENGTH l1 = LENGTH l2) ==>
+     !(f :'a -> 'b -> 'c). MAP2 f l1 l2 = MAP (UNCURRY f) (ZIP (l1,l2)):
+   thm
+val MAP2_ind =
+   |- !(P :('b -> 'c -> 'a) -> 'b list -> 'c list -> bool).
+     (!(f :'b -> 'c -> 'a) (h1 :'b) (t1 :'b list) (h2 :'c)
+         (t2 :'c list). P f t1 t2 ==> P f (h1::t1) (h2::t2)) /\
+     (!(f :'b -> 'c -> 'a) (y :'c list). P f ([] :'b list) y) /\
+     (!(f :'b -> 'c -> 'a) (v4 :'b) (v5 :'b list).
+        P f (v4::v5) ([] :'c list)) ==>
+     !(v :'b -> 'c -> 'a) (v1 :'b list) (v2 :'c list). P v v1 v2:
+   thm
+val MAP_APPEND =
+   |- !(f :'a -> 'b) (l1 :'a list) (l2 :'a list).
+     MAP f ((l1 ++ l2) :'a list) = ((MAP f l1 ++ MAP f l2) :'b list):
+   thm
+val MAP_APPEND_MAP_EQ =
+   |- !(xs :'a list) (ys :'b list).
+     (((MAP (f1 :'a -> 'c) xs ++ MAP (g1 :'b -> 'c) ys) :'c list) =
+      ((MAP (f2 :'a -> 'c) xs ++ MAP (g2 :'b -> 'c) ys) :'c list)) <=>
+     (MAP f1 xs = MAP f2 xs) /\ (MAP g1 ys = MAP g2 ys):
+   thm
+val MAP_CONG =
+   |- !(l1 :'a list) (l2 :'a list) (f :'a -> 'b) (f' :'a -> 'b).
+     (l1 = l2) /\ (!(x :'a). MEM x l2 ==> (f x = f' x)) ==>
+     (MAP f l1 = MAP f' l2):
+   thm
+val MAP_EQ_APPEND =
+   |- (MAP (f :'a -> 'b) (l :'a list) =
+    (((l1 :'b list) ++ (l2 :'b list)) :'b list)) <=>
+   ?(l10 :'a list) (l20 :'a list).
+     (l = ((l10 ++ l20) :'a list)) /\ (l1 = MAP f l10) /\
+     (l2 = MAP f l20):
+   thm
+val MAP_EQ_CONS =
+   |- (MAP (f :'a -> 'b) (l :'a list) = (h :'b)::(t :'b list)) <=>
+   ?(x0 :'a) (t0 :'a list). (l = x0::t0) /\ (h = f x0) /\ (t = MAP f t0):
+   thm
+val MAP_EQ_EVERY2 =
+   |- !(f1 :'a -> 'b) (f2 :'c -> 'b) (l1 :'a list) (l2 :'c list).
+     (MAP f1 l1 = MAP f2 l2) <=>
+     (LENGTH l1 = LENGTH l2) /\
+     LIST_REL (\(x :'a) (y :'c). f1 x = f2 y) l1 l2:
+   thm
+val MAP_EQ_NIL =
+   |- !(l :'a list) (f :'a -> 'b).
+     ((MAP f l = ([] :'b list)) <=> (l = ([] :'a list))) /\
+     ((([] :'b list) = MAP f l) <=> (l = ([] :'a list))):
+   thm
+val MAP_EQ_SING =
+   |- (MAP (f :'a -> 'b) (l :'a list) = [(x :'b)]) <=>
+   ?(x0 :'a). (l = [x0]) /\ (x = f x0):
+   thm
+val MAP_EQ_f =
+   |- !(f1 :'a -> 'b) (f2 :'a -> 'b) (l :'a list).
+     (MAP f1 l = MAP f2 l) <=> !(e :'a). MEM e l ==> (f1 e = f2 e):
+   thm
+val MAP_FLAT =
+   |- MAP (f :'b -> 'a) (FLAT (l :'b list list)) = FLAT (MAP (MAP f) l):
+   thm
+val MAP_GENLIST =
+   |- !(f :'a -> 'b) (g :num -> 'a) (n :num).
+     MAP f (GENLIST g n) = GENLIST (f o g) n:
+   thm
+val MAP_ID =
+   |- (MAP (\(x :'a). x) (l :'a list) = l) /\ (MAP (I :'a -> 'a) l = l):
+   thm
+val MAP_LIST_BIND =
+   |- MAP (f :'b -> 'a) (LIST_BIND (l :'c list) (g :'c -> 'b list)) =
+   LIST_BIND l (MAP f o g):
+   thm
+val MAP_MAP_o =
+   |- !(f :'b -> 'c) (g :'a -> 'b) (l :'a list).
+     MAP f (MAP g l) = MAP (f o g) l:
+   thm
+val MAP_SNOC =
+   |- !(f :'a -> 'b) (x :'a) (l :'a list).
+     MAP f (SNOC x l) = SNOC (f x) (MAP f l):
+   thm
+val MAP_TAKE =
+   |- !(f :'a -> 'b) (n :num) (l :'a list).
+     MAP f (TAKE n l) = TAKE n (MAP f l):
+   thm
+val MAP_TL =
+   |- !(l :'a list) (f :'a -> 'b).
+     ~NULL l ==> (MAP f (TL l) = TL (MAP f l)):
+   thm
+val MAP_ZIP =
+   |- (LENGTH (l1 :'a list) = LENGTH (l2 :'b list)) ==>
+   (MAP (FST :'a # 'b -> 'a) (ZIP (l1,l2)) = l1) /\
+   (MAP (SND :'a # 'b -> 'b) (ZIP (l1,l2)) = l2) /\
+   (MAP ((f :'a -> 'c) o (FST :'a # 'b -> 'a)) (ZIP (l1,l2)) =
+    MAP f l1) /\
+   (MAP ((g :'b -> 'd) o (SND :'a # 'b -> 'b)) (ZIP (l1,l2)) = MAP g l2):
+   thm
+val MAP_ZIP_SAME =
+   |- !(ls :'a list) (f :'a # 'a -> 'b).
+     MAP f (ZIP (ls,ls)) = MAP (\(x :'a). f (x,x)) ls:
+   thm
+val MAP_o =
+   |- !(f :'b -> 'c) (g :'a -> 'b). MAP (f o g) = MAP f o MAP g:
+   thm
+val MEM =
+   |- (!(x :'a). MEM x ([] :'a list) <=> F) /\
+   !(x :'a) (h :'a) (t :'a list). MEM x (h::t) <=> (x = h) \/ MEM x t:
+   thm
+val MEM_APPEND =
+   |- !(e :'a) (l1 :'a list) (l2 :'a list).
+     MEM e ((l1 ++ l2) :'a list) <=> MEM e l1 \/ MEM e l2:
+   thm
+val MEM_APPEND_lemma =
+   |- !(a :'a list) (b :'a list) (c :'a list) (d :'a list) (x :'a).
+     (((((a ++ [x]) :'a list) ++ b) :'a list) =
+      ((((c ++ [x]) :'a list) ++ d) :'a list)) /\ ~MEM x b /\
+     ~MEM x a ==>
+     (a = c) /\ (b = d):
+   thm
+val MEM_DROP =
+   |- !(x :'a) (ls :'a list) (n :num).
+     MEM x (DROP n ls) <=>
+     n < LENGTH ls /\ (x = EL n ls) \/ MEM x (DROP (SUC n) ls):
+   thm
+val MEM_EL =
+   |- !(l :'a list) (x :'a).
+     MEM x l <=> ?(n :num). n < LENGTH l /\ (x = EL n l):
+   thm
+val MEM_FILTER =
+   |- !(P :'a -> bool) (L :'a list) (x :'a).
+     MEM x (FILTER P L) <=> P x /\ MEM x L:
+   thm
+val MEM_FLAT =
+   |- !(x :'a) (L :'a list list).
+     MEM x (FLAT L) <=> ?(l :'a list). MEM l L /\ MEM x l:
+   thm
+val MEM_GENLIST =
+   |- MEM (x :'a) (GENLIST (f :num -> 'a) (n :num)) <=>
+   ?(m :num). m < n /\ (x = f m):
+   thm
+val MEM_LUPDATE =
+   |- !(l :'a list) (x :'a) (y :'a) (i :num).
+     MEM x (LUPDATE y i l) <=>
+     i < LENGTH l /\ (x = y) \/
+     ?(j :num). j < LENGTH l /\ i <> j /\ (EL j l = x):
+   thm
+val MEM_LUPDATE_E =
+   |- !(l :'a list) (x :'a) (y :'a) (i :num).
+     MEM x (LUPDATE y i l) ==> (x = y) \/ MEM x l:
+   thm
+val MEM_MAP =
+   |- !(l :'a list) (f :'a -> 'b) (x :'b).
+     MEM x (MAP f l) <=> ?(y :'a). (x = f y) /\ MEM y l:
+   thm
+val MEM_REVERSE =
+   |- !(l :'a list) (x :'a). MEM x (REVERSE l) <=> MEM x l:
+   thm
+val MEM_SET_TO_LIST =
+   |- !(s :'a -> bool).
+     FINITE s ==> !(x :'a). MEM x (SET_TO_LIST s) <=> x IN s:
+   thm
+val MEM_SNOC =
+   |- !(y :'a) (x :'a) (l :'a list).
+     MEM y (SNOC x l) <=> (y = x) \/ MEM y l:
+   thm
+val MEM_SPLIT =
+   |- !(x :'a) (l :'a list).
+     MEM x l <=>
+     ?(l1 :'a list) (l2 :'a list). l = ((l1 ++ x::l2) :'a list):
+   thm
+val MEM_SPLIT_APPEND_first =
+   |- MEM (e :'a) (l :'a list) <=>
+   ?(pfx :'a list) (sfx :'a list).
+     (l = ((((pfx ++ [e]) :'a list) ++ sfx) :'a list)) /\ ~MEM e pfx:
+   thm
+val MEM_SPLIT_APPEND_last =
+   |- MEM (e :'a) (l :'a list) <=>
+   ?(pfx :'a list) (sfx :'a list).
+     (l = ((((pfx ++ [e]) :'a list) ++ sfx) :'a list)) /\ ~MEM e sfx:
+   thm
+val MEM_ZIP =
+   |- !(l1 :'a list) (l2 :'b list) (p :'a # 'b).
+     (LENGTH l1 = LENGTH l2) ==>
+     (MEM p (ZIP (l1,l2)) <=>
+      ?(n :num). n < LENGTH l1 /\ (p = (EL n l1,EL n l2))):
+   thm
+val MEM_ZIP_MEM_MAP =
+   |- (LENGTH (FST (ps :'a list # 'b list)) = LENGTH (SND ps)) /\
+   MEM (p :'a # 'b) (ZIP ps) ==>
+   MEM (FST p) (FST ps) /\ MEM (SND p) (SND ps):
+   thm
+val MEM_dropWhile_IMP =
+   |- !(P :'a -> bool) (ls :'a list) (x :'a).
+     MEM x (dropWhile P ls) ==> MEM x ls:
+   thm
+val MONO_EVERY =
+   |- (!(x :'a). (P :'a -> bool) x ==> (Q :'a -> bool) x) ==>
+   EVERY P (l :'a list) ==>
+   EVERY Q l:
+   thm
+val MONO_EXISTS =
+   |- (!(x :'a). (P :'a -> bool) x ==> (Q :'a -> bool) x) ==>
+   EXISTS P (l :'a list) ==>
+   EXISTS Q l:
+   thm
+val NOT_CONS_NIL =
+   |- !(a1 :'a list) (a0 :'a). a0::a1 <> ([] :'a list):
+   thm
+val NOT_EQ_LIST =
+   |- !(h1 :'a) (h2 :'a).
+     h1 <> h2 ==> !(l1 :'a list) (l2 :'a list). h1::l1 <> h2::l2:
+   thm
+val NOT_EVERY =
+   |- !(P :'a -> bool) (l :'a list). ~EVERY P l <=> EXISTS ($~ o P) l:
+   thm
+val NOT_EXISTS =
+   |- !(P :'a -> bool) (l :'a list). ~EXISTS P l <=> EVERY ($~ o P) l:
+   thm
+val NOT_NIL_CONS =
+   |- !(a1 :'a list) (a0 :'a). ([] :'a list) <> a0::a1:
+   thm
+val NOT_NIL_EQ_LENGTH_NOT_0 =
+   |- (x :'a list) <> ([] :'a list) <=> (0 :num) < LENGTH x:
+   thm
+val NOT_NULL_MEM =
+   |- !(l :'a list). ~NULL l <=> ?(e :'a). MEM e l:
+   thm
+val NRC_LRC =
+   |- NRC (R :'a -> 'a -> bool) (n :num) (x :'a) (y :'a) <=>
+   ?(ls :'a list). LRC R ls x y /\ (LENGTH ls = n):
+   thm
+val NULL =
+   |- NULL ([] :'a list) /\ !(h :'a) (t :'a list). ~NULL (h::t):
+   thm
+val NULL_DEF =
+   |- (NULL ([] :'a list) <=> T) /\
+   !(h :'a) (t :'a list). NULL (h::t) <=> F:
+   thm
+val NULL_EQ =
+   |- !(l :'a list). NULL l <=> (l = ([] :'a list)):
+   thm
+val NULL_FILTER =
+   |- !(P :'a -> bool) (ls :'a list).
+     NULL (FILTER P ls) <=> !(x :'a). MEM x ls ==> ~P x:
+   thm
+val NULL_GENLIST =
+   |- !(n :num) (f :num -> 'a). NULL (GENLIST f n) <=> (n = (0 :num)):
+   thm
+val NULL_LENGTH =
+   |- !(l :'a list). NULL l <=> (LENGTH l = (0 :num)):
+   thm
+val OPT_MMAP_def =
+   |- (!(f :'b -> 'a option).
+      OPT_MMAP f ([] :'b list) = SOME ([] :'a list)) /\
+   !(f :'b -> 'a option) (h0 :'b) (t0 :'b list).
+     OPT_MMAP f (h0::t0) =
+     OPTION_BIND (f h0)
+       (\(h :'a).
+          OPTION_BIND (OPT_MMAP f t0) (\(t :'a list). SOME (h::t))):
+   thm
+val PAD_LEFT =
+   |- !(c :'a) (n :num) (s :'a list).
+     PAD_LEFT c n s =
+     ((GENLIST (K c :num -> 'a) (n - LENGTH s) ++ s) :'a list):
+   thm
+val PAD_RIGHT =
+   |- !(c :'a) (n :num) (s :'a list).
+     PAD_RIGHT c n s =
+     ((s ++ GENLIST (K c :num -> 'a) (n - LENGTH s)) :'a list):
+   thm
+val REVERSE_11 =
+   |- !(l1 :'a list) (l2 :'a list). (REVERSE l1 = REVERSE l2) <=> (l1 = l2):
+   thm
+val REVERSE_APPEND =
+   |- !(l1 :'a list) (l2 :'a list).
+     REVERSE ((l1 ++ l2) :'a list) =
+     ((REVERSE l2 ++ REVERSE l1) :'a list):
+   thm
+val REVERSE_DEF =
+   |- (REVERSE ([] :'a list) = ([] :'a list)) /\
+   !(h :'a) (t :'a list). REVERSE (h::t) = ((REVERSE t ++ [h]) :'a list):
+   thm
+val REVERSE_EQ_NIL =
+   |- (REVERSE (l :'a list) = ([] :'a list)) <=> (l = ([] :'a list)):
+   thm
+val REVERSE_EQ_SING =
+   |- (REVERSE (l :'a list) = [(e :'a)]) <=> (l = [e]):
+   thm
+val REVERSE_GENLIST =
+   |- REVERSE (GENLIST (f :num -> 'a) (n :num)) =
+   GENLIST (\(m :num). f (PRE n - m)) n:
+   thm
+val REVERSE_REV =
+   |- !(L :'a list). REVERSE L = REV L ([] :'a list):
+   thm
+val REVERSE_REVERSE =
+   |- !(l :'a list). REVERSE (REVERSE l) = l:
+   thm
+val REVERSE_SNOC =
+   |- !(x :'a) (l :'a list). REVERSE (SNOC x l) = x::REVERSE l:
+   thm
+val REVERSE_SNOC_DEF =
+   |- (REVERSE ([] :'b list) = ([] :'b list)) /\
+   !(x :'a) (l :'a list). REVERSE (x::l) = SNOC x (REVERSE l):
+   thm
+val REVERSE_o_REVERSE =
+   |- (REVERSE :'b list -> 'b list) o (REVERSE :'b list -> 'b list) o
+   (f :'a -> 'b list) =
+   f:
+   thm
+val REV_DEF =
+   |- (!(acc :'a list). REV ([] :'a list) acc = acc) /\
+   !(h :'a) (t :'a list) (acc :'a list). REV (h::t) acc = REV t (h::acc):
+   thm
+val REV_REVERSE_LEM =
+   |- !(L1 :'a list) (L2 :'a list).
+     REV L1 L2 = ((REVERSE L1 ++ L2) :'a list):
+   thm
+val SET_TO_LIST_CARD =
+   |- !(s :'a -> bool). FINITE s ==> (LENGTH (SET_TO_LIST s) = CARD s):
+   thm
+val SET_TO_LIST_EMPTY =
+   |- SET_TO_LIST ({} :'a -> bool) = ([] :'a list):
+   thm
+val SET_TO_LIST_IND =
+   |- !(P :('a -> bool) -> bool).
+     (!(s :'a -> bool).
+        (FINITE s /\ s <> ({} :'a -> bool) ==> P (REST s)) ==> P s) ==>
+     !(v :'a -> bool). P v:
+   thm
+val SET_TO_LIST_INV =
+   |- !(s :'a -> bool). FINITE s ==> (set (SET_TO_LIST s) = s):
+   thm
+val SET_TO_LIST_IN_MEM =
+   |- !(s :'a -> bool).
+     FINITE s ==> !(x :'a). x IN s <=> MEM x (SET_TO_LIST s):
+   thm
+val SET_TO_LIST_SING =
+   |- SET_TO_LIST {(x :'a)} = [x]:
+   thm
+val SET_TO_LIST_THM =
+   |- FINITE (s :'a -> bool) ==>
+   (SET_TO_LIST s =
+    if s = ({} :'a -> bool) then ([] :'a list)
+    else CHOICE s::SET_TO_LIST (REST s)):
+   thm
+val SET_TO_LIST_primitive_def =
+   |- (SET_TO_LIST :('a -> bool) -> 'a list) =
+   WFREC
+     (@(R :('a -> bool) -> ('a -> bool) -> bool).
+        WF R /\
+        !(s :'a -> bool).
+          FINITE s /\ s <> ({} :'a -> bool) ==> R (REST s) s)
+     (\(SET_TO_LIST :('a -> bool) -> 'a list) (a :'a -> bool).
+        I
+          (if FINITE a then
+             if a = ({} :'a -> bool) then ([] :'a list)
+             else CHOICE a::SET_TO_LIST (REST a)
+           else (ARB :'a list))):
+   thm
+val SINGL_APPLY_MAP =
+   |- (([(f :'b -> 'a)] <*> (l :'b list)) :'a list) = MAP f l:
+   thm
+val SINGL_APPLY_PERMUTE =
+   |- (((fs :('b -> 'a) list) <*> [(x :'b)]) :'a list) =
+   (([(\(f :'b -> 'a). f x)] <*> fs) :'a list):
+   thm
+val SINGL_LIST_APPLY_L =
+   |- LIST_BIND [(x :'b)] (f :'b -> 'a list) = f x:
+   thm
+val SINGL_LIST_APPLY_R =
+   |- LIST_BIND (l :'a list) (\(x :'a). [x]) = l:
+   thm
+val SINGL_SINGL_APPLY =
+   |- (([(f :'b -> 'a)] <*> [(x :'b)]) :'a list) = [f x]:
+   thm
+val SNOC =
+   |- (!(x :'a). SNOC x ([] :'a list) = [x]) /\
+   !(x :'a) (x' :'a) (l :'a list). SNOC x (x'::l) = x'::SNOC x l:
+   thm
+val SNOC_11 =
+   |- !(x :'a) (y :'a list) (a :'a) (b :'a list).
+     (SNOC x y = SNOC a b) <=> (x = a) /\ (y = b):
+   thm
+val SNOC_APPEND =
+   |- !(x :'a) (l :'a list). SNOC x l = ((l ++ [x]) :'a list):
+   thm
+val SNOC_Axiom =
+   |- !(e :'b) (f :'a -> 'a list -> 'b -> 'b).
+     ?(fn :'a list -> 'b).
+       (fn ([] :'a list) = e) /\
+       !(x :'a) (l :'a list). fn (SNOC x l) = f x l (fn l):
+   thm
+val SNOC_CASES =
+   |- !(ll :'a list).
+     (ll = ([] :'a list)) \/ ?(x :'a) (l :'a list). ll = SNOC x l:
+   thm
+val SNOC_INDUCT =
+   |- !(P :'a list -> bool).
+     P ([] :'a list) /\
+     (!(l :'a list). P l ==> !(x :'a). P (SNOC x l)) ==>
+     !(l :'a list). P l:
+   thm
+val SUM =
+   |- (SUM ([] :num list) = (0 :num)) /\
+   !(h :num) (t :num list). SUM (h::t) = h + SUM t:
+   thm
+val SUM_ACC_DEF =
+   |- (!(acc :num). SUM_ACC ([] :num list) acc = acc) /\
+   !(h :num) (t :num list) (acc :num).
+     SUM_ACC (h::t) acc = SUM_ACC t (h + acc):
+   thm
+val SUM_ACC_SUM_LEM =
+   |- !(L :num list) (n :num). SUM_ACC L n = SUM L + n:
+   thm
+val SUM_APPEND =
+   |- !(l1 :num list) (l2 :num list).
+     SUM ((l1 ++ l2) :num list) = SUM l1 + SUM l2:
+   thm
+val SUM_IMAGE_LIST_TO_SET_upper_bound =
+   |- !(ls :'a list). SIGMA (f :'a -> num) (set ls) <= SUM (MAP f ls):
+   thm
+val SUM_IMAGE_eq_SUM_MAP_SET_TO_LIST =
+   |- FINITE (s :'a -> bool) ==>
+   (SIGMA (f :'a -> num) s = SUM (MAP f (SET_TO_LIST s))):
+   thm
+val SUM_MAP_FOLDL =
+   |- !(ls :'a list).
+     SUM (MAP (f :'a -> num) ls) =
+     FOLDL (\(a :num) (e :'a). a + f e) (0 :num) ls:
+   thm
+val SUM_MAP_MEM_bound =
+   |- !(f :'a -> num) (x :'a) (ls :'a list).
+     MEM x ls ==> f x <= SUM (MAP f ls):
+   thm
+val SUM_MAP_PLUS =
+   |- !(f :'a -> num) (g :'a -> num) (ls :'a list).
+     SUM (MAP (\(x :'a). f x + g x) ls) =
+     SUM (MAP f ls) + SUM (MAP g ls):
+   thm
+val SUM_MAP_PLUS_ZIP =
+   |- !(ls1 :'a list) (ls2 :'b list).
+     (LENGTH ls1 = LENGTH ls2) /\
+     (!(x :'a) (y :'b).
+        (f :'a # 'b -> num) (x,y) =
+        (g :'a -> num) x + (h :'b -> num) y) ==>
+     (SUM (MAP f (ZIP (ls1,ls2))) = SUM (MAP g ls1) + SUM (MAP h ls2)):
+   thm
+val SUM_SNOC =
+   |- !(x :num) (l :num list). SUM (SNOC x l) = SUM l + x:
+   thm
+val SUM_SUM_ACC =
+   |- !(L :num list). SUM L = SUM_ACC L (0 :num):
+   thm
+val SUM_eq_0 =
+   |- !(ls :num list).
+     (SUM ls = (0 :num)) <=> !(x :num). MEM x ls ==> (x = (0 :num)):
+   thm
+val SWAP_REVERSE =
+   |- !(l1 :'a list) (l2 :'a list). (l1 = REVERSE l2) <=> (l2 = REVERSE l1):
+   thm
+val SWAP_REVERSE_SYM =
+   |- !(l1 :'a list) (l2 :'a list). (REVERSE l1 = l2) <=> (l1 = REVERSE l2):
+   thm
+val TAKE_0 =
+   |- TAKE (0 :num) (l :'a list) = ([] :'a list):
+   thm
+val TAKE_APPEND1 =
+   |- !(n :num).
+     n <= LENGTH (l1 :'a list) ==>
+     (TAKE n ((l1 ++ (l2 :'a list)) :'a list) = TAKE n l1):
+   thm
+val TAKE_APPEND2 =
+   |- !(n :num).
+     LENGTH (l1 :'a list) < n ==>
+     (TAKE n ((l1 ++ (l2 :'a list)) :'a list) =
+      ((l1 ++ TAKE (n - LENGTH l1) l2) :'a list)):
+   thm
+val TAKE_DROP =
+   |- !(n :num) (l :'a list). ((TAKE n l ++ DROP n l) :'a list) = l:
+   thm
+val TAKE_LENGTH_ID =
+   |- !(l :'a list). TAKE (LENGTH l) l = l:
+   thm
+val TAKE_LENGTH_ID_rwt =
+   |- !(l :'a list) (m :num). (m = LENGTH l) ==> (TAKE m l = l):
+   thm
+val TAKE_LENGTH_TOO_LONG =
+   |- !(l :'a list) (n :num). LENGTH l <= n ==> (TAKE n l = l):
+   thm
+val TAKE_SUM =
+   |- !(n :num) (m :num) (l :'a list).
+     TAKE (n + m) l = ((TAKE n l ++ TAKE m (DROP n l)) :'a list):
+   thm
+val TAKE_compute =
+   |- (!(l :'a list). TAKE (0 :num) l = ([] :'a list)) /\
+   (!(n :num). TAKE (NUMERAL (BIT1 n)) ([] :'b list) = ([] :'b list)) /\
+   (!(n :num). TAKE (NUMERAL (BIT2 n)) ([] :'b list) = ([] :'b list)) /\
+   (!(n :num) (h :'c) (t :'c list).
+      TAKE (NUMERAL (BIT1 n)) (h::t) =
+      h::TAKE (NUMERAL (BIT1 n) - (1 :num)) t) /\
+   !(n :num) (h :'c) (t :'c list).
+     TAKE (NUMERAL (BIT2 n)) (h::t) = h::TAKE (NUMERAL (BIT1 n)) t:
+   thm
+val TAKE_cons =
+   |- (0 :num) < (n :num) ==>
+   (TAKE n ((x :'a)::(xs :'a list)) = x::TAKE (n - (1 :num)) xs):
+   thm
+val TAKE_def =
+   |- (!(n :num). TAKE n ([] :'a list) = ([] :'a list)) /\
+   !(n :num) (x :'a) (xs :'a list).
+     TAKE n (x::xs) =
+     if n = (0 :num) then ([] :'a list) else x::TAKE (n - (1 :num)) xs:
+   thm
+val TAKE_nil =
+   |- !(n :num). TAKE n ([] :'a list) = ([] :'a list):
+   thm
+val TAKE_splitAtPki =
+   |- TAKE (n :num) (l :'a list) =
+   splitAtPki ((K :bool -> 'a -> bool) o $= n)
+     (K :'a list -> 'a list -> 'a list) l:
+   thm
+val TL =
+   |- !(h :'a) (t :'a list). TL (h::t) = t:
+   thm
+val TL_GENLIST =
+   |- !(f :num -> 'a) (n :num).
+     TL (GENLIST f (SUC n)) = GENLIST (f o SUC) n:
+   thm
+val UNION_APPEND =
+   |- !(l1 :'a list) (l2 :'a list).
+     set l1 UNION set l2 = set ((l1 ++ l2) :'a list):
+   thm
+val UNZIP =
+   |- (UNZIP ([] :('a # 'b) list) = (([] :'a list),([] :'b list))) /\
+   !(x :'a # 'b) (l :('a # 'b) list).
+     UNZIP (x::l) = (FST x::FST (UNZIP l),SND x::SND (UNZIP l)):
+   thm
+val UNZIP_MAP =
+   |- !(L :('a # 'b) list).
+     UNZIP L = (MAP (FST :'a # 'b -> 'a) L,MAP (SND :'a # 'b -> 'b) L):
+   thm
+val UNZIP_THM =
+   |- (UNZIP ([] :('a # 'b) list) = (([] :'a list),([] :'b list))) /\
+   (UNZIP (((x :'a),(y :'b))::(t :('a # 'b) list)) =
+    (let ((L1 :'a list),(L2 :'b list)) = UNZIP t in (x::L1,y::L2))):
+   thm
+val UNZIP_ZIP =
+   |- !(l1 :'a list) (l2 :'b list).
+     (LENGTH l1 = LENGTH l2) ==> (UNZIP (ZIP (l1,l2)) = (l1,l2)):
+   thm
+val WF_LIST_PRED =
+   |- WF (\(L1 :'a list) (L2 :'a list). ?(h :'a). L2 = h::L1):
+   thm
+val ZIP =
+   |- (ZIP (([] :'a list),([] :'b list)) = ([] :('a # 'b) list)) /\
+   !(x1 :'a) (l1 :'a list) (x2 :'b) (l2 :'b list).
+     ZIP (x1::l1,x2::l2) = (x1,x2)::ZIP (l1,l2):
+   thm
+val ZIP_DROP =
+   |- !(a :'a list) (b :'b list) (n :num).
+     n <= LENGTH a /\ (LENGTH a = LENGTH b) ==>
+     (ZIP (DROP n a,DROP n b) = DROP n (ZIP (a,b))):
+   thm
+val ZIP_EQ_NIL =
+   |- !(l1 :'a list) (l2 :'b list).
+     (LENGTH l1 = LENGTH l2) ==>
+     ((ZIP (l1,l2) = ([] :('a # 'b) list)) <=>
+      (l1 = ([] :'a list)) /\ (l2 = ([] :'b list))):
+   thm
+val ZIP_GENLIST =
+   |- !(l :'a list) (f :num -> 'b) (n :num).
+     (LENGTH l = n) ==>
+     (ZIP (l,GENLIST f n) = GENLIST (\(x :num). (EL x l,f x)) n):
+   thm
+val ZIP_MAP =
+   |- !(l1 :'a list) (l2 :'b list) (f1 :'a -> 'c) (f2 :'b -> 'd).
+     (LENGTH l1 = LENGTH l2) ==>
+     (ZIP (MAP f1 l1,l2) =
+      MAP (\(p :'a # 'b). (f1 (FST p),SND p)) (ZIP (l1,l2))) /\
+     (ZIP (l1,MAP f2 l2) =
+      MAP (\(p :'a # 'b). (FST p,f2 (SND p))) (ZIP (l1,l2))):
+   thm
+val ZIP_UNZIP =
+   |- !(l :('a # 'b) list). ZIP (UNZIP l) = l:
+   thm
+val all_distinct_nub =
+   |- !(l :'a list). ALL_DISTINCT (nub l):
+   thm
+val datatype_list =
+   |- DATATYPE
+     ((list :'a list -> ('a -> 'a list -> 'a list) -> bool)
+        ([] :'a list) (CONS :'a -> 'a list -> 'a list)):
+   thm
+val dropWhile_APPEND_EVERY =
+   |- !(P :'a -> bool) (l1 :'a list) (l2 :'a list).
+     EVERY P l1 ==> (dropWhile P ((l1 ++ l2) :'a list) = dropWhile P l2):
+   thm
+val dropWhile_APPEND_EXISTS =
+   |- !(P :'a -> bool) (l1 :'a list) (l2 :'a list).
+     EXISTS ($~ o P) l1 ==>
+     (dropWhile P ((l1 ++ l2) :'a list) =
+      ((dropWhile P l1 ++ l2) :'a list)):
+   thm
+val dropWhile_def =
+   |- (!(P :'a -> bool). dropWhile P ([] :'a list) = ([] :'a list)) /\
+   !(P :'a -> bool) (h :'a) (t :'a list).
+     dropWhile P (h::t) = if P h then dropWhile P t else h::t:
+   thm
+val dropWhile_eq_nil =
+   |- !(P :'a -> bool) (ls :'a list).
+     (dropWhile P ls = ([] :'a list)) <=> EVERY P ls:
+   thm
+val dropWhile_splitAtPki =
+   |- !(P :'a -> bool).
+     dropWhile P =
+     splitAtPki (combin$C ((K :bool -> num -> bool) o $~ o P))
+       (K (I :'a list -> 'a list) :'a list -> 'a list -> 'a list):
+   thm
+val el_append3 =
+   |- !(l1 :'a list) (x :'a) (l2 :'a list).
+     EL (LENGTH l1) ((((l1 ++ [x]) :'a list) ++ l2) :'a list) = x:
+   thm
+val every_zip_fst =
+   |- !(l1 :'a list) (l2 :'b list) (P :'a -> bool).
+     (LENGTH l1 = LENGTH l2) ==>
+     (EVERY (\(x :'a # 'b). P (FST x)) (ZIP (l1,l2)) <=> EVERY P l1):
+   thm
+val every_zip_snd =
+   |- !(l1 :'a list) (l2 :'b list) (P :'b -> bool).
+     (LENGTH l1 = LENGTH l2) ==>
+     (EVERY (\(x :'a # 'b). P (SND x)) (ZIP (l1,l2)) <=> EVERY P l2):
+   thm
+val exists_list_GENLIST =
+   |- (?(ls :'a list). (P :'a list -> bool) ls) <=>
+   ?(n :num) (f :num -> 'a). P (GENLIST f n):
+   thm
+val isPREFIX =
+   |- (!(l :'a list). ([] :'a list) <<= l <=> T) /\
+   !(h :'a) (t :'a list) (l :'a list).
+     h::t <<= l <=>
+     case l of ([] :'a list) => F | h'::t' => (h = h') /\ t <<= t':
+   thm
+val isPREFIX_THM =
+   |- (([] :'a list) <<= (l :'a list) <=> T) /\
+   ((h :'a)::(t :'a list) <<= ([] :'a list) <=> F) /\
+   ((h1 :'a)::(t1 :'a list) <<= (h2 :'a)::(t2 :'a list) <=>
+    (h1 = h2) /\ t1 <<= t2):
+   thm
+val last_drop =
+   |- !(l :'a list) (n :num). n < LENGTH l ==> (LAST (DROP n l) = LAST l):
+   thm
+val length_nub_append =
+   |- !(l1 :'a list) (l2 :'a list).
+     LENGTH (nub ((l1 ++ l2) :'a list)) =
+     LENGTH (nub l1) + LENGTH (nub (FILTER (\(x :'a). ~MEM x l1) l2)):
+   thm
+val list_11 =
+   |- !(a0 :'a) (a1 :'a list) (a0' :'a) (a1' :'a list).
+     (a0::a1 = a0'::a1') <=> (a0 = a0') /\ (a1 = a1'):
+   thm
+val list_Axiom =
+   |- !(f0 :'b) (f1 :'a -> 'a list -> 'b -> 'b).
+     ?(fn :'a list -> 'b).
+       (fn ([] :'a list) = f0) /\
+       !(a0 :'a) (a1 :'a list). fn (a0::a1) = f1 a0 a1 (fn a1):
+   thm
+val list_Axiom_old =
+   |- !(x :'b) (f :'b -> 'a -> 'a list -> 'b).
+     ?!(fn1 :'a list -> 'b).
+       (fn1 ([] :'a list) = x) /\
+       !(h :'a) (t :'a list). fn1 (h::t) = f (fn1 t) h t:
+   thm
+val list_CASES =
+   |- !(l :'a list). (l = ([] :'a list)) \/ ?(h :'a) (t :'a list). l = h::t:
+   thm
+val list_INDUCT =
+   |- !(P :'a list -> bool).
+     P ([] :'a list) /\ (!(t :'a list). P t ==> !(h :'a). P (h::t)) ==>
+     !(l :'a list). P l:
+   thm
+val list_INDUCT0 =
+   |- !(P :'a list -> bool).
+     P ([] :'a list) /\ (!(l :'a list). P l ==> !(a :'a). P (a::l)) ==>
+     !(l :'a list). P l:
+   thm
+val list_TY_DEF =
+   |- ?(rep :'a list -> 'a recspace).
+     TYPE_DEFINITION
+       (\(a0' :'a recspace).
+          !('list'  :'a recspace -> bool).
+            (!(a0' :'a recspace).
+               (a0' =
+                ind_type$CONSTR (0 :num) (ARB :'a)
+                  (\(n :num). (ind_type$BOTTOM :'a recspace))) \/
+               (?(a0 :'a) (a1 :'a recspace).
+                  (a0' =
+                   (\(a0 :'a) (a1 :'a recspace).
+                      ind_type$CONSTR (SUC (0 :num)) a0
+                        (ind_type$FCONS a1
+                           (\(n :num). (ind_type$BOTTOM :'a recspace))))
+                     a0 a1) /\ 'list' a1) ==>
+               'list' a0') ==>
+            'list' a0') rep:
+   thm
+val list_case_compute =
+   |- !(l :'a list).
+     (list_CASE l (b :'b) (f :'a -> 'a list -> 'b) :'b) =
+     if NULL l then b else f (HD l) (TL l):
+   thm
+val list_case_cong =
+   |- !(M :'a list) (M' :'a list) (v :'b) (f :'a -> 'a list -> 'b).
+     (M = M') /\ ((M' = ([] :'a list)) ==> (v = (v' :'b))) /\
+     (!(a0 :'a) (a1 :'a list).
+        (M' = a0::a1) ==>
+        (f a0 a1 = (f' :'a -> 'a list -> 'b) a0 a1)) ==>
+     ((list_CASE M v f :'b) = (list_CASE M' v' f' :'b)):
+   thm
+val list_case_def =
+   |- (!(v :'b) (f :'a -> 'a list -> 'b).
+      (list_CASE ([] :'a list) v f :'b) = v) /\
+   !(a0 :'a) (a1 :'a list) (v :'b) (f :'a -> 'a list -> 'b).
+     (list_CASE (a0::a1) v f :'b) = f a0 a1:
+   thm
+val list_distinct =
+   |- !(a1 :'a list) (a0 :'a). ([] :'a list) <> a0::a1:
+   thm
+val list_grammars =
+   (Rules:
+  (50)   TY  ::=  TY -> TY [fun] (R-associative)
+  (60)   TY  ::=  TY + TY [sum] (R-associative)
+  (70)   TY  ::=  TY # TY [prod] (R-associative)
+         TY  ::=  bool | (TY, TY)fun | ind | TY itself | TY list | num |
+                  one | TY option | (TY, TY)prod | TY recspace |
+                  TY set | (TY, TY)sum | unit
+         TY  ::=  TY[TY] (array type)
+Type abbreviations:
+  bool = min$bool                                        
+  ('a, 'b) fun = ('a, 'b) min$fun                        
+  ind = min$ind                                          
+  'a itself = 'a bool$itself                             
+  'a list = 'a list$list                                 
+  num = num$num                                          
+  one = one$one                                           (not printed)
+  'a option = 'a option$option                           
+  ('a, 'b) prod = ('a, 'b) pair$prod                     
+  'a recspace = 'a ind_type$recspace                     
+  'a set = ('a, min$bool) min$fun                         (not printed)
+  ('a, 'b) sum = ('a, 'b) sum$sum                        
+  unit = one$one                                         ,
+    (0)    TM  ::=  "OLEAST" <..binders..> "." TM |
+                "LEAST" <..binders..> "." TM |
+                "some" <..binders..> "." TM |
+                "∃!" <..binders..> "." TM [?!] |
+                "?!" <..binders..> "." TM |
+                "∃" <..binders..> "." TM [?] |
+                "?" <..binders..> "." TM |
+                "∀" <..binders..> "." TM [!] |
+                "!" <..binders..> "." TM | "@" <..binders..> "." TM |
+                "λ" <..binders..> "." TM | "\" <..binders..> "." TM
+(1)    TM  ::=  "case" TM "of" TM "|" TM "|" TM  [case magic$default - %case%] |
+                "case" TM "of" "|" TM  [case magic$default - %case%] |
+                "case" TM "of" TM "|" TM  [case magic$default - %case%] |
+                "case" TM "of" TM  [case magic$default - %case%]
+(4)    TM  ::=  TM "::" TM (restricted quantification operator)
+(5)    TM  ::=  TM TM  (binder argument concatenation)
+(8)    TM  ::=  "let" LTM< _ letnil, _ letcons,;> "in" TM  [ _ let]
+(9)    TM  ::=  TM "and" TM  [ _ and]   (L-associative)
+(12)   TM  ::=  TM "=>" TM  [case magic$default - %arrow%]
+                (non-associative)
+(50)   TM  ::=  TM "," TM   (R-associative)
+(70)   TM  ::=  "if" TM "then" TM "else" TM  [COND]
+(80)   TM  ::=  TM ":-" TM   (non-associative)
+(100)  TM  ::=  TM "⇎" TM  [<=/=>] | TM "<=/=>" TM | TM "⇔" TM  [<=>] |
+                TM "<=>" TM | TM "=" TM
+                (non-associative)
+(200)  TM  ::=  TM "⇒" TM  [==>] | TM "==>" TM   (R-associative)
+(300)  TM  ::=  TM "∨" TM  [\/] | TM "\/" TM   (R-associative)
+(310)  TM  ::=  TM ":>" TM   (L-associative)
+(320)  TM  ::=  TM "=+" TM   (non-associative)
+(400)  TM  ::=  TM "∧" TM  [/\] | TM "/\" TM   (R-associative)
+(425)  TM  ::=  TM "equiv_on" TM | TM "∉" TM  [NOTIN] | TM "NOTIN" TM |
+                TM "∈" TM  [IN] | TM "IN" TM
+                (non-associative)
+(450)  TM  ::=  TM "≼" TM  [<<=] | TM "<<=" TM | TM "PERMUTES" TM |
+                TM "⊂" TM  [PSUBSET] | TM "PSUBSET" TM |
+                TM "⊆" TM  [SUBSET] | TM "SUBSET" TM | TM "≥" TM  [>=] |
+                TM ">=" TM | TM "≤" TM  [<=] | TM "<=" TM | TM ">" TM |
+                TM "<" TM | TM "⊆ᵣ" TM  [RSUBSET] | TM "RSUBSET" TM |
+                TM "≠" TM | TM "<>" TM
+                (non-associative)
+(460)  TM  ::=  TM "with" TM  [record update] |
+                TM ":=" TM  [record field update] |
+                TM "updated_by" TM  [functional record update]
+                (R-associative)
+(480)  TM  ::=  TM "++" TM   (L-associative)
+(490)  TM  ::=  TM "::" TM  [CONS] | TM "INSERT" TM | TM "LEX" TM |
+                TM "##" TM
+                (R-associative)
+(500)  TM  ::=  TM "DELETE" TM | TM "DIFF" TM | TM "∪" TM  [UNION] |
+                TM "UNION" TM | TM "<*>" TM  [APPLICATIVE_FAPPLY] |
+                TM "−" TM  [-] | TM "-" TM | TM "+" TM |
+                TM "∪ᵣ" TM  [RUNION] | TM "RUNION" TM
+                (L-associative)
+(600)  TM  ::=  TM "×" TM  [CROSS] | TM "CROSS" TM |
+                TM "∩" TM  [INTER] | TM "INTER" TM | TM "DIV" TM |
+                TM "*" TM | TM "\\" TM | TM "∩ᵣ" TM  [RINTER] |
+                TM "RINTER" TM
+                (L-associative)
+(601)  TM  ::=  TM "⊗" TM  [*,] | TM "*," TM   (R-associative)
+(650)  TM  ::=  TM "MOD" TM   (L-associative)
+(700)  TM  ::=  TM "**" TM | TM "EXP" TM   (R-associative)
+(800)  TM  ::=  TM "∘ᵣ" TM  [O] | TM "O" TM | TM "∘" TM  [o] | TM "o" TM
+                (R-associative)
+(899)  TM  ::=  TM ":" TY  (type annotation)
+(900)  TM  ::=  "&" TM | "-" TM  [numeric_negate] | "¬" TM  [~] | "~" TM
+(2000) TM  ::=  TM TM  (function application)   (L-associative)
+(2100) TM  ::=  TM "³" | TM "²" | TM "ᵀ"  [inv] | TM "^="  [EQC] |
+                TM "^*"  [RTC] | TM "⁺"  [TC] | TM "^+"  [TC]
+(2200) TM  ::=  "𝕌" TM | "univ" TM
+(2500) TM  ::=  TM "." TM  [record field selection]   (L-associative)
+       TM  ::=  "[" LTM<NIL,CONS,;> "]"  [] |
+                "{" LTM<EMPTY,INSERT,;> "}"  [] |
+                "{" TM "|" TM "|" TM "}"  [gspec2 special] |
+                "{" TM "|" TM "}"  [gspec special] | "(" ")"  [one] |
+                "<|" LTM< _ record nil, _ record cons,;> "|>"  [] |
+                "(" TM ")"  [just parentheses, no term produced]
+Known constants:
+    _ fakeconst4.case,S10.case magic,7.default ! ## & () * ** *, + ++ ,
+  - /\ 0 :- :> < <<= <= <=/=> <=> <> = =+ ==> > >= ? ?! @ ABS_DIFF
+  ABS_num ABS_prod ABS_sum AC ALL_DISTINCT APPEND APPLICATIVE_FAPPLY ARB
+  ASSOC Abbrev BIGINTER BIGUNION BIJ BIT1 BIT2 BOUNDED CARD CHOICE COMM
+  COMPL COND CONS CR CROSS CURRY Cong DATATYPE DELETE DFUNSET DIFF
+  DISJOINT DIV DIV2 DIVMOD DROP EL EMPTY EMPTY_REL EQC EVEN EVERY EVERY2
+  EVERYi EXISTS EXP EXT_POINT F FACT FAIL FCOMM FILTER FIND FINITE FLAT
+  FOLDL FOLDL2 FOLDR FRONT FST FUNPOW FUNSET GENLIST GENLIST_AUX GSPEC
+  HD HOARE_SPEC I IDEM IMAGE IN INDEX_FIND INDEX_OF INDUCTIVE_INVARIANT
+  INDUCTIVE_INVARIANT_ON INFINITE INJ INL INR INSERT INTER INVOL ISL ISR
+  IS_NONE IS_NUM_REP IS_SOME IS_SUM_REP ITSET Id IfCases K LAST LEAST
+  LEFT_ID LEN LENGTH LET LEX LINV LINV_OPT LIST_APPLY LIST_BIND
+  LIST_IGNORE_BIND LIST_LIFT2 LIST_REL LIST_TO_SET LLEX LRC LUPDATE
+  LinearOrder MAP MAP2 MAX MAX_SET MEM MIN MIN_SET MOD MODEQ MONOID NIL
+  NONE NOTIN NRC NULL NUMERAL NUMFST NUMLEFT NUMRIGHT NUMSND O ODD
+  OLEAST ONE_ONE ONTO OPTION_ALL OPTION_APPLY OPTION_BIND OPTION_CHOICE
+  OPTION_GUARD OPTION_IGNORE_BIND OPTION_JOIN OPTION_MAP OPTION_MAP2
+  OPTION_MCOMP OPTREL OPT_MMAP OUTL OUTR OWHILE Order PAD_LEFT PAD_RIGHT
+  PERMUTES PI POW PRE PREIMAGE PRIM_REC PRIM_REC_FUN PROD_ALL PROD_IMAGE
+  PROD_SET PSUBSET PreOrder RC RCOMPL RDOM RDOM_DELETE RELPOW
+  REL_RESTRICT REMPTY REP_num REP_prod REP_sum REST RESTRICT
+  RES_ABSTRACT RES_EXISTS RES_EXISTS_UNIQUE RES_FORALL RES_SELECT REV
+  REVERSE RIGHT_ID RINTER RINV RPROD RRANGE RRESTRICT RSUBSET RTC RUNION
+  RUNIV S SC SET_TO_LIST SIGMA SIMP_REC SIMP_REC_REL SING SINGL SN SND
+  SNOC SOME STRORD SUBSET SUC SUC_REP SUM SUM_ACC SUM_ALL SUM_IMAGE
+  SUM_SET SURJ SWAP StrongLinearOrder StrongOrder T TAKE TC THE TL
+  TYPE_DEFINITION UNCURRY UNION UNIV UNIV_POINT UNZIP UPDATE W WCR WF
+  WFP WFREC WHILE WeakLinearOrder WeakOrder ZERO ZERO_REP ZIP ZRECSPACE
+  \/ \\ _ inject_number antisymmetric approx bool_size case chooser
+  count countable dest_rec diag diamond dropWhile enumerate equiv_on
+  equivalence findq iBIT_cases internal_mult inv inv_image invtri
+  invtri0 irreflexive isPREFIX itself_case lift2 listRel list_CASE
+  list_size literal_case measure mk_rec napp nat_elim__magic ncons nf
+  nfoldl nfst nlen nlistrec nmap nnil npair nsnd nub num_CASE
+  num_to_pair o one one_CASE one_size option_ABS option_CASE option_REP
+  option_size pair_CASE pair_size pair_to_num pairwise partition
+  rcdiamond reflexive schroeder_close set some splitAtPki stmarker
+  sum_CASE sum_size symmetric the_fun the_value total transitive tri
+  trichotomous tri⁻¹ unint univ wellfounded ~ ² ³ Π ∅ ∅ᵣ ∑ ≠ 𝕌 𝕌ᵣ
+Overloading:
+                     -> 
+    (\(x :'a). list$CONS x (list$NIL :'a list))
+    (\(h :'a) (l :'a list). bool$~ (bool$IN h (list$LIST_TO_SET l)))
+    (\(x :'a itself). univ((:'a) :'a itself))
+  &                  ->  nat_elim__magic
+  ()                 ->  one
+  **                 ->  EXP
+  *,                 ->  npair
+  ++                 ->  APPEND ++
+  <<=                ->  isPREFIX
+  <=/=>              ->  (\(x :bool) (y :bool). bool$~ (min$= x y))
+  <=>                ->  =
+  <>                 ->  (\(x :'a) (y :'a). bool$~ (min$= x y))
+  =+                 ->  UPDATE
+  APPLICATIVE_FAPPLY ->  LIST_APPLY OPTION_APPLY
+  EVERY2             ->  LIST_REL
+  INFINITE           ->  (\(s :'a -> bool). bool$~ (pred_set$FINITE s))
+  Id                 ->  =
+  MEM                -> 
+    (\(h :'a) (l :'a list). bool$IN h (list$LIST_TO_SET l))
+  NOTIN              -> 
+    (\(x :'a) (y :'a -> bool). bool$~ (bool$IN x y))
+  OPTION_MAP2        ->  OPTION_MAP2 OPTION_MAP2
+  PERMUTES           -> 
+    (\(f :'a -> 'a) (s :'a -> bool). pred_set$BIJ f s s)
+  PI                 ->  PROD_IMAGE
+  RELPOW             ->  NRC
+  REMPTY             ->  EMPTY_REL
+  SIGMA              ->  SUM_IMAGE
+  SINGL              ->  (\(x :'a). list$CONS x (list$NIL :'a list))
+  \\                 ->  RDOM_DELETE
+  _ inject_number    ->  nat_elim__magic
+  case               -> 
+    list_CASE option_CASE sum_CASE num_CASE pair_CASE itself_case
+    literal_case COND
+  lift2              ->  OPTION_MAP2
+  listRel            ->  LIST_REL
+  nnil               ->  0
+  set                ->  LIST_TO_SET
+  tri⁻¹              ->  invtri
+  univ               ->  (\(x :'a itself). univ((:'a) :'a itself))
+  ²                  ->  (\(x :num). arithmetic$EXP x (2n :num))
+  ³                  ->  (\(x :num). arithmetic$EXP x (3n :num))
+  Π                  ->  PROD_IMAGE
+  ∅                  ->  EMPTY
+  ∅ᵣ                 ->  EMPTY_REL
+  ∑                  ->  SUM_IMAGE
+  ≠                  ->  (\(x :'a) (y :'a). bool$~ (min$= x y))
+  𝕌                  ->  (\(x :'a itself). univ((:'a) :'a itself))
+  𝕌ᵣ                 ->  RUNIV
+User printing functions:
+  if (gd :bool) then (tr :'a) else (fl :'a)       ->  bool.COND
+  LET (f :'a -> 'b) (x :'a)       ->  bool.LET
+  univ((:'a) :'a itself)       ->  pred_set.UNIV):
+   type_grammar.grammar * term_grammar.grammar
+val list_induction =
+   |- !(P :'a list -> bool).
+     P ([] :'a list) /\ (!(t :'a list). P t ==> !(h :'a). P (h::t)) ==>
+     !(l :'a list). P l:
+   thm
+val list_nchotomy =
+   |- !(l :'a list). (l = ([] :'a list)) \/ ?(h :'a) (t :'a list). l = h::t:
+   thm
+val list_size_cong =
+   |- !(M :'a list) (N :'a list) (f :'a -> num) (f' :'a -> num).
+     (M = N) /\ (!(x :'a). MEM x N ==> (f x = f' x)) ==>
+     (list_size f M = list_size f' N):
+   thm
+val list_size_def =
+   |- (!(f :'a -> num). list_size f ([] :'a list) = (0 :num)) /\
+   !(f :'a -> num) (a0 :'a) (a1 :'a list).
+     list_size f (a0::a1) = (1 :num) + (f a0 + list_size f a1):
+   thm
+val list_to_set_diff =
+   |- !(l1 :'a list) (l2 :'a list).
+     set l2 DIFF set l1 = set (FILTER (\(x :'a). ~MEM x l1) l2):
+   thm
+val lupdate_append =
+   |- !(x :'a) (n :num) (l1 :'a list) (l2 :'a list).
+     n < LENGTH l1 ==>
+     (LUPDATE x n ((l1 ++ l2) :'a list) =
+      ((LUPDATE x n l1 ++ l2) :'a list)):
+   thm
+val lupdate_append2 =
+   |- !(v :'a) (l1 :'a list) (x :'a) (l2 :'a list) (l3 :'b).
+     LUPDATE v (LENGTH l1) ((((l1 ++ [x]) :'a list) ++ l2) :'a list) =
+     ((((l1 ++ [v]) :'a list) ++ l2) :'a list):
+   thm
+val mem_exists_set =
+   |- !(x :'a) (y :'b) (l :('a # 'b) list).
+     MEM (x,y) l ==> ?(z :'a # 'b). (x = FST z) /\ MEM z l:
+   thm
+val nub_append =
+   |- !(l1 :'a list) (l2 :'a list).
+     nub ((l1 ++ l2) :'a list) =
+     ((nub (FILTER (\(x :'a). ~MEM x l2) l1) ++ nub l2) :'a list):
+   thm
+val nub_def =
+   |- (nub ([] :'a list) = ([] :'a list)) /\
+   !(x :'a) (l :'a list).
+     nub (x::l) = if MEM x l then nub l else x::nub l:
+   thm
+val nub_set =
+   |- !(l :'a list). set (nub l) = set l:
+   thm
+val splitAtPki_APPEND =
+   |- !(l1 :'a list) (l2 :'a list) (P :num -> 'a -> bool)
+      (k :'a list -> 'a list -> 'b).
+     EVERYi (\(i :num). $~ o P i) l1 /\
+     ((0 :num) < LENGTH l2 ==> P (LENGTH l1) (HD l2)) ==>
+     (splitAtPki P k ((l1 ++ l2) :'a list) = k l1 l2):
+   thm
+val splitAtPki_EQN =
+   |- splitAtPki (P :num -> 'b -> bool) (k :'b list -> 'b list -> 'a)
+     (l :'b list) =
+   case OLEAST(i :num). i < LENGTH l /\ P i (EL i l) of
+     (NONE :num option) => k l ([] :'b list)
+   | SOME i => k (TAKE i l) (DROP i l):
+   thm
+val splitAtPki_def =
+   |- (!(P :num -> 'b -> bool) (k :'b list -> 'b list -> 'a).
+      splitAtPki P k ([] :'b list) = k ([] :'b list) ([] :'b list)) /\
+   !(P :num -> 'b -> bool) (k :'b list -> 'b list -> 'a) (h :'b)
+      (t :'b list).
+     splitAtPki P k (h::t) =
+     if P (0 :num) h then k ([] :'b list) (h::t)
+     else
+       splitAtPki (P o SUC) (\(p :'b list) (s :'b list). k (h::p) s) t:
+   thm
+type thm
+> > val accessors_of = fn: hol_type -> thm list
+val axiom_of = fn: hol_type -> thm
+val axiom_of0 = fn: hol_type -> shared_thm
+val case_cong_of = fn: hol_type -> thm
+val case_const_of = fn: hol_type -> term
+val case_def_of = fn: hol_type -> thm
+val constructors_of = fn: hol_type -> term list
+val dest_case = fn: term -> term * term * (term * term) list
+val dest_record = fn: term -> hol_type * (string * term) list
+val dest_record_type = fn: hol_type -> (string * hol_type) list
+val destructors_of = fn: hol_type -> thm list
+val distinct_of = fn: hol_type -> thm
+val elts = fn: unit -> tyinfo list
+val encode_of = fn: hol_type -> term * thm
+val encode_of0 = fn: hol_type -> (term * shared_thm) option
+val fetch = fn: hol_type -> tyinfo option
+val fields_of = fn: hol_type -> (string * hol_type) list
+eqtype hol_type
+val induction_of = fn: hol_type -> thm
+val induction_of0 = fn: hol_type -> shared_thm
+val is_case = fn: term -> bool
+val is_constructor = fn: term -> bool
+val is_record = fn: term -> bool
+val is_record_type = fn: hol_type -> bool
+val mk_case = fn: term * (term * term) list -> term
+val mk_pattern_fn = fn: (term * term) list -> term
+val mk_record = fn: hol_type * (string * term) list -> term
+val nchotomy_of = fn: hol_type -> thm
+val one_one_of = fn: hol_type -> thm
+val read = fn: {Thy: string, Tyop: string} -> tyinfo option
+val recognizers_of = fn: hol_type -> thm list
+val register_update_fn = fn: (tyinfo list -> tyinfo list) -> unit
+type shared_thm
+val simpls_of = fn: hol_type -> simpfrag.simpfrag
+val size_of = fn: hol_type -> term * thm
+val size_of0 = fn: hol_type -> (term * shared_thm) option
+val strip_case = fn: term -> term * (term * term) list
+eqtype term
+val theTypeBase = fn: unit -> typeBase
+type thm
+type tyinfo
+type typeBase
+val updates_of = fn: hol_type -> thm list
+val write = fn: tyinfo list -> tyinfo list
+> > val ABS_DIFF_ADD_SAME =
+   |- !(n :num) (m :num) (p :num). ABS_DIFF (n + p) (m + p) = ABS_DIFF n m:
+   thm
+val ABS_DIFF_COMM =
+   |- !(n :num) (m :num). ABS_DIFF n m = ABS_DIFF m n:
+   thm
+val ABS_DIFF_EQS =
+   |- !(n :num). ABS_DIFF n n = (0 :num):
+   thm
+val ABS_DIFF_EQ_0 =
+   |- !(n :num) (m :num). (ABS_DIFF n m = (0 :num)) <=> (n = m):
+   thm
+val ABS_DIFF_LE_SUM =
+   |- ABS_DIFF (x :num) (z :num) <= x + z:
+   thm
+val ABS_DIFF_PLUS_LE =
+   |- !(x :num) (z :num) (y :num). ABS_DIFF x (y + z) <= y + ABS_DIFF x z:
+   thm
+val ABS_DIFF_SUC =
+   |- !(n :num) (m :num). ABS_DIFF (SUC n) (SUC m) = ABS_DIFF n m:
+   thm
+val ABS_DIFF_SUC_LE =
+   |- !(x :num) (z :num). ABS_DIFF x (SUC z) <= SUC (ABS_DIFF x z):
+   thm
+val ABS_DIFF_SUMS =
+   |- !(n1 :num) (n2 :num) (m1 :num) (m2 :num).
+     ABS_DIFF (n1 + n2) (m1 + m2) <= ABS_DIFF n1 m1 + ABS_DIFF n2 m2:
+   thm
+val ABS_DIFF_SYM =
+   |- !(n :num) (m :num). ABS_DIFF n m = ABS_DIFF m n:
+   thm
+val ABS_DIFF_TRIANGLE =
+   |- !(x :num) (y :num) (z :num).
+     ABS_DIFF x z <= ABS_DIFF x y + ABS_DIFF y z:
+   thm
+val ABS_DIFF_TRIANGLE_lem =
+   |- !(x :num) (y :num). x <= ABS_DIFF x y + y:
+   thm
+val ABS_DIFF_ZERO =
+   |- !(n :num). (ABS_DIFF n (0 :num) = n) /\ (ABS_DIFF (0 :num) n = n):
+   thm
+val ABS_DIFF_def =
+   |- !(n :num) (m :num). ABS_DIFF n m = if n < m then m - n else n - m:
+   thm
+val ADD =
+   |- (!(n :num). (0 :num) + n = n) /\
+   !(m :num) (n :num). SUC m + n = SUC (m + n):
+   thm
+val ADD1 =
+   |- !(m :num). SUC m = m + (1 :num):
+   thm
+val ADD_0 =
+   |- !(m :num). m + (0 :num) = m:
+   thm
+val ADD_ASSOC =
+   |- !(m :num) (n :num) (p :num). m + (n + p) = m + n + p:
+   thm
+val ADD_CLAUSES =
+   |- ((0 :num) + (m :num) = m) /\ (m + (0 :num) = m) /\
+   (SUC m + (n :num) = SUC (m + n)) /\ (m + SUC n = SUC (m + n)):
+   thm
+val ADD_COMM =
+   |- !(m :num) (n :num). m + n = n + m:
+   thm
+val ADD_DIV_ADD_DIV =
+   |- !(n :num).
+     (0 :num) < n ==>
+     !(x :num) (r :num). (x * n + r) DIV n = x + r DIV n:
+   thm
+val ADD_DIV_RWT =
+   |- !(n :num).
+     (0 :num) < n ==>
+     !(m :num) (p :num).
+       (m MOD n = (0 :num)) \/ (p MOD n = (0 :num)) ==>
+       ((m + p) DIV n = m DIV n + p DIV n):
+   thm
+val ADD_EQ_0 =
+   |- !(m :num) (n :num).
+     (m + n = (0 :num)) <=> (m = (0 :num)) /\ (n = (0 :num)):
+   thm
+val ADD_EQ_1 =
+   |- !(m :num) (n :num).
+     (m + n = (1 :num)) <=>
+     (m = (1 :num)) /\ (n = (0 :num)) \/
+     (m = (0 :num)) /\ (n = (1 :num)):
+   thm
+val ADD_EQ_SUB =
+   |- !(m :num) (n :num) (p :num). n <= p ==> ((m + n = p) <=> (m = p - n)):
+   thm
+val ADD_INV_0 =
+   |- !(m :num) (n :num). (m + n = m) ==> (n = (0 :num)):
+   thm
+val ADD_INV_0_EQ =
+   |- !(m :num) (n :num). (m + n = m) <=> (n = (0 :num)):
+   thm
+val ADD_MOD =
+   |- !(n :num) (a :num) (b :num) (p :num).
+     (0 :num) < n ==>
+     (((a + p) MOD n = (b + p) MOD n) <=> (a MOD n = b MOD n)):
+   thm
+val ADD_MODULUS =
+   |- (!(n :num) (x :num). (0 :num) < n ==> ((x + n) MOD n = x MOD n)) /\
+   !(n :num) (x :num). (0 :num) < n ==> ((n + x) MOD n = x MOD n):
+   thm
+val ADD_MODULUS_LEFT =
+   |- !(n :num) (x :num). (0 :num) < n ==> ((x + n) MOD n = x MOD n):
+   thm
+val ADD_MODULUS_RIGHT =
+   |- !(n :num) (x :num). (0 :num) < n ==> ((n + x) MOD n = x MOD n):
+   thm
+val ADD_MONO_LESS_EQ =
+   |- !(m :num) (n :num) (p :num). m + n <= m + p <=> n <= p:
+   thm
+val ADD_SUB =
+   |- !(a :num) (c :num). a + c - c = a:
+   thm
+val ADD_SUC =
+   |- !(m :num) (n :num). SUC (m + n) = m + SUC n:
+   thm
+val ADD_SYM =
+   |- !(m :num) (n :num). m + n = n + m:
+   thm
+val ALT_ZERO =
+   |- ZERO = (0 :num):
+   thm
+val BIT1 =
+   |- !(n :num). BIT1 n = n + (n + SUC (0 :num)):
+   thm
+val BIT2 =
+   |- !(n :num). BIT2 n = n + (n + SUC (SUC (0 :num))):
+   thm
+val BOUNDED_EXISTS_THM =
+   |- !(c :num).
+     (0 :num) < c ==>
+     ((?(n :num). n < c /\ (P :num -> bool) n) <=>
+      P (c - (1 :num)) \/ ?(n :num). n < c - (1 :num) /\ P n):
+   thm
+val BOUNDED_FORALL_THM =
+   |- !(c :num).
+     (0 :num) < c ==>
+     ((!(n :num). n < c ==> (P :num -> bool) n) <=>
+      P (c - (1 :num)) /\ !(n :num). n < c - (1 :num) ==> P n):
+   thm
+val CANCEL_SUB =
+   |- !(p :num) (n :num) (m :num).
+     p <= n /\ p <= m ==> ((n - p = m - p) <=> (n = m)):
+   thm
+val COMPLETE_INDUCTION =
+   |- !(P :num -> bool).
+     (!(n :num). (!(m :num). m < n ==> P m) ==> P n) ==> !(n :num). P n:
+   thm
+val DA =
+   |- !(k :num) (n :num).
+     (0 :num) < n ==> ?(r :num) (q :num). (k = q * n + r) /\ r < n:
+   thm
+val DIV2_def =
+   |- !(n :num). DIV2 n = n DIV (2 :num):
+   thm
+val DIVISION =
+   |- !(n :num).
+     (0 :num) < n ==>
+     !(k :num). (k = k DIV n * n + k MOD n) /\ k MOD n < n:
+   thm
+val DIVMOD_CALC =
+   |- (!(m :num) (n :num).
+      (0 :num) < n ==> (m DIV n = FST (DIVMOD ((0 :num),m,n)))) /\
+   !(m :num) (n :num).
+     (0 :num) < n ==> (m MOD n = SND (DIVMOD ((0 :num),m,n))):
+   thm
+val DIVMOD_CORRECT =
+   |- !(m :num) (n :num) (a :num).
+     (0 :num) < n ==> (DIVMOD (a,m,n) = (a + m DIV n,m MOD n)):
+   thm
+val DIVMOD_DEF =
+   |- DIVMOD =
+   WFREC
+     (measure
+        ((FST :num # num -> num) o (SND :num # num # num -> num # num)))
+     (\(f :num # num # num -> num # num) ((a :num),(m :num),(n :num)).
+        if n = (0 :num) then ((0 :num),(0 :num))
+        else if m < n then (a,m)
+        else
+          (let
+             (q :num) = findq ((1 :num),m,n)
+           in
+             f (a + q,m - n * q,n))):
+   thm
+val DIVMOD_ID =
+   |- !(n :num).
+     (0 :num) < n ==> (n DIV n = (1 :num)) /\ (n MOD n = (0 :num)):
+   thm
+val DIVMOD_THM =
+   |- DIVMOD ((a :num),(m :num),(n :num)) =
+   if n = (0 :num) then ((0 :num),(0 :num))
+   else if m < n then (a,m)
+   else
+     (let (q :num) = findq ((1 :num),m,n) in DIVMOD (a + q,m - n * q,n)):
+   thm
+val DIV_1 =
+   |- !(q :num). q DIV (1 :num) = q:
+   thm
+val DIV_DIV_DIV_MULT =
+   |- !(m :num) (n :num).
+     (0 :num) < m /\ (0 :num) < n ==>
+     !(x :num). x DIV m DIV n = x DIV (m * n):
+   thm
+val DIV_EQ_X =
+   |- !(x :num) (y :num) (z :num).
+     (0 :num) < z ==> ((y DIV z = x) <=> x * z <= y /\ y < SUC x * z):
+   thm
+val DIV_LESS =
+   |- !(n :num) (d :num). (0 :num) < n /\ (1 :num) < d ==> n DIV d < n:
+   thm
+val DIV_LESS_EQ =
+   |- !(n :num). (0 :num) < n ==> !(k :num). k DIV n <= k:
+   thm
+val DIV_LE_MONOTONE =
+   |- !(n :num) (x :num) (y :num).
+     (0 :num) < n /\ x <= y ==> x DIV n <= y DIV n:
+   thm
+val DIV_LE_X =
+   |- !(x :num) (y :num) (z :num).
+     (0 :num) < z ==> (y DIV z <= x <=> y < (x + (1 :num)) * z):
+   thm
+val DIV_LT_X =
+   |- !(x :num) (y :num) (z :num).
+     (0 :num) < z ==> (y DIV z < x <=> y < x * z):
+   thm
+val DIV_MOD_MOD_DIV =
+   |- !(m :num) (n :num) (k :num).
+     (0 :num) < n /\ (0 :num) < k ==>
+     ((m DIV n) MOD k = m MOD (n * k) DIV n):
+   thm
+val DIV_MULT =
+   |- !(n :num) (r :num). r < n ==> !(q :num). (q * n + r) DIV n = q:
+   thm
+val DIV_ONE =
+   |- !(q :num). q DIV SUC (0 :num) = q:
+   thm
+val DIV_P =
+   |- !(P :num -> bool) (p :num) (q :num).
+     (0 :num) < q ==>
+     (P (p DIV q) <=>
+      ?(k :num) (r :num). (p = k * q + r) /\ r < q /\ P k):
+   thm
+val DIV_P_UNIV =
+   |- !(P :num -> bool) (m :num) (n :num).
+     (0 :num) < n ==>
+     (P (m DIV n) <=>
+      !(q :num) (r :num). (m = q * n + r) /\ r < n ==> P q):
+   thm
+val DIV_SUB =
+   |- (0 :num) < (n :num) /\ n * (q :num) <= (m :num) ==>
+   ((m - n * q) DIV n = m DIV n - q):
+   thm
+val DIV_UNIQUE =
+   |- !(n :num) (k :num) (q :num).
+     (?(r :num). (k = q * n + r) /\ r < n) ==> (k DIV n = q):
+   thm
+val DOUBLE_LT =
+   |- !(p :num) (q :num).
+     (2 :num) * p + (1 :num) < (2 :num) * q <=>
+     (2 :num) * p < (2 :num) * q:
+   thm
+val EQ_ADD_LCANCEL =
+   |- !(m :num) (n :num) (p :num). (m + n = m + p) <=> (n = p):
+   thm
+val EQ_ADD_RCANCEL =
+   |- !(m :num) (n :num) (p :num). (m + p = n + p) <=> (m = n):
+   thm
+val EQ_LESS_EQ =
+   |- !(m :num) (n :num). (m = n) <=> m <= n /\ n <= m:
+   thm
+val EQ_MONO_ADD_EQ =
+   |- !(m :num) (n :num) (p :num). (m + p = n + p) <=> (m = n):
+   thm
+val EQ_MULT_LCANCEL =
+   |- !(m :num) (n :num) (p :num).
+     (m * n = m * p) <=> (m = (0 :num)) \/ (n = p):
+   thm
+val EQ_MULT_RCANCEL =
+   |- !(m :num) (n :num) (p :num).
+     (n * m = p * m) <=> (m = (0 :num)) \/ (n = p):
+   thm
+val EVEN =
+   |- (EVEN (0 :num) <=> T) /\ !(n :num). EVEN (SUC n) <=> ~EVEN n:
+   thm
+val EVEN_ADD =
+   |- !(m :num) (n :num). EVEN (m + n) <=> (EVEN m <=> EVEN n):
+   thm
+val EVEN_AND_ODD =
+   |- !(n :num). ~(EVEN n /\ ODD n):
+   thm
+val EVEN_DOUBLE =
+   |- !(n :num). EVEN ((2 :num) * n):
+   thm
+val EVEN_EXISTS =
+   |- !(n :num). EVEN n <=> ?(m :num). n = (2 :num) * m:
+   thm
+val EVEN_EXP =
+   |- !(m :num) (n :num). (0 :num) < n /\ EVEN m ==> EVEN (m ** n):
+   thm
+val EVEN_EXP_IFF =
+   |- !(n :num) (m :num). EVEN (m ** n) <=> (0 :num) < n /\ EVEN m:
+   thm
+val EVEN_MOD2 =
+   |- !(x :num). EVEN x <=> (x MOD (2 :num) = (0 :num)):
+   thm
+val EVEN_MULT =
+   |- !(m :num) (n :num). EVEN (m * n) <=> EVEN m \/ EVEN n:
+   thm
+val EVEN_ODD =
+   |- !(n :num). EVEN n <=> ~ODD n:
+   thm
+val EVEN_ODD_EXISTS =
+   |- !(n :num).
+     (EVEN n ==> ?(m :num). n = (2 :num) * m) /\
+     (ODD n ==> ?(m :num). n = SUC ((2 :num) * m)):
+   thm
+val EVEN_OR_ODD =
+   |- !(n :num). EVEN n \/ ODD n:
+   thm
+val EXISTS_GREATEST =
+   |- !(P :num -> bool).
+     (?(x :num). P x) /\ (?(x :num). !(y :num). y > x ==> ~P y) <=>
+     ?(x :num). P x /\ !(y :num). y > x ==> ~P y:
+   thm
+val EXISTS_NUM =
+   |- !(P :num -> bool).
+     (?(n :num). P n) <=> P (0 :num) \/ ?(m :num). P (SUC m):
+   thm
+val EXP =
+   |- (!(m :num). m ** (0 :num) = (1 :num)) /\
+   !(m :num) (n :num). m ** SUC n = m * m ** n:
+   thm
+val EXP2_LT =
+   |- !(m :num) (n :num).
+     n DIV (2 :num) < (2 :num) ** m <=> n < (2 :num) ** SUC m:
+   thm
+val EXP_1 =
+   |- !(n :num). ((1 :num) ** n = (1 :num)) /\ (n ** (1 :num) = n):
+   thm
+val EXP_ADD =
+   |- !(p :num) (q :num) (n :num). n ** (p + q) = n ** p * n ** q:
+   thm
+val EXP_ALWAYS_BIG_ENOUGH =
+   |- !(b :num). (1 :num) < b ==> !(n :num). ?(m :num). n <= b ** m:
+   thm
+val EXP_BASE_INJECTIVE =
+   |- !(b :num).
+     (1 :num) < b ==> !(n :num) (m :num). (b ** n = b ** m) <=> (n = m):
+   thm
+val EXP_BASE_LEQ_MONO_IMP =
+   |- !(n :num) (m :num) (b :num).
+     (0 :num) < b /\ m <= n ==> b ** m <= b ** n:
+   thm
+val EXP_BASE_LEQ_MONO_SUC_IMP =
+   |- (m :num) <= (n :num) ==> SUC (b :num) ** m <= SUC b ** n:
+   thm
+val EXP_BASE_LE_IFF =
+   |- (b :num) ** (m :num) <= b ** (n :num) <=>
+   (b = (0 :num)) /\ (n = (0 :num)) \/ (b = (0 :num)) /\ (0 :num) < m \/
+   (b = (1 :num)) \/ (1 :num) < b /\ m <= n:
+   thm
+val EXP_BASE_LE_MONO =
+   |- !(b :num).
+     (1 :num) < b ==> !(n :num) (m :num). b ** m <= b ** n <=> m <= n:
+   thm
+val EXP_BASE_LT_MONO =
+   |- !(b :num).
+     (1 :num) < b ==> !(n :num) (m :num). b ** m < b ** n <=> m < n:
+   thm
+val EXP_BASE_MULT =
+   |- !(z :num) (x :num) (y :num). (x * y) ** z = x ** z * y ** z:
+   thm
+val EXP_EQ_0 =
+   |- !(n :num) (m :num).
+     (n ** m = (0 :num)) <=> (n = (0 :num)) /\ (0 :num) < m:
+   thm
+val EXP_EQ_1 =
+   |- !(n :num) (m :num).
+     (n ** m = (1 :num)) <=> (n = (1 :num)) \/ (m = (0 :num)):
+   thm
+val EXP_EXP_INJECTIVE =
+   |- !(b1 :num) (b2 :num) (x :num).
+     (b1 ** x = b2 ** x) <=> (x = (0 :num)) \/ (b1 = b2):
+   thm
+val EXP_EXP_LE_MONO =
+   |- !(a :num) (b :num).
+     a ** (n :num) <= b ** n <=> a <= b \/ (n = (0 :num)):
+   thm
+val EXP_EXP_LT_MONO =
+   |- !(a :num) (b :num). a ** (n :num) < b ** n <=> a < b /\ (0 :num) < n:
+   thm
+val EXP_EXP_MULT =
+   |- !(z :num) (x :num) (y :num). x ** (y * z) = (x ** y) ** z:
+   thm
+val EXP_MOD =
+   |- (0 :num) < (n :num) ==>
+   (((x :num) MOD n) ** (e :num) MOD n = x ** e MOD n):
+   thm
+val EXP_SUB =
+   |- !(p :num) (q :num) (n :num).
+     (0 :num) < n /\ q <= p ==> (n ** (p - q) = n ** p DIV n ** q):
+   thm
+val EXP_SUB_NUMERAL =
+   |- (0 :num) < (n :num) ==>
+   (n ** NUMERAL (BIT1 (x :num)) DIV n =
+    n ** (NUMERAL (BIT1 x) - (1 :num))) /\
+   (n ** NUMERAL (BIT2 x) DIV n = n ** NUMERAL (BIT1 x)):
+   thm
+val FACT =
+   |- (FACT (0 :num) = (1 :num)) /\
+   !(n :num). FACT (SUC n) = SUC n * FACT n:
+   thm
+val FACT_LESS =
+   |- !(n :num). (0 :num) < FACT n:
+   thm
+val FORALL_NUM =
+   |- !(P :num -> bool).
+     (!(n :num). P n) <=> P (0 :num) /\ !(n :num). P (SUC n):
+   thm
+val FORALL_NUM_THM =
+   |- (!(n :num). (P :num -> bool) n) <=>
+   P (0 :num) /\ !(n :num). P n ==> P (SUC n):
+   thm
+val FUNPOW =
+   |- (!(f :'a -> 'a) (x :'a). FUNPOW f (0 :num) x = x) /\
+   !(f :'a -> 'a) (n :num) (x :'a).
+     FUNPOW f (SUC n) x = FUNPOW f n (f x):
+   thm
+val FUNPOW_0 =
+   |- FUNPOW (f :'a -> 'a) (0 :num) (x :'a) = x:
+   thm
+val FUNPOW_1 =
+   |- FUNPOW (f :'a -> 'a) (1 :num) (x :'a) = f x:
+   thm
+val FUNPOW_ADD =
+   |- !(m :num) (n :num).
+     FUNPOW (f :'a -> 'a) (m + n) (x :'a) = FUNPOW f m (FUNPOW f n x):
+   thm
+val FUNPOW_SUC =
+   |- !(f :'a -> 'a) (n :num) (x :'a).
+     FUNPOW f (SUC n) x = f (FUNPOW f n x):
+   thm
+val GREATER_DEF =
+   |- !(m :num) (n :num). m > n <=> n < m:
+   thm
+val GREATER_EQ =
+   |- !(n :num) (m :num). n >= m <=> m <= n:
+   thm
+val GREATER_OR_EQ =
+   |- !(m :num) (n :num). m >= n <=> m > n \/ (m = n):
+   thm
+val INV_PRE_EQ =
+   |- !(m :num) (n :num).
+     (0 :num) < m /\ (0 :num) < n ==> ((PRE m = PRE n) <=> (m = n)):
+   thm
+val INV_PRE_LESS =
+   |- !(m :num). (0 :num) < m ==> !(n :num). PRE m < PRE n <=> m < n:
+   thm
+val INV_PRE_LESS_EQ =
+   |- !(n :num). (0 :num) < n ==> !(m :num). PRE m <= PRE n <=> m <= n:
+   thm
+val LE =
+   |- (!(n :num). n <= (0 :num) <=> (n = (0 :num))) /\
+   !(m :num) (n :num). m <= SUC n <=> (m = SUC n) \/ m <= n:
+   thm
+val LEFT_ADD_DISTRIB =
+   |- !(m :num) (n :num) (p :num). p * (m + n) = p * m + p * n:
+   thm
+val LEFT_SUB_DISTRIB =
+   |- !(m :num) (n :num) (p :num). p * (m - n) = p * m - p * n:
+   thm
+val LESS_0_CASES =
+   |- !(m :num). ((0 :num) = m) \/ (0 :num) < m:
+   thm
+val LESS_ADD =
+   |- !(m :num) (n :num). n < m ==> ?(p :num). p + n = m:
+   thm
+val LESS_ADD_1 =
+   |- !(m :num) (n :num). n < m ==> ?(p :num). m = n + (p + (1 :num)):
+   thm
+val LESS_ADD_NONZERO =
+   |- !(m :num) (n :num). n <> (0 :num) ==> m < m + n:
+   thm
+val LESS_ADD_SUC =
+   |- !(m :num) (n :num). m < m + SUC n:
+   thm
+val LESS_ANTISYM =
+   |- !(m :num) (n :num). ~(m < n /\ n < m):
+   thm
+val LESS_CASES =
+   |- !(m :num) (n :num). m < n \/ n <= m:
+   thm
+val LESS_CASES_IMP =
+   |- !(m :num) (n :num). ~(m < n) /\ m <> n ==> n < m:
+   thm
+val LESS_DIV_EQ_ZERO =
+   |- !(r :num) (n :num). r < n ==> (r DIV n = (0 :num)):
+   thm
+val LESS_EQ =
+   |- !(m :num) (n :num). m < n <=> SUC m <= n:
+   thm
+val LESS_EQUAL_ADD =
+   |- !(m :num) (n :num). m <= n ==> ?(p :num). n = m + p:
+   thm
+val LESS_EQUAL_ANTISYM =
+   |- !(n :num) (m :num). n <= m /\ m <= n ==> (n = m):
+   thm
+val LESS_EQUAL_DIFF =
+   |- !(m :num) (n :num). m <= n ==> ?(k :num). m = n - k:
+   thm
+val LESS_EQ_0 =
+   |- !(n :num). n <= (0 :num) <=> (n = (0 :num)):
+   thm
+val LESS_EQ_ADD =
+   |- !(m :num) (n :num). m <= m + n:
+   thm
+val LESS_EQ_ADD_EXISTS =
+   |- !(m :num) (n :num). n <= m ==> ?(p :num). p + n = m:
+   thm
+val LESS_EQ_ADD_SUB =
+   |- !(c :num) (b :num). c <= b ==> !(a :num). a + b - c = a + (b - c):
+   thm
+val LESS_EQ_ANTISYM =
+   |- !(m :num) (n :num). ~(m < n /\ n <= m):
+   thm
+val LESS_EQ_CASES =
+   |- !(m :num) (n :num). m <= n \/ n <= m:
+   thm
+val LESS_EQ_EXISTS =
+   |- !(m :num) (n :num). m <= n <=> ?(p :num). n = m + p:
+   thm
+val LESS_EQ_IFF_LESS_SUC =
+   |- !(n :num) (m :num). n <= m <=> n < SUC m:
+   thm
+val LESS_EQ_IMP_LESS_SUC =
+   |- !(n :num) (m :num). n <= m ==> n < SUC m:
+   thm
+val LESS_EQ_LESS_EQ_MONO =
+   |- !(m :num) (n :num) (p :num) (q :num).
+     m <= p /\ n <= q ==> m + n <= p + q:
+   thm
+val LESS_EQ_LESS_TRANS =
+   |- !(m :num) (n :num) (p :num). m <= n /\ n < p ==> m < p:
+   thm
+val LESS_EQ_MONO =
+   |- !(n :num) (m :num). SUC n <= SUC m <=> n <= m:
+   thm
+val LESS_EQ_MONO_ADD_EQ =
+   |- !(m :num) (n :num) (p :num). m + p <= n + p <=> m <= n:
+   thm
+val LESS_EQ_REFL =
+   |- !(m :num). m <= m:
+   thm
+val LESS_EQ_SUB_LESS =
+   |- !(a :num) (b :num). b <= a ==> !(c :num). a - b < c <=> a < b + c:
+   thm
+val LESS_EQ_SUC_REFL =
+   |- !(m :num). m <= SUC m:
+   thm
+val LESS_EQ_TRANS =
+   |- !(m :num) (n :num) (p :num). m <= n /\ n <= p ==> m <= p:
+   thm
+val LESS_EXP_SUC_MONO =
+   |- !(n :num) (m :num). SUC (SUC m) ** n < SUC (SUC m) ** SUC n:
+   thm
+val LESS_IMP_LESS_ADD =
+   |- !(n :num) (m :num). n < m ==> !(p :num). n < m + p:
+   thm
+val LESS_IMP_LESS_OR_EQ =
+   |- !(m :num) (n :num). m < n ==> m <= n:
+   thm
+val LESS_LESS_CASES =
+   |- !(m :num) (n :num). (m = n) \/ m < n \/ n < m:
+   thm
+val LESS_LESS_EQ_TRANS =
+   |- !(m :num) (n :num) (p :num). m < n /\ n <= p ==> m < p:
+   thm
+val LESS_LESS_SUC =
+   |- !(m :num) (n :num). ~(m < n /\ n < SUC m):
+   thm
+val LESS_MOD =
+   |- !(n :num) (k :num). k < n ==> (k MOD n = k):
+   thm
+val LESS_MONO_ADD =
+   |- !(m :num) (n :num) (p :num). m < n ==> m + p < n + p:
+   thm
+val LESS_MONO_ADD_EQ =
+   |- !(m :num) (n :num) (p :num). m + p < n + p <=> m < n:
+   thm
+val LESS_MONO_ADD_INV =
+   |- !(m :num) (n :num) (p :num). m + p < n + p ==> m < n:
+   thm
+val LESS_MONO_EQ =
+   |- !(m :num) (n :num). SUC m < SUC n <=> m < n:
+   thm
+val LESS_MONO_MULT =
+   |- !(m :num) (n :num) (p :num). m <= n ==> m * p <= n * p:
+   thm
+val LESS_MONO_MULT2 =
+   |- !(m :num) (n :num) (i :num) (j :num).
+     m <= i /\ n <= j ==> m * n <= i * j:
+   thm
+val LESS_MONO_REV =
+   |- !(m :num) (n :num). SUC m < SUC n ==> m < n:
+   thm
+val LESS_MULT2 =
+   |- !(m :num) (n :num). (0 :num) < m /\ (0 :num) < n ==> (0 :num) < m * n:
+   thm
+val LESS_MULT_MONO =
+   |- !(m :num) (i :num) (n :num). SUC n * m < SUC n * i <=> m < i:
+   thm
+val LESS_NOT_SUC =
+   |- !(m :num) (n :num). m < n /\ n <> SUC m ==> SUC m < n:
+   thm
+val LESS_OR =
+   |- !(m :num) (n :num). m < n ==> SUC m <= n:
+   thm
+val LESS_OR_EQ =
+   |- !(m :num) (n :num). m <= n <=> m < n \/ (m = n):
+   thm
+val LESS_OR_EQ_ADD =
+   |- !(n :num) (m :num). n < m \/ ?(p :num). n = p + m:
+   thm
+val LESS_OR_EQ_ALT =
+   |- $<= = (\(x :num) (y :num). y = SUC x)^*:
+   thm
+val LESS_STRONG_ADD =
+   |- !(m :num) (n :num). n < m ==> ?(p :num). SUC p + n = m:
+   thm
+val LESS_SUB_ADD_LESS =
+   |- !(n :num) (m :num) (i :num). i < n - m ==> i + m < n:
+   thm
+val LESS_SUC_EQ_COR =
+   |- !(m :num) (n :num). m < n /\ SUC m <> n ==> SUC m < n:
+   thm
+val LESS_SUC_NOT =
+   |- !(m :num) (n :num). m < n ==> ~(n < SUC m):
+   thm
+val LESS_TRANS =
+   |- !(m :num) (n :num) (p :num). m < n /\ n < p ==> m < p:
+   thm
+val LE_ADD_LCANCEL =
+   |- !(m :num) (n :num) (p :num). m + n <= m + p <=> n <= p:
+   thm
+val LE_ADD_RCANCEL =
+   |- !(m :num) (n :num) (p :num). n + m <= p + m <=> n <= p:
+   thm
+val LE_LT1 =
+   |- !(x :num) (y :num). x <= y <=> x < y + (1 :num):
+   thm
+val LE_MULT_CANCEL_LBARE =
+   |- ((m :num) <= m * (n :num) <=> (m = (0 :num)) \/ (0 :num) < n) /\
+   (m <= n * m <=> (m = (0 :num)) \/ (0 :num) < n):
+   thm
+val LE_MULT_CANCEL_RBARE =
+   |- ((m :num) * (n :num) <= m <=> (m = (0 :num)) \/ n <= (1 :num)) /\
+   (m * n <= n <=> (n = (0 :num)) \/ m <= (1 :num)):
+   thm
+val LE_MULT_LCANCEL =
+   |- !(m :num) (n :num) (p :num).
+     m * n <= m * p <=> (m = (0 :num)) \/ n <= p:
+   thm
+val LE_MULT_RCANCEL =
+   |- !(m :num) (n :num) (p :num).
+     m * n <= p * n <=> (n = (0 :num)) \/ m <= p:
+   thm
+val LE_SUB_LCANCEL =
+   |- !(z :num) (y :num) (x :num). x - y <= x - z <=> z <= y \/ x <= y:
+   thm
+val LE_SUB_RCANCEL =
+   |- !(m :num) (n :num) (p :num). n - m <= p - m <=> n <= m \/ n <= p:
+   thm
+val LT_ADD_LCANCEL =
+   |- !(m :num) (n :num) (p :num). p + m < p + n <=> m < n:
+   thm
+val LT_ADD_RCANCEL =
+   |- !(m :num) (n :num) (p :num). m + p < n + p <=> m < n:
+   thm
+val LT_MULT_CANCEL_LBARE =
+   |- ((m :num) < m * (n :num) <=> (0 :num) < m /\ (1 :num) < n) /\
+   (m < n * m <=> (0 :num) < m /\ (1 :num) < n):
+   thm
+val LT_MULT_CANCEL_RBARE =
+   |- ((m :num) * (n :num) < m <=> (0 :num) < m /\ (n = (0 :num))) /\
+   (m * n < n <=> (0 :num) < n /\ (m = (0 :num))):
+   thm
+val LT_MULT_LCANCEL =
+   |- !(m :num) (n :num) (p :num). m * n < m * p <=> (0 :num) < m /\ n < p:
+   thm
+val LT_MULT_RCANCEL =
+   |- !(m :num) (n :num) (p :num). m * n < p * n <=> (0 :num) < n /\ m < p:
+   thm
+val LT_SUB_LCANCEL =
+   |- !(z :num) (y :num) (x :num). x - y < x - z <=> z < y /\ z < x:
+   thm
+val LT_SUB_RCANCEL =
+   |- !(m :num) (n :num) (p :num). n - m < p - m <=> n < p /\ m < p:
+   thm
+val MAX_0 =
+   |- !(n :num). (MAX n (0 :num) = n) /\ (MAX (0 :num) n = n):
+   thm
+val MAX_ASSOC =
+   |- !(m :num) (n :num) (p :num). MAX m (MAX n p) = MAX (MAX m n) p:
+   thm
+val MAX_COMM =
+   |- !(m :num) (n :num). MAX m n = MAX n m:
+   thm
+val MAX_DEF =
+   |- !(m :num) (n :num). MAX m n = if m < n then n else m:
+   thm
+val MAX_EQ_0 =
+   |- (MAX (m :num) (n :num) = (0 :num)) <=>
+   (m = (0 :num)) /\ (n = (0 :num)):
+   thm
+val MAX_IDEM =
+   |- !(n :num). MAX n n = n:
+   thm
+val MAX_LE =
+   |- !(n :num) (m :num) (p :num).
+     (p <= MAX m n <=> p <= m \/ p <= n) /\
+     (MAX m n <= p <=> m <= p /\ n <= p):
+   thm
+val MAX_LT =
+   |- !(n :num) (m :num) (p :num).
+     (p < MAX m n <=> p < m \/ p < n) /\
+     (MAX m n < p <=> m < p /\ n < p):
+   thm
+val MIN_0 =
+   |- !(n :num). (MIN n (0 :num) = (0 :num)) /\ (MIN (0 :num) n = (0 :num)):
+   thm
+val MIN_ASSOC =
+   |- !(m :num) (n :num) (p :num). MIN m (MIN n p) = MIN (MIN m n) p:
+   thm
+val MIN_COMM =
+   |- !(m :num) (n :num). MIN m n = MIN n m:
+   thm
+val MIN_DEF =
+   |- !(m :num) (n :num). MIN m n = if m < n then m else n:
+   thm
+val MIN_EQ_0 =
+   |- (MIN (m :num) (n :num) = (0 :num)) <=>
+   (m = (0 :num)) \/ (n = (0 :num)):
+   thm
+val MIN_IDEM =
+   |- !(n :num). MIN n n = n:
+   thm
+val MIN_LE =
+   |- !(n :num) (m :num) (p :num).
+     (MIN m n <= p <=> m <= p \/ n <= p) /\
+     (p <= MIN m n <=> p <= m /\ p <= n):
+   thm
+val MIN_LT =
+   |- !(n :num) (m :num) (p :num).
+     (MIN m n < p <=> m < p \/ n < p) /\
+     (p < MIN m n <=> p < m /\ p < n):
+   thm
+val MIN_MAX_EQ =
+   |- !(m :num) (n :num). (MIN m n = MAX m n) <=> (m = n):
+   thm
+val MIN_MAX_LE =
+   |- !(m :num) (n :num). MIN m n <= MAX m n:
+   thm
+val MIN_MAX_LT =
+   |- !(m :num) (n :num). MIN m n < MAX m n <=> m <> n:
+   thm
+val MIN_MAX_PRED =
+   |- !(P :num -> bool) (m :num) (n :num).
+     P m /\ P n ==> P (MIN m n) /\ P (MAX m n):
+   thm
+val MODEQ_0 =
+   |- (0 :num) < (n :num) ==> MODEQ n n (0 :num):
+   thm
+val MODEQ_0_CONG =
+   |- MODEQ (0 :num) (m1 :num) (m2 :num) <=> (m1 = m2):
+   thm
+val MODEQ_DEF =
+   |- !(n :num) (m1 :num) (m2 :num).
+     MODEQ n m1 m2 <=> ?(a :num) (b :num). a * n + m1 = b * n + m2:
+   thm
+val MODEQ_EXP_CONG =
+   |- MODEQ (n :num) (x :num) (y :num) ==> MODEQ n (x ** (e :num)) (y ** e):
+   thm
+val MODEQ_INTRO_CONG =
+   |- (0 :num) < (n :num) ==>
+   MODEQ n (e0 :num) (e1 :num) ==>
+   (e0 MOD n = e1 MOD n):
+   thm
+val MODEQ_MOD =
+   |- (0 :num) < (n :num) ==> MODEQ n ((x :num) MOD n) x:
+   thm
+val MODEQ_MULT_CONG =
+   |- MODEQ (n :num) (x0 :num) (x1 :num) ==>
+   MODEQ n (y0 :num) (y1 :num) ==>
+   MODEQ n (x0 * y0) (x1 * y1):
+   thm
+val MODEQ_NONZERO_MODEQUALITY =
+   |- (0 :num) < (n :num) ==>
+   (MODEQ n (m1 :num) (m2 :num) <=> (m1 MOD n = m2 MOD n)):
+   thm
+val MODEQ_NUMERAL =
+   |- (NUMERAL (n :num) <= NUMERAL (m :num) ==>
+    MODEQ (NUMERAL (BIT1 n)) (NUMERAL (BIT1 m))
+      (NUMERAL (BIT1 m) MOD NUMERAL (BIT1 n))) /\
+   (NUMERAL n <= NUMERAL m ==>
+    MODEQ (NUMERAL (BIT1 n)) (NUMERAL (BIT2 m))
+      (NUMERAL (BIT2 m) MOD NUMERAL (BIT1 n))) /\
+   (NUMERAL n <= NUMERAL m ==>
+    MODEQ (NUMERAL (BIT2 n)) (NUMERAL (BIT2 m))
+      (NUMERAL (BIT2 m) MOD NUMERAL (BIT2 n))) /\
+   (NUMERAL n < NUMERAL m ==>
+    MODEQ (NUMERAL (BIT2 n)) (NUMERAL (BIT1 m))
+      (NUMERAL (BIT1 m) MOD NUMERAL (BIT2 n))):
+   thm
+val MODEQ_PLUS_CONG =
+   |- MODEQ (n :num) (x0 :num) (x1 :num) ==>
+   MODEQ n (y0 :num) (y1 :num) ==>
+   MODEQ n (x0 + y0) (x1 + y1):
+   thm
+val MODEQ_REFL =
+   |- !(x :num). MODEQ (n :num) x x:
+   thm
+val MODEQ_SUC_CONG =
+   |- MODEQ (n :num) (x :num) (y :num) ==> MODEQ n (SUC x) (SUC y):
+   thm
+val MODEQ_SYM =
+   |- MODEQ (n :num) (x :num) (y :num) <=> MODEQ n y x:
+   thm
+val MODEQ_THM =
+   |- MODEQ (n :num) (m1 :num) (m2 :num) <=>
+   (n = (0 :num)) /\ (m1 = m2) \/ (0 :num) < n /\ (m1 MOD n = m2 MOD n):
+   thm
+val MODEQ_TRANS =
+   |- !(x :num) (y :num) (z :num).
+     MODEQ (n :num) x y /\ MODEQ n y z ==> MODEQ n x z:
+   thm
+val MOD_1 =
+   |- !(k :num). k MOD (1 :num) = (0 :num):
+   thm
+val MOD_2 =
+   |- !(n :num). n MOD (2 :num) = if EVEN n then (0 :num) else (1 :num):
+   thm
+val MOD_COMMON_FACTOR =
+   |- !(n :num) (p :num) (q :num).
+     (0 :num) < n /\ (0 :num) < q ==>
+     (n * p MOD q = (n * p) MOD (n * q)):
+   thm
+val MOD_ELIM =
+   |- !(P :num -> bool) (x :num) (n :num).
+     (0 :num) < n /\ P x /\ (!(y :num). P (y + n) ==> P y) ==>
+     P (x MOD n):
+   thm
+val MOD_EQ_0 =
+   |- !(n :num). (0 :num) < n ==> !(k :num). (k * n) MOD n = (0 :num):
+   thm
+val MOD_EQ_0_DIVISOR =
+   |- (0 :num) < (n :num) ==>
+   (((k :num) MOD n = (0 :num)) <=> ?(d :num). k = d * n):
+   thm
+val MOD_LESS =
+   |- !(m :num) (n :num). (0 :num) < n ==> m MOD n < n:
+   thm
+val MOD_LESS_EQ =
+   |- (0 :num) < (y :num) ==> (x :num) MOD y <= x:
+   thm
+val MOD_LIFT_PLUS =
+   |- (0 :num) < (n :num) /\ (k :num) < n - (x :num) MOD n ==>
+   ((x + k) MOD n = x MOD n + k):
+   thm
+val MOD_LIFT_PLUS_IFF =
+   |- (0 :num) < (n :num) ==>
+   ((((x :num) + (k :num)) MOD n = x MOD n + k) <=> k < n - x MOD n):
+   thm
+val MOD_MOD =
+   |- !(n :num). (0 :num) < n ==> !(k :num). k MOD n MOD n = k MOD n:
+   thm
+val MOD_MULT =
+   |- !(n :num) (r :num). r < n ==> !(q :num). (q * n + r) MOD n = r:
+   thm
+val MOD_MULT_MOD =
+   |- !(m :num) (n :num).
+     (0 :num) < n /\ (0 :num) < m ==>
+     !(x :num). x MOD (n * m) MOD n = x MOD n:
+   thm
+val MOD_ONE =
+   |- !(k :num). k MOD SUC (0 :num) = (0 :num):
+   thm
+val MOD_P =
+   |- !(P :num -> bool) (p :num) (q :num).
+     (0 :num) < q ==>
+     (P (p MOD q) <=>
+      ?(k :num) (r :num). (p = k * q + r) /\ r < q /\ P r):
+   thm
+val MOD_PLUS =
+   |- !(n :num).
+     (0 :num) < n ==>
+     !(j :num) (k :num). (j MOD n + k MOD n) MOD n = (j + k) MOD n:
+   thm
+val MOD_P_UNIV =
+   |- !(P :num -> bool) (m :num) (n :num).
+     (0 :num) < n ==>
+     (P (m MOD n) <=>
+      !(q :num) (r :num). (m = q * n + r) /\ r < n ==> P r):
+   thm
+val MOD_SUB =
+   |- (0 :num) < (n :num) /\ n * (q :num) <= (m :num) ==>
+   ((m - n * q) MOD n = m MOD n):
+   thm
+val MOD_SUC =
+   |- (0 :num) < (y :num) /\ SUC (x :num) <> SUC (x DIV y) * y ==>
+   (SUC x MOD y = SUC (x MOD y)):
+   thm
+val MOD_SUC_IFF =
+   |- (0 :num) < (y :num) ==>
+   ((SUC (x :num) MOD y = SUC (x MOD y)) <=> SUC x <> SUC (x DIV y) * y):
+   thm
+val MOD_TIMES =
+   |- !(n :num).
+     (0 :num) < n ==> !(q :num) (r :num). (q * n + r) MOD n = r MOD n:
+   thm
+val MOD_TIMES2 =
+   |- !(n :num).
+     (0 :num) < n ==>
+     !(j :num) (k :num). (j MOD n * k MOD n) MOD n = (j * k) MOD n:
+   thm
+val MOD_TIMES_SUB =
+   |- !(n :num) (q :num) (r :num).
+     (0 :num) < n /\ (0 :num) < q /\ r <= n ==>
+     ((q * n - r) MOD n = (n - r) MOD n):
+   thm
+val MOD_UNIQUE =
+   |- !(n :num) (k :num) (r :num).
+     (?(q :num). (k = q * n + r) /\ r < n) ==> (k MOD n = r):
+   thm
+val MULT =
+   |- (!(n :num). (0 :num) * n = (0 :num)) /\
+   !(m :num) (n :num). SUC m * n = m * n + n:
+   thm
+val MULT_0 =
+   |- !(m :num). m * (0 :num) = (0 :num):
+   thm
+val MULT_ASSOC =
+   |- !(m :num) (n :num) (p :num). m * (n * p) = m * n * p:
+   thm
+val MULT_CLAUSES =
+   |- !(m :num) (n :num).
+     ((0 :num) * m = (0 :num)) /\ (m * (0 :num) = (0 :num)) /\
+     ((1 :num) * m = m) /\ (m * (1 :num) = m) /\
+     (SUC m * n = m * n + n) /\ (m * SUC n = m + m * n):
+   thm
+val MULT_COMM =
+   |- !(m :num) (n :num). m * n = n * m:
+   thm
+val MULT_DIV =
+   |- !(n :num) (q :num). (0 :num) < n ==> (q * n DIV n = q):
+   thm
+val MULT_EQ_0 =
+   |- !(m :num) (n :num).
+     (m * n = (0 :num)) <=> (m = (0 :num)) \/ (n = (0 :num)):
+   thm
+val MULT_EQ_1 =
+   |- !(x :num) (y :num).
+     (x * y = (1 :num)) <=> (x = (1 :num)) /\ (y = (1 :num)):
+   thm
+val MULT_EQ_DIV =
+   |- (0 :num) < (x :num) ==>
+   ((x * (y :num) = (z :num)) <=> (y = z DIV x) /\ (z MOD x = (0 :num))):
+   thm
+val MULT_EQ_ID =
+   |- !(m :num) (n :num). (m * n = n) <=> (m = (1 :num)) \/ (n = (0 :num)):
+   thm
+val MULT_EXP_MONO =
+   |- !(p :num) (q :num) (n :num) (m :num).
+     (n * SUC q ** p = m * SUC q ** p) <=> (n = m):
+   thm
+val MULT_INCREASES =
+   |- !(m :num) (n :num). (1 :num) < m /\ (0 :num) < n ==> SUC n <= m * n:
+   thm
+val MULT_LEFT_1 =
+   |- !(m :num). (1 :num) * m = m:
+   thm
+val MULT_LESS_EQ_SUC =
+   |- !(m :num) (n :num) (p :num). m <= n <=> SUC p * m <= SUC p * n:
+   thm
+val MULT_MONO_EQ =
+   |- !(m :num) (i :num) (n :num). (SUC n * m = SUC n * i) <=> (m = i):
+   thm
+val MULT_RIGHT_1 =
+   |- !(m :num). m * (1 :num) = m:
+   thm
+val MULT_SUC =
+   |- !(m :num) (n :num). m * SUC n = m + m * n:
+   thm
+val MULT_SUC_EQ =
+   |- !(p :num) (m :num) (n :num). (n * SUC p = m * SUC p) <=> (n = m):
+   thm
+val MULT_SYM =
+   |- !(m :num) (n :num). m * n = n * m:
+   thm
+val NORM_0 =
+   |- (0 :num) = (0 :num):
+   thm
+val NOT_EXP_0 =
+   |- !(m :num) (n :num). SUC n ** m <> (0 :num):
+   thm
+val NOT_GREATER =
+   |- !(m :num) (n :num). ~(m > n) <=> m <= n:
+   thm
+val NOT_GREATER_EQ =
+   |- !(m :num) (n :num). ~(m >= n) <=> SUC m <= n:
+   thm
+val NOT_LEQ =
+   |- !(m :num) (n :num). ~(m <= n) <=> SUC n <= m:
+   thm
+val NOT_LESS =
+   |- !(m :num) (n :num). ~(m < n) <=> n <= m:
+   thm
+val NOT_LESS_EQUAL =
+   |- !(m :num) (n :num). ~(m <= n) <=> n < m:
+   thm
+val NOT_LT_ZERO_EQ_ZERO =
+   |- !(n :num). ~((0 :num) < n) <=> (n = (0 :num)):
+   thm
+val NOT_NUM_EQ =
+   |- !(m :num) (n :num). m <> n <=> SUC m <= n \/ SUC n <= m:
+   thm
+val NOT_ODD_EQ_EVEN =
+   |- !(n :num) (m :num). SUC (n + n) <> m + m:
+   thm
+val NOT_STRICTLY_DECREASING =
+   |- !(f :num -> num). ~!(n :num). f (SUC n) < f n:
+   thm
+val NOT_SUC_ADD_LESS_EQ =
+   |- !(m :num) (n :num). ~(SUC (m + n) <= m):
+   thm
+val NOT_SUC_LESS_EQ =
+   |- !(n :num) (m :num). ~(SUC n <= m) <=> m <= n:
+   thm
+val NOT_SUC_LESS_EQ_0 =
+   |- !(n :num). ~(SUC n <= (0 :num)):
+   thm
+val NOT_ZERO_LT_ZERO =
+   |- !(n :num). n <> (0 :num) <=> (0 :num) < n:
+   thm
+val NRC =
+   |- (!(R :'a -> 'a -> bool) (x :'a) (y :'a).
+      NRC R (0 :num) x y <=> (x = y)) /\
+   !(R :'a -> 'a -> bool) (n :num) (x :'a) (y :'a).
+     NRC R (SUC n) x y <=> ?(z :'a). R x z /\ NRC R n z y:
+   thm
+val NRC_0 =
+   |- !(R :'a -> 'a -> bool) (x :'a) (y :'a).
+     NRC R (0 :num) x y <=> (x = y):
+   thm
+val NRC_1 =
+   |- NRC (R :'a -> 'a -> bool) (1 :num) (x :'a) (y :'a) <=> R x y:
+   thm
+val NRC_ADD_E =
+   |- !(m :num) (n :num) (x :'a) (z :'a).
+     NRC (R :'a -> 'a -> bool) (m + n) x z ==>
+     ?(y :'a). NRC R m x y /\ NRC R n y z:
+   thm
+val NRC_ADD_EQN =
+   |- NRC (R :'a -> 'a -> bool) ((m :num) + (n :num)) (x :'a) (z :'a) <=>
+   ?(y :'a). NRC R m x y /\ NRC R n y z:
+   thm
+val NRC_ADD_I =
+   |- !(m :num) (n :num) (x :'a) (y :'a) (z :'a).
+     NRC (R :'a -> 'a -> bool) m x y /\ NRC R n y z ==>
+     NRC R (m + n) x z:
+   thm
+val NRC_RTC =
+   |- !(n :num) (x :'a) (y :'a).
+     NRC (R :'a -> 'a -> bool) n x y ==> R^* x y:
+   thm
+val NRC_SUC_RECURSE_LEFT =
+   |- NRC (R :'a -> 'a -> bool) (SUC (n :num)) (x :'a) (y :'a) <=>
+   ?(z :'a). NRC R n x z /\ R z y:
+   thm
+val NUMERAL_DEF =
+   |- !(x :num). NUMERAL x = x:
+   thm
+val NUMERAL_MULT_EQ_DIV =
+   |- ((NUMERAL (BIT1 (x :num)) * (y :num) = NUMERAL (z :num)) <=>
+    (y = NUMERAL z DIV NUMERAL (BIT1 x)) /\
+    (NUMERAL z MOD NUMERAL (BIT1 x) = (0 :num))) /\
+   ((NUMERAL (BIT2 x) * y = NUMERAL z) <=>
+    (y = NUMERAL z DIV NUMERAL (BIT2 x)) /\
+    (NUMERAL z MOD NUMERAL (BIT2 x) = (0 :num))):
+   thm
+val ODD =
+   |- (ODD (0 :num) <=> F) /\ !(n :num). ODD (SUC n) <=> ~ODD n:
+   thm
+val ODD_ADD =
+   |- !(m :num) (n :num). ODD (m + n) <=> (ODD m <=/=> ODD n):
+   thm
+val ODD_DOUBLE =
+   |- !(n :num). ODD (SUC ((2 :num) * n)):
+   thm
+val ODD_EVEN =
+   |- !(n :num). ODD n <=> ~EVEN n:
+   thm
+val ODD_EXISTS =
+   |- !(n :num). ODD n <=> ?(m :num). n = SUC ((2 :num) * m):
+   thm
+val ODD_EXP =
+   |- !(m :num) (n :num). (0 :num) < n /\ ODD m ==> ODD (m ** n):
+   thm
+val ODD_EXP_IFF =
+   |- !(n :num) (m :num). ODD (m ** n) <=> (n = (0 :num)) \/ ODD m:
+   thm
+val ODD_MULT =
+   |- !(m :num) (n :num). ODD (m * n) <=> ODD m /\ ODD n:
+   thm
+val ODD_OR_EVEN =
+   |- !(n :num).
+     ?(m :num).
+       (n = SUC (SUC (0 :num)) * m) \/
+       (n = SUC (SUC (0 :num)) * m + (1 :num)):
+   thm
+val ONE =
+   |- (1 :num) = SUC (0 :num):
+   thm
+val ONE_LT_EXP =
+   |- !(x :num) (y :num).
+     (1 :num) < x ** y <=> (1 :num) < x /\ (0 :num) < y:
+   thm
+val ONE_LT_MULT =
+   |- !(x :num) (y :num).
+     (1 :num) < x * y <=>
+     (0 :num) < x /\ (1 :num) < y \/ (0 :num) < y /\ (1 :num) < x:
+   thm
+val ONE_LT_MULT_IMP =
+   |- !(p :num) (q :num). (1 :num) < p /\ (0 :num) < q ==> (1 :num) < p * q:
+   thm
+val ONE_MOD =
+   |- (1 :num) < (n :num) ==> ((1 :num) MOD n = (1 :num)):
+   thm
+val ONE_MOD_IFF =
+   |- (1 :num) < (n :num) <=> (0 :num) < n /\ ((1 :num) MOD n = (1 :num)):
+   thm
+val ONE_ONE_INV_IMAGE_BOUNDED =
+   |- ONE_ONE (f :num -> num) ==>
+   !(b :num). ?(a :num). !(x :num). f x <= b ==> x <= a:
+   thm
+val ONE_ONE_UNBOUNDED =
+   |- !(f :num -> num). ONE_ONE f ==> !(b :num). ?(n :num). b < f n:
+   thm
+val OR_LESS =
+   |- !(m :num) (n :num). SUC m <= n ==> m < n:
+   thm
+val PRE_ELIM_THM =
+   |- (P :num -> bool) (PRE (n :num)) <=>
+   !(m :num). ((n = (0 :num)) ==> P (0 :num)) /\ ((n = SUC m) ==> P m):
+   thm
+val PRE_LESS_EQ =
+   |- !(n :num). (m :num) <= n ==> PRE m <= PRE n:
+   thm
+val PRE_SUB =
+   |- !(m :num) (n :num). PRE (m - n) = PRE m - n:
+   thm
+val PRE_SUB1 =
+   |- !(m :num). PRE m = m - (1 :num):
+   thm
+val PRE_SUC_EQ =
+   |- !(m :num) (n :num). (0 :num) < n ==> ((m = PRE n) <=> (SUC m = n)):
+   thm
+val RIGHT_ADD_DISTRIB =
+   |- !(m :num) (n :num) (p :num). (m + n) * p = m * p + n * p:
+   thm
+val RIGHT_SUB_DISTRIB =
+   |- !(m :num) (n :num) (p :num). (m - n) * p = m * p - n * p:
+   thm
+val RTC_NRC =
+   |- !(x :'a) (y :'a).
+     (R :'a -> 'a -> bool)^* x y ==> ?(n :num). NRC R n x y:
+   thm
+val RTC_eq_NRC =
+   |- !(R :'a -> 'a -> bool) (x :'a) (y :'a).
+     R^* x y <=> ?(n :num). NRC R n x y:
+   thm
+val STRICTLY_INCREASING_ONE_ONE =
+   |- !(f :num -> num). (!(n :num). f n < f (SUC n)) ==> ONE_ONE f:
+   thm
+val STRICTLY_INCREASING_TC =
+   |- !(f :num -> num).
+     (!(n :num). f n < f (SUC n)) ==>
+     !(m :num) (n :num). m < n ==> f m < f n:
+   thm
+val STRICTLY_INCREASING_UNBOUNDED =
+   |- !(f :num -> num).
+     (!(n :num). f n < f (SUC n)) ==> !(b :num). ?(n :num). b < f n:
+   thm
+val SUB =
+   |- (!(m :num). (0 :num) - m = (0 :num)) /\
+   !(m :num) (n :num).
+     SUC m - n = if m < n then (0 :num) else SUC (m - n):
+   thm
+val SUB_0 =
+   |- !(m :num). ((0 :num) - m = (0 :num)) /\ (m - (0 :num) = m):
+   thm
+val SUB_ADD =
+   |- !(m :num) (n :num). n <= m ==> (m - n + n = m):
+   thm
+val SUB_CANCEL =
+   |- !(p :num) (n :num) (m :num).
+     n <= p /\ m <= p ==> ((p - n = p - m) <=> (n = m)):
+   thm
+val SUB_ELIM_THM =
+   |- (P :num -> bool) ((a :num) - (b :num)) <=>
+   !(d :num). ((b = a + d) ==> P (0 :num)) /\ ((a = b + d) ==> P d):
+   thm
+val SUB_EQUAL_0 =
+   |- !(c :num). c - c = (0 :num):
+   thm
+val SUB_EQ_0 =
+   |- !(m :num) (n :num). (m - n = (0 :num)) <=> m <= n:
+   thm
+val SUB_EQ_EQ_0 =
+   |- !(m :num) (n :num). (m - n = m) <=> (m = (0 :num)) \/ (n = (0 :num)):
+   thm
+val SUB_LEFT_ADD =
+   |- !(m :num) (n :num) (p :num).
+     m + (n - p) = if n <= p then m else m + n - p:
+   thm
+val SUB_LEFT_EQ =
+   |- !(m :num) (n :num) (p :num).
+     (m = n - p) <=> (m + p = n) \/ m <= (0 :num) /\ n <= p:
+   thm
+val SUB_LEFT_GREATER =
+   |- !(m :num) (n :num) (p :num). m > n - p <=> m + p > n /\ m > (0 :num):
+   thm
+val SUB_LEFT_GREATER_EQ =
+   |- !(m :num) (n :num) (p :num). m >= n - p <=> m + p >= n:
+   thm
+val SUB_LEFT_LESS =
+   |- !(m :num) (n :num) (p :num). m < n - p <=> m + p < n:
+   thm
+val SUB_LEFT_LESS_EQ =
+   |- !(m :num) (n :num) (p :num).
+     m <= n - p <=> m + p <= n \/ m <= (0 :num):
+   thm
+val SUB_LEFT_SUB =
+   |- !(m :num) (n :num) (p :num).
+     m - (n - p) = if n <= p then m else m + p - n:
+   thm
+val SUB_LEFT_SUC =
+   |- !(m :num) (n :num).
+     SUC (m - n) = if m <= n then SUC (0 :num) else SUC m - n:
+   thm
+val SUB_LESS =
+   |- !(m :num) (n :num). (0 :num) < n /\ n <= m ==> m - n < m:
+   thm
+val SUB_LESS_0 =
+   |- !(n :num) (m :num). m < n <=> (0 :num) < n - m:
+   thm
+val SUB_LESS_EQ =
+   |- !(n :num) (m :num). n - m <= n:
+   thm
+val SUB_LESS_EQ_ADD =
+   |- !(m :num) (p :num). m <= p ==> !(n :num). p - m <= n <=> p <= m + n:
+   thm
+val SUB_LESS_OR =
+   |- !(m :num) (n :num). n < m ==> n <= m - (1 :num):
+   thm
+val SUB_LESS_SUC =
+   |- !(p :num) (m :num). p - m < SUC p:
+   thm
+val SUB_MOD =
+   |- !(m :num) (n :num).
+     (0 :num) < n /\ n <= m ==> ((m - n) MOD n = m MOD n):
+   thm
+val SUB_MONO_EQ =
+   |- !(n :num) (m :num). SUC n - SUC m = n - m:
+   thm
+val SUB_PLUS =
+   |- !(a :num) (b :num) (c :num). a - (b + c) = a - b - c:
+   thm
+val SUB_RIGHT_ADD =
+   |- !(m :num) (n :num) (p :num).
+     m - n + p = if m <= n then p else m + p - n:
+   thm
+val SUB_RIGHT_EQ =
+   |- !(m :num) (n :num) (p :num).
+     (m - n = p) <=> (m = n + p) \/ m <= n /\ p <= (0 :num):
+   thm
+val SUB_RIGHT_GREATER =
+   |- !(m :num) (n :num) (p :num). m - n > p <=> m > n + p:
+   thm
+val SUB_RIGHT_GREATER_EQ =
+   |- !(m :num) (n :num) (p :num).
+     m - n >= p <=> m >= n + p \/ (0 :num) >= p:
+   thm
+val SUB_RIGHT_LESS =
+   |- !(m :num) (n :num) (p :num). m - n < p <=> m < n + p /\ (0 :num) < p:
+   thm
+val SUB_RIGHT_LESS_EQ =
+   |- !(m :num) (n :num) (p :num). m - n <= p <=> m <= n + p:
+   thm
+val SUB_RIGHT_SUB =
+   |- !(m :num) (n :num) (p :num). m - n - p = m - (n + p):
+   thm
+val SUB_SUB =
+   |- !(b :num) (c :num). c <= b ==> !(a :num). a - (b - c) = a + c - b:
+   thm
+val SUC_ADD_SYM =
+   |- !(m :num) (n :num). SUC (m + n) = SUC n + m:
+   thm
+val SUC_ELIM_NUMERALS =
+   |- !(f :num -> num -> 'a) (g :num -> 'a).
+     (!(n :num). g (SUC n) = f n (SUC n)) <=>
+     (!(n :num).
+        g (NUMERAL (BIT1 n)) =
+        f (NUMERAL (BIT1 n) - (1 :num)) (NUMERAL (BIT1 n))) /\
+     !(n :num).
+       g (NUMERAL (BIT2 n)) = f (NUMERAL (BIT1 n)) (NUMERAL (BIT2 n)):
+   thm
+val SUC_ELIM_THM =
+   |- !(P :num -> num -> bool).
+     (!(n :num). P (SUC n) n) <=>
+     !(n :num). (0 :num) < n ==> P n (n - (1 :num)):
+   thm
+val SUC_MOD =
+   |- !(n :num) (a :num) (b :num).
+     (0 :num) < n ==>
+     ((SUC a MOD n = SUC b MOD n) <=> (a MOD n = b MOD n)):
+   thm
+val SUC_NOT =
+   |- !(n :num). (0 :num) <> SUC n:
+   thm
+val SUC_ONE_ADD =
+   |- !(n :num). SUC n = (1 :num) + n:
+   thm
+val SUC_PRE =
+   |- (0 :num) < (m :num) <=> (SUC (PRE m) = m):
+   thm
+val SUC_SUB =
+   |- !(a :num). SUC a - a = (1 :num):
+   thm
+val SUC_SUB1 =
+   |- !(m :num). SUC m - (1 :num) = m:
+   thm
+val TC_eq_NRC =
+   |- !(R :'a -> 'a -> bool) (x :'a) (y :'a).
+     R^+ x y <=> ?(n :num). NRC R (SUC n) x y:
+   thm
+val TIMES2 =
+   |- !(n :num). (2 :num) * n = n + n:
+   thm
+val TWO =
+   |- (2 :num) = SUC (1 :num):
+   thm
+val WOP =
+   |- !(P :num -> bool).
+     (?(n :num). P n) ==> ?(n :num). P n /\ !(m :num). m < n ==> ~P m:
+   thm
+val X_LE_DIV =
+   |- !(x :num) (y :num) (z :num).
+     (0 :num) < z ==> (x <= y DIV z <=> x * z <= y):
+   thm
+val X_LE_X_EXP =
+   |- (0 :num) < (n :num) ==> (x :num) <= x ** n:
+   thm
+val X_LT_DIV =
+   |- !(x :num) (y :num) (z :num).
+     (0 :num) < z ==> (x < y DIV z <=> (x + (1 :num)) * z <= y):
+   thm
+val X_LT_EXP_X =
+   |- (1 :num) < (b :num) ==> (x :num) < b ** x:
+   thm
+val X_LT_EXP_X_IFF =
+   |- (x :num) < (b :num) ** x <=> (1 :num) < b \/ (x = (0 :num)):
+   thm
+val X_MOD_Y_EQ_X =
+   |- !(x :num) (y :num). (0 :num) < y ==> ((x MOD y = x) <=> x < y):
+   thm
+val ZERO_DIV =
+   |- !(n :num). (0 :num) < n ==> ((0 :num) DIV n = (0 :num)):
+   thm
+val ZERO_EXP =
+   |- (0 :num) ** (x :num) = if x = (0 :num) then (1 :num) else (0 :num):
+   thm
+val ZERO_LESS_ADD =
+   |- !(m :num) (n :num). (0 :num) < m + n <=> (0 :num) < m \/ (0 :num) < n:
+   thm
+val ZERO_LESS_EQ =
+   |- !(n :num). (0 :num) <= n:
+   thm
+val ZERO_LESS_EXP =
+   |- !(m :num) (n :num). (0 :num) < SUC n ** m:
+   thm
+val ZERO_LESS_MULT =
+   |- !(m :num) (n :num). (0 :num) < m * n <=> (0 :num) < m /\ (0 :num) < n:
+   thm
+val ZERO_LT_EXP =
+   |- (0 :num) < (x :num) ** (y :num) <=> (0 :num) < x \/ (y = (0 :num)):
+   thm
+val ZERO_MOD =
+   |- !(n :num). (0 :num) < n ==> ((0 :num) MOD n = (0 :num)):
+   thm
+val arithmetic_grammars =
+   (Rules:
+  (50)   TY  ::=  TY -> TY [fun] (R-associative)
+  (70)   TY  ::=  TY # TY [prod] (R-associative)
+         TY  ::=  bool | (TY, TY)fun | ind | TY itself | num |
+                  (TY, TY)prod
+         TY  ::=  TY[TY] (array type)
+Type abbreviations:
+  bool = min$bool                                        
+  ('a, 'b) fun = ('a, 'b) min$fun                        
+  ind = min$ind                                          
+  'a itself = 'a bool$itself                             
+  num = num$num                                          
+  ('a, 'b) prod = ('a, 'b) pair$prod                     ,
+    (0)    TM  ::=  "∃!" <..binders..> "." TM [?!] |
+                "?!" <..binders..> "." TM |
+                "∃" <..binders..> "." TM [?] |
+                "?" <..binders..> "." TM |
+                "∀" <..binders..> "." TM [!] |
+                "!" <..binders..> "." TM | "@" <..binders..> "." TM |
+                "λ" <..binders..> "." TM | "\" <..binders..> "." TM
+(1)    TM  ::=  "case" TM "of" TM "|" TM "|" TM  [case magic$default - %case%] |
+                "case" TM "of" "|" TM  [case magic$default - %case%] |
+                "case" TM "of" TM "|" TM  [case magic$default - %case%] |
+                "case" TM "of" TM  [case magic$default - %case%]
+(4)    TM  ::=  TM "::" TM (restricted quantification operator)
+(5)    TM  ::=  TM TM  (binder argument concatenation)
+(8)    TM  ::=  "let" LTM< _ letnil, _ letcons,;> "in" TM  [ _ let]
+(9)    TM  ::=  TM "and" TM  [ _ and]   (L-associative)
+(12)   TM  ::=  TM "=>" TM  [case magic$default - %arrow%]
+                (non-associative)
+(50)   TM  ::=  TM "," TM   (R-associative)
+(70)   TM  ::=  "if" TM "then" TM "else" TM  [COND]
+(80)   TM  ::=  TM ":-" TM   (non-associative)
+(100)  TM  ::=  TM "⇎" TM  [<=/=>] | TM "<=/=>" TM | TM "⇔" TM  [<=>] |
+                TM "<=>" TM | TM "=" TM
+                (non-associative)
+(200)  TM  ::=  TM "⇒" TM  [==>] | TM "==>" TM   (R-associative)
+(300)  TM  ::=  TM "∨" TM  [\/] | TM "\/" TM   (R-associative)
+(310)  TM  ::=  TM ":>" TM   (L-associative)
+(320)  TM  ::=  TM "=+" TM   (non-associative)
+(400)  TM  ::=  TM "∧" TM  [/\] | TM "/\" TM   (R-associative)
+(425)  TM  ::=  TM "∉" TM  [NOTIN] | TM "NOTIN" TM | TM "∈" TM  [IN] |
+                TM "IN" TM
+                (non-associative)
+(450)  TM  ::=  TM "≥" TM  [>=] | TM ">=" TM | TM "≤" TM  [<=] |
+                TM "<=" TM | TM ">" TM | TM "<" TM |
+                TM "⊆ᵣ" TM  [RSUBSET] | TM "RSUBSET" TM | TM "≠" TM |
+                TM "<>" TM
+                (non-associative)
+(460)  TM  ::=  TM "with" TM  [record update] |
+                TM ":=" TM  [record field update] |
+                TM "updated_by" TM  [functional record update]
+                (R-associative)
+(490)  TM  ::=  TM "LEX" TM | TM "##" TM   (R-associative)
+(500)  TM  ::=  TM "−" TM  [-] | TM "-" TM | TM "+" TM |
+                TM "∪ᵣ" TM  [RUNION] | TM "RUNION" TM
+                (L-associative)
+(600)  TM  ::=  TM "DIV" TM | TM "*" TM | TM "\\" TM |
+                TM "∩ᵣ" TM  [RINTER] | TM "RINTER" TM
+                (L-associative)
+(650)  TM  ::=  TM "MOD" TM   (L-associative)
+(700)  TM  ::=  TM "**" TM | TM "EXP" TM   (R-associative)
+(800)  TM  ::=  TM "∘ᵣ" TM  [O] | TM "O" TM | TM "∘" TM  [o] | TM "o" TM
+                (R-associative)
+(899)  TM  ::=  TM ":" TY  (type annotation)
+(900)  TM  ::=  "&" TM | "-" TM  [numeric_negate] | "¬" TM  [~] | "~" TM
+(2000) TM  ::=  TM TM  (function application)   (L-associative)
+(2100) TM  ::=  TM "³" | TM "²" | TM "ᵀ"  [inv] | TM "^="  [EQC] |
+                TM "^*"  [RTC] | TM "⁺"  [TC] | TM "^+"  [TC]
+(2500) TM  ::=  TM "." TM  [record field selection]   (L-associative)
+       TM  ::=  "<|" LTM< _ record nil, _ record cons,;> "|>"  [] |
+                "(" TM ")"  [just parentheses, no term produced]
+Known constants:
+   _ fakeconst4.case,S10.case magic,7.default ! ## & * ** + , - /\ 0 :-
+  :> < <= <=/=> <=> <> = =+ ==> > >= ? ?! @ ABS_DIFF ABS_num ABS_prod AC
+  ARB ASSOC Abbrev BIT1 BIT2 BOUNDED COMM COND CR CURRY Cong DATATYPE
+  DIV DIV2 DIVMOD EMPTY_REL EQC EVEN EXP EXT_POINT F FACT FAIL FCOMM FST
+  FUNPOW I IDEM IN INDUCTIVE_INVARIANT INDUCTIVE_INVARIANT_ON INVOL
+  IS_NUM_REP Id IfCases K LEFT_ID LET LEX LinearOrder MAX MIN MOD MODEQ
+  MONOID NOTIN NRC NUMERAL O ODD ONE_ONE ONTO Order PRE PRIM_REC
+  PRIM_REC_FUN PROD_ALL PreOrder RC RCOMPL RDOM RDOM_DELETE RELPOW
+  REMPTY REP_num REP_prod RESTRICT RES_ABSTRACT RES_EXISTS
+  RES_EXISTS_UNIQUE RES_FORALL RES_SELECT RIGHT_ID RINTER RPROD RRANGE
+  RRESTRICT RSUBSET RTC RUNION RUNIV S SC SIMP_REC SIMP_REC_REL SN SND
+  STRORD SUC SUC_REP SWAP StrongLinearOrder StrongOrder T TC
+  TYPE_DEFINITION UNCURRY UNIV_POINT UPDATE W WCR WF WFP WFREC
+  WeakLinearOrder WeakOrder ZERO ZERO_REP \/ \\ _ inject_number
+  antisymmetric approx case diag diamond equivalence findq inv inv_image
+  irreflexive itself_case literal_case measure nat_elim__magic nf
+  num_CASE o pair_CASE rcdiamond reflexive stmarker symmetric the_fun
+  the_value total transitive trichotomous unint wellfounded ~ ² ³ ∅ᵣ ≠
+  𝕌ᵣ
+Overloading:
+  &               ->  nat_elim__magic
+  **              ->  EXP
+  <=/=>           ->  (\(x :bool) (y :bool). bool$~ (min$= x y))
+  <=>             ->  =
+  <>              ->  (\(x :'a) (y :'a). bool$~ (min$= x y))
+  =+              ->  UPDATE
+  Id              ->  =
+  NOTIN           ->  (\(x :'a) (y :'a -> bool). bool$~ (bool$IN x y))
+  RELPOW          ->  NRC
+  REMPTY          ->  EMPTY_REL
+  \\              ->  RDOM_DELETE
+  _ inject_number ->  nat_elim__magic
+  case            ->  num_CASE pair_CASE itself_case literal_case COND
+  ²               ->  (\(x :num). arithmetic$EXP x (2n :num))
+  ³               ->  (\(x :num). arithmetic$EXP x (3n :num))
+  ∅ᵣ              ->  EMPTY_REL
+  ≠               ->  (\(x :'a) (y :'a). bool$~ (min$= x y))
+  𝕌ᵣ              ->  RUNIV
+User printing functions:
+  if (gd :bool) then (tr :'a) else (fl :'a)       ->  bool.COND
+  LET (f :'a -> 'b) (x :'a)       ->  bool.LET):
+   type_grammar.grammar * term_grammar.grammar
+val datatype_num =
+   |- DATATYPE ((num :num -> (num -> num) -> 'a) (0 :num) SUC):
+   thm
+val findq_def =
+   |- findq =
+   WFREC (measure (\((a :num),(m :num),(n :num)). m - n))
+     (\(f :num # num # num -> num) ((a :num),(m :num),(n :num)).
+        if n = (0 :num) then a
+        else
+          (let
+             (d :num) = (2 :num) * n
+           in
+             if m < d then a else f ((2 :num) * a,m,d))):
+   thm
+val findq_divisor =
+   |- (n :num) <= (m :num) ==> findq ((a :num),m,n) * n <= a * m:
+   thm
+val findq_eq_0 =
+   |- !(a :num) (m :num) (n :num).
+     (findq (a,m,n) = (0 :num)) <=> (a = (0 :num)):
+   thm
+val findq_thm =
+   |- findq ((a :num),(m :num),(n :num)) =
+   if n = (0 :num) then a
+   else
+     (let
+        (d :num) = (2 :num) * n
+      in
+        if m < d then a else findq ((2 :num) * a,m,d)):
+   thm
+val nat_elim__magic =
+   |- !(n :num). &n = n:
+   thm
+val num_CASES =
+   |- !(m :num). (m = (0 :num)) \/ ?(n :num). m = SUC n:
+   thm
+val num_case_compute =
+   |- !(n :num).
+     (num_CASE n (f :'a) (g :num -> 'a) :'a) =
+     if n = (0 :num) then f else g (PRE n):
+   thm
+val num_case_cong =
+   |- !(M :num) (M' :num) (v :'a) (f :num -> 'a).
+     (M = M') /\ ((M' = (0 :num)) ==> (v = (v' :'a))) /\
+     (!(n :num). (M' = SUC n) ==> (f n = (f' :num -> 'a) n)) ==>
+     ((num_CASE M v f :'a) = (num_CASE M' v' f' :'a)):
+   thm
+val num_case_def =
+   |- (!(v :'a) (f :num -> 'a). (num_CASE (0 :num) v f :'a) = v) /\
+   !(n :num) (v :'a) (f :num -> 'a). (num_CASE (SUC n) v f :'a) = f n:
+   thm
+type thm
+val transitive_LESS =
+   |- transitive $<:
+   thm
+val transitive_measure =
+   |- !(f :'a -> num). transitive (measure f):
+   thm
+val transitive_monotone =
+   |- !(R :'a -> 'a -> bool) (f :num -> 'a).
+     transitive R /\ (!(n :num). R (f n) (f (SUC n))) ==>
+     !(m :num) (n :num). m < n ==> R (f m) (f n):
+   thm
+> <<HOL message: Created theory "exType">>
+> > # # # Definition has been stored under "APP_def"
+val APP_def =
+   |- (!(l :'a list). APP ([] :'a list) l = l) /\
+   !(h :'a) (l1 :'a list) (l2 :'a list). APP (h::l1) l2 = h::APP l1 l2:
+   thm
+> # # # # # # # # val LENGTH_APP =
+   |- !(l1 :'a list) (l2 :'a list).
+     LENGTH (APP l1 l2) = LENGTH l1 + LENGTH l2:
+   thm
+> # # <<HOL message: inventing new type variable names: 'a, 'b>>
+Definition has been stored under "Map_def"
+val Map_def =
+   |- (!(f :'b -> 'a). Map f ([] :'b list) = ([] :'a list)) /\
+   !(f :'b -> 'a) (x :'b) (f1 :'b list). Map f (x::f1) = f x::Map f f1:
+   thm
+> > # # # # # # # <<HOL message: inventing new type variable names: 'a, 'b>>
+val Map_APP =
+   |- Map (f :'b -> 'a) (APP (l1 :'b list) (l2 :'b list)) =
+   APP (Map f l1) (Map f l2):
+   thm
+> 
