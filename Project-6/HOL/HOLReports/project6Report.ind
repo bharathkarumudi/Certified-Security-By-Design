@@ -1,0 +1,22 @@
+\begin{theindex}
+
+  \item \textbf  {conops0Solution Theory}, 3
+    \subitem Datatypes, 4
+    \subitem Theorems, 4
+      \subsubitem ApRuleActivate_thm, 4
+      \subsubitem ApRuleStandDown_thm, 4
+      \subsubitem OpRuleAbort_thm, 5
+      \subsubitem OpRuleLaunch_thm, 5
+
+  \indexspace
+
+  \item \textbf  {solutions1 Theory}, 3
+    \subitem Theorems, 3
+      \subsubitem aclExercise1, 3
+      \subsubitem aclExercise1A, 3
+      \subsubitem aclExercise1B, 3
+      \subsubitem aclExercise2, 3
+      \subsubitem aclExercise2A, 3
+      \subsubitem aclExercise2B, 3
+
+\end{theindex}

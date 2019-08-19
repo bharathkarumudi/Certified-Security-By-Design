@@ -1,0 +1,443 @@
+\documentclass{report}
+\title{Project 6}
+\author{Bharath Karumudi}
+\date{\today}
+
+%%........................................%%
+%% Loading the Packages 
+%%........................................%%
+\usepackage{634format}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{holtex}
+\usepackage{holtexbasic}
+\usepackage{amssymb}
+\input{commands}
+\input{../HOL/HOLReports/HOLsolutionsOne}
+\input{../HOL/HOLReports/HOLconopsZeroSolution}
+%.........................................%%
+%.........................................%%
+
+\begin{document}
+ \lstset{language=ML}
+ \maketitle{}
+
+ \begin{abstract}
+   This project is to demonstrate the capabilities of implementing
+   constructing and deconstructing HOL Terms using the tools and
+   techniques - \LaTeX{}, AcuTeX, emacs and ML. 
+
+   Each chapter documents the given problems with a structure of:
+   \begin{enumerate}
+   \item Problem Statement
+   \item Relevant Code
+   \item Execution Transcripts
+   \item Explanation of results
+   \end{enumerate}
+
+ \end{abstract}
+
+
+ \begin{acknowledgments}
+  Professor Marvine Hamner and Professor Shiu-Kai Chin who taught the
+  Certified Security By Design.
+ \end{acknowledgments}
+
+ \tableofcontents{}
+
+ \chapter{Executive Summary}
+ \label{cha:executive-summary}
+
+\textbf{All requirements for this project are statisfied specifically,}
+ and by using HOL proved the below theorems:
+\begin{quote}
+\textbf{Exercise 13:}
+\HOLsolutionsOneTheoremsaclExerciseOne
+\HOLsolutionsOneTheoremsaclExerciseOneA
+\HOLsolutionsOneTheoremsaclExerciseOneB
+
+\HOLsolutionsOneTheoremsaclExerciseTwo
+\HOLsolutionsOneTheoremsaclExerciseTwoA
+\HOLsolutionsOneTheoremsaclExerciseTwoB
+
+\textbf{Exercise 14:}
+\HOLconopsZeroSolutionDatatypescommands
+\HOLconopsZeroSolutionTheoremsOpRuleLaunchXXthm
+\HOLconopsZeroSolutionTheoremsOpRuleAbortXXthm
+\HOLconopsZeroSolutionTheoremsApRuleActivateXXthm
+\HOLconopsZeroSolutionTheoremsApRuleStandDownXXthm
+
+\end{quote}
+
+
+%%------ Exercise 13.10.1 -------%%
+
+ \chapter{Exercise 13.10.1}
+ \label{cha:exercise-13.10.1}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-1}
+
+\HOLsolutionsOneTheoremsaclExerciseOne
+\HOLsolutionsOneTheoremsaclExerciseOneA
+\HOLsolutionsOneTheoremsaclExerciseOneB
+
+\section{Relevant Code}
+\label{sec:relevant-code-1}
+\lstinputlisting{HOLCode/ex-13-10-1.sml}
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-1}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> # # # # # # # # # ** Unicode trace now off
+> val princTerm =
+   ``Name Alice``:
+   term
+> val term1 =
+   ``Name Alice says (prop go :(commands, staff, 'd, 'e) Form)``:
+   term
+> > val term2 =
+   ``Name Bob says (prop go :(commands, staff, 'd, 'e) Form)``:
+   term
+> > # val term3 =
+   ``Name Alice meet Name Bob says
+  (prop launch :(commands, staff, 'd, 'e) Form)``:
+   term
+> # # # # # # # # # val aclExercise1 =
+    []
+|- ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name Alice says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Bob says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Alice meet Name Bob says
+   (prop go :(commands, staff, 'd, 'e) Form):
+   thm
+> # # # # # # # # Meson search level: .....
+val aclExercise1A =
+    []
+|- ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name Alice says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Bob says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Alice meet Name Bob says
+   (prop go :(commands, staff, 'd, 'e) Form):
+   thm
+> # # # # # # # # # # # Meson search level: ..
+Meson search level: ..
+val aclExercise1B =
+    []
+|- ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name Alice says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Bob says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Alice meet Name Bob says
+   (prop go :(commands, staff, 'd, 'e) Form):
+   thm
+> 
+*** Emacs/HOL command completed ***
+
+ 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-1}
+The above results shows that the requirements are satisfied.
+
+%%------ Exercise 13.10.2 -------%%
+
+ \chapter{Exercise 13.10.2}
+ \label{cha:exercise-13.10.2}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-2}
+
+In this exercise we need to prove the theorem:
+\HOLsolutionsOneTheoremsaclExerciseTwo
+\HOLsolutionsOneTheoremsaclExerciseTwoA
+\HOLsolutionsOneTheoremsaclExerciseTwoB
+
+\section{Relevant Code}
+\label{sec:relevant-code-2}
+
+\lstinputlisting{HOLCode/ex-13-10-2.sml}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-2}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> # # # # # # # # # ** Unicode trace now off
+> val term1 =
+   ``Name Alice says (prop go :(commands, staff, 'd, 'e) Form)``:
+   term
+> val term2 =
+   ``Name Alice controls (prop go :(commands, staff, 'd, 'e) Form)``:
+   term
+> val term3 =
+   ``(prop go :(commands, staff, 'd, 'e) Form) impf
+  (prop launch :(commands, staff, 'd, 'e) Form)``:
+   term
+> val term4 =
+   ``Name Bob says (prop launch :(commands, staff, 'd, 'e) Form)``:
+   term
+> 
+*** Emacs/HOL command completed ***
+
+> # # # # # # # # # # # val aclExercise2 =
+   
+[((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),(Os :'e po)) sat
+ Name Alice controls (prop go :(commands, staff, 'd, 'e) Form),
+ ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),(Os :'e po)) sat
+ (prop go :(commands, staff, 'd, 'e) Form) impf
+ (prop launch :(commands, staff, 'd, 'e) Form),
+ ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),(Os :'e po)) sat
+ Name Alice says (prop go :(commands, staff, 'd, 'e) Form)]
+|- ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name Bob says (prop launch :(commands, staff, 'd, 'e) Form):
+   thm
+> # # # # # # # # Meson search level: .......
+val aclExercise2A =
+    []
+|- ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name Alice says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Alice controls (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   (prop go :(commands, staff, 'd, 'e) Form) impf
+   (prop launch :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Bob says (prop launch :(commands, staff, 'd, 'e) Form):
+   thm
+> 
+*** Emacs/HOL command completed ***
+
+val aclExercise2B =
+    []
+|- ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name Alice says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Alice controls (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   (prop go :(commands, staff, 'd, 'e) Form) impf
+   (prop launch :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Bob says (prop launch :(commands, staff, 'd, 'e) Form):
+   thm
+val it = (): unit
+> 
+*** Emacs/HOL command completed ***
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-2}
+The above results shows that the requirements are satisfied.
+
+
+%%------ Exercise 14.4.1 -------%%
+
+ \chapter{Exercise 14.4.1}
+ \label{cha:exercise-11.6.3}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-3}
+
+In this exercise we need to prove the following:  
+\HOLconopsZeroSolutionDatatypescommands
+\HOLconopsZeroSolutionTheoremsOpRuleLaunchXXthm
+\HOLconopsZeroSolutionTheoremsOpRuleAbortXXthm
+\HOLconopsZeroSolutionTheoremsApRuleActivateXXthm
+\HOLconopsZeroSolutionTheoremsApRuleStandDownXXthm
+
+
+\section{Relevant Code}
+\label{sec:relevant-code-3}
+\lstinputlisting{../HOL/conops0SolutionScript.sml}
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-3}
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> # # <<HOL message: Defined type: "commands">>
+> # # <<HOL message: Defined type: "people">>
+> # # <<HOL message: Defined type: "roles">>
+> # # <<HOL message: Defined type: "keyPrinc">>
+> # # <<HOL message: Defined type: "principals">>
+> val OpRuleLaunch_thm =
+    []
+|- (M,Oi,Os) sat Name (PR (Role Commander)) controls prop go ==>
+   (M,Oi,Os) sat
+   reps (Name (PR (Staff Alice))) (Name (PR (Role Commander)))
+     (prop go) ==>
+   (M,Oi,Os) sat
+   Name (Key (Staff Alice)) quoting Name (PR (Role Commander)) says
+   prop go ==>
+   (M,Oi,Os) sat prop go impf prop launch ==>
+   (M,Oi,Os) sat Name (Key (Role CA)) speaks_for Name (PR (Role CA)) ==>
+   (M,Oi,Os) sat
+   Name (Key (Role CA)) says
+   Name (Key (Staff Alice)) speaks_for Name (PR (Staff Alice)) ==>
+   (M,Oi,Os) sat
+   Name (PR (Role CA)) controls
+   Name (Key (Staff Alice)) speaks_for Name (PR (Staff Alice)) ==>
+   (M,Oi,Os) sat
+   Name (Key (Staff Bob)) quoting Name (PR (Role Operator)) says
+   prop launch:
+   thm
+val it = (): unit
+> 
+*** Emacs/HOL command completed ***
+
+> val OpRuleAbort_thm =
+   
+[(M,Oi,Os) sat
+ Name (PR (Role CA)) controls
+ Name (Key (Staff Alice)) speaks_for Name (PR (Staff Alice))]
+|- (M,Oi,Os) sat Name (PR (Role Commander)) controls prop nogo ==>
+   (M,Oi,Os) sat
+   reps (Name (PR (Staff Alice))) (Name (PR (Role Commander)))
+     (prop nogo) ==>
+   (M,Oi,Os) sat
+   Name (Key (Staff Alice)) quoting Name (PR (Role Commander)) says
+   prop nogo ==>
+   (M,Oi,Os) sat prop nogo impf prop abort ==>
+   (M,Oi,Os) sat Name (Key (Role CA)) speaks_for Name (PR (Role CA)) ==>
+   (M,Oi,Os) sat
+   Name (Key (Role CA)) says
+   Name (Key (Staff Alice)) speaks_for Name (PR (Staff Alice)) ==>
+   (M,Oi,Os) sat
+   Name (Key (Staff Bob)) quoting Name (PR (Role Operator)) says
+   prop abort:
+   thm
+val it = (): unit
+> 
+*** Emacs/HOL command completed ***
+
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+> val ApRuleActivate_thm =
+    []
+|- (M,Oi,Os) sat Name (PR (Role Operator)) controls prop launch ==>
+   (M,Oi,Os) sat
+   reps (Name (PR (Staff Bob))) (Name (PR (Role Operator)))
+     (prop launch) ==>
+   (M,Oi,Os) sat
+   Name (Key (Staff Bob)) quoting Name (PR (Role Operator)) says
+   prop launch ==>
+   (M,Oi,Os) sat prop launch impf prop activate ==>
+   (M,Oi,Os) sat Name (Key (Role CA)) speaks_for Name (PR (Role CA)) ==>
+   (M,Oi,Os) sat
+   Name (Key (Role CA)) says
+   Name (Key (Staff Bob)) speaks_for Name (PR (Staff Bob)) ==>
+   (M,Oi,Os) sat
+   Name (PR (Role CA)) controls
+   Name (Key (Staff Bob)) speaks_for Name (PR (Staff Bob)) ==>
+   (M,Oi,Os) sat prop activate:
+   thm
+val it = (): unit
+> 
+*** Emacs/HOL command completed ***
+
+> val ApRuleStandDown_thm =
+    []
+|- (M,Oi,Os) sat Name (PR (Role Operator)) controls prop abort ==>
+   (M,Oi,Os) sat
+   reps (Name (PR (Staff Bob))) (Name (PR (Role Operator)))
+     (prop abort) ==>
+   (M,Oi,Os) sat
+   Name (Key (Staff Bob)) quoting Name (PR (Role Operator)) says
+   prop abort ==>
+   (M,Oi,Os) sat prop abort impf prop stand_down ==>
+   (M,Oi,Os) sat Name (Key (Role CA)) speaks_for Name (PR (Role CA)) ==>
+   (M,Oi,Os) sat
+   Name (Key (Role CA)) says
+   Name (Key (Staff Bob)) speaks_for Name (PR (Staff Bob)) ==>
+   (M,Oi,Os) sat
+   Name (PR (Role CA)) controls
+   Name (Key (Staff Bob)) speaks_for Name (PR (Staff Bob)) ==>
+   (M,Oi,Os) sat prop stand_down:
+   thm
+val it = (): unit
+> 
+*** Emacs/HOL command completed ***
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-3}
+The above results shows that the requirements are satisfied.
+
+
+\chapter{Appendix A: Exercise 13 - example1Theory}
+\label{cha:appendix-a:chapter13}
+
+The following code is from the file example1Script.sml
+\lstinputlisting{../HOL/example1Script.sml}
+
+\chapter{Appendix B: Exercise 13 - solutions1Theory }
+\label{cha:appendix-a:chapter13b}
+
+The following code is from the file solutions1Script.sml
+\lstinputlisting{../HOL/solutions1Script.sml}
+
+\chapter{Appendix B: Exercise 14 - conops0SolutionTheory}
+\label{cha:appendix-a:chapter13b}
+
+The following code is from the file conops0SolutionScript.sml
+\lstinputlisting{../HOL/conops0SolutionScript.sml}
+\end{document}

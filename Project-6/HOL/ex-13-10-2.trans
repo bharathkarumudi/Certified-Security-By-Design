@@ -1,0 +1,77 @@
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> # # # # # # # # # ** Unicode trace now off
+> val term1 =
+   ``Name Alice says (prop go :(commands, staff, 'd, 'e) Form)``:
+   term
+> val term2 =
+   ``Name Alice controls (prop go :(commands, staff, 'd, 'e) Form)``:
+   term
+> val term3 =
+   ``(prop go :(commands, staff, 'd, 'e) Form) impf
+  (prop launch :(commands, staff, 'd, 'e) Form)``:
+   term
+> val term4 =
+   ``Name Bob says (prop launch :(commands, staff, 'd, 'e) Form)``:
+   term
+> 
+*** Emacs/HOL command completed ***
+
+> # # # # # # # # # # # val aclExercise2 =
+   
+[((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),(Os :'e po)) sat
+ Name Alice controls (prop go :(commands, staff, 'd, 'e) Form),
+ ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),(Os :'e po)) sat
+ (prop go :(commands, staff, 'd, 'e) Form) impf
+ (prop launch :(commands, staff, 'd, 'e) Form),
+ ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),(Os :'e po)) sat
+ Name Alice says (prop go :(commands, staff, 'd, 'e) Form)]
+|- ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name Bob says (prop launch :(commands, staff, 'd, 'e) Form):
+   thm
+> # # # # # # # # Meson search level: .......
+val aclExercise2A =
+    []
+|- ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name Alice says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Alice controls (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   (prop go :(commands, staff, 'd, 'e) Form) impf
+   (prop launch :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Bob says (prop launch :(commands, staff, 'd, 'e) Form):
+   thm
+> 
+*** Emacs/HOL command completed ***
+
+> <<HOL message: more than one resolution of overloading was possible>>
+<<HOL message: inventing new type variable names: 'a, 'b, 'c>>
+<<HOL message: more than one resolution of overloading was possible>>
+<<HOL message: inventing new type variable names: 'a, 'b, 'c, 'd>>
+val aclExercise2B =
+    []
+|- ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name Alice says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Alice controls (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   (prop go :(commands, staff, 'd, 'e) Form) impf
+   (prop launch :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Bob says (prop launch :(commands, staff, 'd, 'e) Form):
+   thm
+val it = (): unit
+> 
+*** Emacs/HOL command completed ***
+
+> 

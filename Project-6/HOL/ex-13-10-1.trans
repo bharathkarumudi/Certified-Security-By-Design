@@ -1,0 +1,59 @@
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> # # # # # # # # # ** Unicode trace now off
+> val princTerm =
+   ``Name Alice``:
+   term
+> val term1 =
+   ``Name Alice says (prop go :(commands, staff, 'd, 'e) Form)``:
+   term
+> > val term2 =
+   ``Name Bob says (prop go :(commands, staff, 'd, 'e) Form)``:
+   term
+> > # val term3 =
+   ``Name Alice meet Name Bob says
+  (prop launch :(commands, staff, 'd, 'e) Form)``:
+   term
+> # # # # # # # # # val aclExercise1 =
+    []
+|- ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name Alice says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Bob says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Alice meet Name Bob says
+   (prop go :(commands, staff, 'd, 'e) Form):
+   thm
+> # # # # # # # # Meson search level: .....
+val aclExercise1A =
+    []
+|- ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name Alice says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Bob says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Alice meet Name Bob says
+   (prop go :(commands, staff, 'd, 'e) Form):
+   thm
+> # # # # # # # # # # # Meson search level: ..
+Meson search level: ..
+val aclExercise1B =
+    []
+|- ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name Alice says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Bob says (prop go :(commands, staff, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name Alice meet Name Bob says
+   (prop go :(commands, staff, 'd, 'e) Form):
+   thm
+> 
+*** Emacs/HOL command completed ***
