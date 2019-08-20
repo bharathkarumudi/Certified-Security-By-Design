@@ -71,19 +71,7 @@ In this exercise we need to prove the theorem:
 
 \section{Relevant Code}
 \label{sec:relevant-code-1}
- \lstset{frameround=fftt}
-\begin{lstlisting}[frame=tRBL]
-val absorptionRule =
-TAC_PROOF (
-([],``!p q. (p ==> q) ==> p ==> p/\q``),
-(REPEAT STRIP_TAC THEN
-ASM_REWRITE_TAC [] THEN
-RES_TAC) );
-
-val _ = save_thm("absorptionRule",absorptionRule);
-
-\end{lstlisting}
-
+\lstinputlisting{HOLCode/ex-9-5-1.sml}
 
 \section{Execution Transcripts}
 \label{sec:exec-transcr-1}
@@ -128,24 +116,7 @@ In this exercise we need to prove the theorem:
 
 \section{Relevant Code}
 \label{sec:relevant-code-2}
- \lstset{frameround=fftt}
-\begin{lstlisting}[frame=tRBL]
-
-val constructiveDilemmaRule =
- TAC_PROOF (
-([], ``!p q r s.(p ==> q) /\ (r ==> s) ==> (p\/r) ==> (q\/s)``),
-REPEAT STRIP_TAC THEN
-ASM_REWRITE_TAC [] THEN
-RES_TAC THEN
-ASM_REWRITE_TAC [] THEN
-RES_TAC THEN
-ASM_REWRITE_TAC []
-);
-
-val _ = save_thm("constructiveDilemmaRule",constructiveDilemmaRule);
-
-\end{lstlisting}
-
+\lstinputlisting{HOLCode/ex-9-5-2.sml}
 
 \section{Execution Transcripts}
 \label{sec:exec-transcr-2}
@@ -198,27 +169,7 @@ In this exercise we need to prove the theorem:
 
 \section{Relevant Code}
 \label{sec:relevant-code-3}
- \lstset{frameround=fftt}
-\begin{lstlisting}[frame=tRBL]
-
-val absorptionRule2 =
- TAC_PROOF (
-([], ``!p q r s.(p ==> q) /\ (r ==> s) ==> (p\/r) ==> (q\/s)``),
-PROVE_TAC []
-);
-
-val _= save_thm("absorptionRule2",absorptionRule2);
-
-val constructiveDilemmaRule2=
- TAC_PROOF (
-([],``!p q r s.(p ==> q) /\ (r ==> s) ==> (p\/r) ==> (q\/s)``),
-PROVE_TAC []
-);
-
-val _ = save_thm("constructiveDilemmaRule2",constructiveDilemmaRule2);
-
-\end{lstlisting}
-
+\lstinputlisting{HOLCode/ex-9-5-3.sml}
 
 \section{Execution Transcripts}
 \label{sec:exec-transcr-3}
@@ -276,19 +227,7 @@ In this exercise we need to prove the theorem:
 
 \section{Relevant Code}
 \label{sec:relevant-code-4}
- \lstset{frameround=fftt}
-\begin{lstlisting}[frame=tRBL]
-val problemonethm=
-TAC_PROOF(
-([ `` !x: 'a.P(x) ==> M(x) ``, ``(P: 'a->bool) (s: 'a)``],
-``(M:'a->bool) (s: 'a)``),
-RES_TAC
-);
-
-val _=save_thm("problemonethm",problemonethm);
-
-\end{lstlisting}
-
+\lstinputlisting{HOLCode/ex-10-4-1.sml}
 
 \section{Execution Transcripts}
 \label{sec:exec-transcr-4}
@@ -338,30 +277,7 @@ In this exercise we need to prove the theorem:
 
 \section{Relevant Code}
 \label{sec:relevant-code-5}
- \lstset{frameround=fftt}
-\begin{lstlisting}[frame=tRBL]
-
-val  problemtwothm=
-TAC_PROOF(
-([``p /\ q ==> r``, ``r ==> s``, ``~s``], ``p ==> ~q``),
-(PAT_ASSUM ``r  ==>s``
-	    (fn th =>
-     	    ASSUME_TAC
-     	      (DISJ_IMP (ONCE_REWRITE_RULE [DISJ_SYM] (IMP_ELIM th) )
-              )
-            )
-) THEN
-(PAT_ASSUM ``p /\ q ==> r``
-	   (fn th2 =>
-     	   ASSUME_TAC
-     	   (DISJ_IMP (ONCE_REWRITE_RULE [DISJ_SYM] (IMP_ELIM th2))))) THEN
-REPEAT STRIP_TAC THEN
-RES_TAC
-)
-val _=save_thm("problemtwothm",problemtwothm);
-
-\end{lstlisting}
-
+\lstinputlisting{HOLCode/ex-10-4-2.sml}
 
 \section{Execution Transcripts}
 \label{sec:exec-transcr-5}
@@ -400,7 +316,7 @@ val _=save_thm("problemtwothm",problemtwothm);
 The above results shows that the requirements are satisfied.
 
 %%------ Exercise 10.4.3 -------%%
-
+%% --- Not solved --- %%
 
 \chapter{Appendix A: Chapter 9}
 \label{cha:appendix-a:chapter9}
