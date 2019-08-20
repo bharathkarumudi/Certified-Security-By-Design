@@ -1,0 +1,36 @@
+\contentsline {chapter}{\numberline {1}Executive Summary}{3}{chapter.1}
+\contentsline {chapter}{\numberline {2}Exercise 7.3.1}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}Problem Statement}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Relevant Code}{4}{section.2.2}
+\contentsline {section}{\numberline {2.3}Test Cases}{4}{section.2.3}
+\contentsline {section}{\numberline {2.4}Execution Transcripts}{5}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Explanation of Results}{5}{subsection.2.4.1}
+\contentsline {chapter}{\numberline {3}Exercise 7.3.2}{6}{chapter.3}
+\contentsline {section}{\numberline {3.1}Problem Statement}{6}{section.3.1}
+\contentsline {section}{\numberline {3.2}Relevant Code}{6}{section.3.2}
+\contentsline {section}{\numberline {3.3}Test Cases}{7}{section.3.3}
+\contentsline {section}{\numberline {3.4}Execution Transcripts}{7}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Explanation of Results}{7}{subsection.3.4.1}
+\contentsline {chapter}{\numberline {4}Exercise 7.3.3}{8}{chapter.4}
+\contentsline {section}{\numberline {4.1}Problem Statement}{8}{section.4.1}
+\contentsline {section}{\numberline {4.2}Relevant Code}{8}{section.4.2}
+\contentsline {section}{\numberline {4.3}Test Cases}{8}{section.4.3}
+\contentsline {section}{\numberline {4.4}Execution Transcripts}{8}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Explanation of Results}{9}{subsection.4.4.1}
+\contentsline {chapter}{\numberline {5}Exercise 8.4.1}{10}{chapter.5}
+\contentsline {section}{\numberline {5.1}Problem Statement}{10}{section.5.1}
+\contentsline {section}{\numberline {5.2}Relevant Code}{10}{section.5.2}
+\contentsline {section}{\numberline {5.3}Execution Transcripts}{10}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Explanation of Results}{10}{subsection.5.3.1}
+\contentsline {chapter}{\numberline {6}Exercise 8.4.2}{11}{chapter.6}
+\contentsline {section}{\numberline {6.1}Problem Statement}{11}{section.6.1}
+\contentsline {section}{\numberline {6.2}Relevant Code}{11}{section.6.2}
+\contentsline {section}{\numberline {6.3}Execution Transcripts}{12}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Explanation of Results}{12}{subsection.6.3.1}
+\contentsline {chapter}{\numberline {7}Exercise 8.4.3}{13}{chapter.7}
+\contentsline {section}{\numberline {7.1}Problem Statement}{13}{section.7.1}
+\contentsline {section}{\numberline {7.2}Relevant Code}{13}{section.7.2}
+\contentsline {section}{\numberline {7.3}Execution Transcripts}{14}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Explanation of Results}{14}{subsection.7.3.1}
+\contentsline {chapter}{\numberline {8}Appendix A: Chapter 7}{15}{chapter.8}
+\contentsline {chapter}{\numberline {9}Appendix B: Chapter 8}{17}{chapter.9}

@@ -1,0 +1,472 @@
+\documentclass{report}
+\title{Project 3}
+\author{Bharath Karumudi}
+\date{\today}
+
+%%........................................%%
+%% Loading the Packages 
+%%........................................%%
+\usepackage{634format}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{holtex}
+\usepackage{holtexbasic}
+\usepackage{amssymb}
+\input{commands}
+\input{../HOL/HOLReports/HOLchapterEight}
+%.........................................%%
+%.........................................%%
+
+\begin{document}
+ \lstset{language=ML}
+ \maketitle{}
+
+ \begin{abstract}
+   This project is to demonstrate the capabilities of implementiong
+   constructing and deconstructing HOL Terms using the tools and
+   techniques - \LaTeX{}, AcuTeX, emacs and ML. 
+
+   Each chapter documents the given problems with a structure of:
+   \begin{enumerate}
+   \item Problem Statement
+   \item Relevant Code
+   \item Execution Transcripts
+   \item Explanation of results
+   \end{enumerate}
+
+ \end{abstract}
+
+
+ \begin{acknowledgments}
+  Professor Marvine Hamner and Professor Shiu-Kai Chin who taught the
+  Certified Security By Design.
+ \end{acknowledgments}
+
+ \tableofcontents{}
+
+ \chapter{Executive Summary}
+ \label{cha:executive-summary}
+
+\textbf{All the requirements for this project are statisfied specifically,}
+ and by using HOL proved the below theorems:
+
+\begin{description}
+\item[Contents] \ \\
+Our report has the following content:
+\begin{enumerate}
+ \item Chapter~\ref{cha:executive-summary}: Executive Summary
+ \item Chapter~\ref{cha:exercise-7.3.1} Exercise 7.3.1
+   \begin{enumerate}
+    \item Section~\ref{sec:problem-statement-71} Problem Statement
+    \item Section~\ref{sec:relevant-code-71} Relevant Code
+     \item Section~\ref{sec:test-cases-71} Test Cases
+    \item Section~\ref{sec:exec-transcr-71} Execution Transcripts
+    \item Section~\ref{sec:explanation-results-71} Explanation of Results
+   \end{enumerate}
+ \item Chapter~\ref{cha:exercise-7.3.2} Exercise 7.3.2
+   \begin{enumerate}
+    \item Section~\ref{sec:problem-statement-72} Problem Statement
+    \item Section~\ref{sec:relevant-code-72} Relevant Code
+     \item Section~\ref{sec:test-cases-72} Test Cases
+    \item Section~\ref{sec:exec-transcr-72} Execution Transcripts
+    \item Section~\ref{sec:explanation-results-72} Explanation of Results
+   \end{enumerate}
+ \item Chapter~\ref{cha:exercise-7.3.3} Exercise 7.3.3
+   \begin{enumerate}
+    \item Section~\ref{sec:problem-statement-73} Problem Statement
+    \item Section~\ref{sec:relevant-code-73} Relevant Code
+    \item Section~\ref{sec:test-cases-73} Test Cases
+    \item Section~\ref{sec:exec-transcr-73} Execution Transcripts
+    \item Section~\ref{sec:explanation-results-73} Explanation of Results
+   \end{enumerate}
+\end{enumerate}
+\end{description}
+
+\textbf{Chapter 8:}
+\begin{quote}
+\HOLchapterEightTheorems
+\end{quote}
+
+Reproducibility in ML and \LaTeX{}: Our ML and \LaTeX{} source files compile with no errors.
+
+
+%%------ Exercise 7 -------%%
+
+\chapter{Exercise 7.3.1}
+ \label{cha:exercise-7.3.1}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-71}
+
+In this exercise we need to create a function \emph{andImp2Imp term}, which will take:
+\begin{align*}
+p\wedge q \subset r
+\end{align*}
+
+and results to:
+\begin{align*}
+p \subset q \subset r;
+\end{align*}
+
+\section{Relevant Code}
+\label{sec:relevant-code-71}
+\lstinputlisting{HOLCode/ex-7-3-1.sml}
+
+\section{Test Cases}
+\label{sec:test-cases-71}
+
+The required test cases are:
+\begin{lstlisting}[frame = tRBL ]
+andImp2Imp ``(p/\q) ==> r``
+\end{lstlisting}
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-71}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> # # # # # # # val andImp2Imp = fn: term -> term
+> > 
+> 
+> andImp2Imp ``(p/\q) ==> r``;
+val it =
+   ``(p :bool) ==> (q :bool) ==> (r :bool)``:
+   term
+> 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-71}
+The above test results shows the test case has been passed.
+
+
+%%---- Exercise 7.3.2 -----%
+
+\chapter{Exercise 7.3.2}
+\label{cha:exercise-7.3.2}
+
+\section{Problem Statement}
+\label{sec:problem-statement-72}
+In this exercise, we have to create \emph{andImp2Imp term}, which takes the term 
+\begin{align*}
+p \subset q \subset r;
+\end{align*}
+
+and results to:
+\begin{align*}
+p\wedge q \subset r
+\end{align*} and also should act as a reverse function for 7.3.1
+
+\section{Relevant Code}
+\label{sec:relevant-code-72}
+\lstinputlisting{HOLCode/ex-7-3-2.sml}
+
+\section{Test Cases}
+\label{sec:test-cases-72}
+
+The required test cases are:
+\begin{lstlisting}[frame = tRBL ]
+andImp2Imp ``(p/\q) ==> r``
+impImpAnd ``p ==> q ==> r``;
+impImpAnd(andImp2Imp ``(p/\q) ==> r``);
+andImp2Imp(impImpAnd ``p==>q==>r``);
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-72}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > 
+> # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> # # # # # # # val andImp2Imp = fn: term -> term
+> # # # # # # # # val impImpAnd = fn: term -> term
+> > 
+> val it =
+   ``(p :bool) ==> (q :bool) ==> (r :bool)``:
+   term
+> val it =
+   ``(p :bool) /\ (q :bool) ==> (r :bool)``:
+   term
+> val it =
+   ``(p :bool) /\ (q :bool) ==> (r :bool)``:
+   term
+> val it =
+   ``(p :bool) ==> (q :bool) ==> (r :bool)``:
+   term
+> 
+
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-72}
+
+The above transcript shows the given test cases has been passed.
+
+%%---- Exercise 7.3.3 -----%
+
+\chapter{Exercise 7.3.3}
+\label{cha:exercise-7.3.3}
+
+\section{Problem Statement}
+\label{sec:problem-statement-73}
+In this exercise we have to create a function \emph{notExists term} which takes the term  $\neg \exists x.P(x)$ and returns $\forall x.\neg P(x)$.
+
+\section{Relevant Code}
+\label{sec:relevant-code-73}
+\lstinputlisting{HOLCode/ex-7-3-3.sml}
+
+\section{Test Cases}
+\label{sec:test-cases-73}
+
+The required test cases are:
+\begin{lstlisting}[frame = tRBL ]
+notExists ``~?z.Q z``;
+\end{lstlisting}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-73}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > 
+> 
+> # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> # # # # # val notExists = fn: term -> term
+> > 
+> <<HOL message: inventing new type variable names: 'a>>
+val it =
+   ``!(z :'a). (Q :'a -> bool) z``:
+   term
+> 
+
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-73}
+
+The above transcript shows the given tests has been passed.
+
+
+
+%%------ Exercise 8.4.1 -------%%
+
+ \chapter{Exercise 8.4.1}
+ \label{cha:exercise-8.4.1}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-1}
+
+In this exercise we need to prove the theorem:
+\HOLTokenTurnstile{} \HOLFreeVar{p} \HOLSymConst{\HOLTokenImp{}} (\HOLFreeVar{p} \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{q}) \HOLSymConst{\HOLTokenImp{}} (\HOLFreeVar{q} \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{r}) \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{r}
+
+\section{Relevant Code}
+\label{sec:relevant-code-1}
+\lstinputlisting{HOLCode/ex-8-4-1.sml}
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-1}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> 
+> # # # # # # # # # # # val problem1Thm =
+    [] |- (p :bool) ==> (p ==> (q :bool)) ==> (q ==> (r :bool)) ==> r:
+   thm
+> 
+> > 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-1}
+The above results shows that theorem is proved.
+
+%%------ Exercise 8.4.2 -------%%
+
+ \chapter{Exercise 8.4.2}
+ \label{cha:exercise-8.4.2}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-2}
+
+In this exercise we need to prove the theorem:
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{p} \HOLBoundVar{q}. \HOLBoundVar{p} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{q} \HOLSymConst{\HOLTokenEquiv{}} \HOLBoundVar{q} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{p}
+
+\section{Relevant Code}
+\label{sec:relevant-code-2}
+\lstinputlisting{HOLCode/ex-8-4-2.sml}
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-2}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> # # # # # # # # val conj1Thm =
+    [] |- (p :bool) /\ (q :bool) ==> q /\ p:
+   thm
+> > # # # # # # # # val conj2Thm =
+    [] |- (q :bool) /\ (p :bool) ==> p /\ q:
+   thm
+> > # val conjSymThm =
+    [] |- (p :bool) /\ (q :bool) <=> q /\ p:
+   thm
+> > > > 
+*** Emacs/HOL command completed ***
+
+> 
+
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-2}
+The above results shows that theorem is proved.
+
+
+%%------ Exercise 8.4.3 -------%%
+
+ \chapter{Exercise 8.4.3}
+ \label{cha:exercise-8.4.3}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-3}
+
+In this exercise we need to prove the theorem:
+\HOLTokenTurnstile{} \HOLFreeVar{p} \HOLSymConst{\HOLTokenImp{}} (\HOLFreeVar{p} \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{q}) \HOLSymConst{\HOLTokenImp{}} (\HOLFreeVar{q} \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{r}) \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{r}
+
+\section{Relevant Code}
+\label{sec:relevant-code-3}
+\lstinputlisting{HOLCode/ex-8-4-3.sml}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-3}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> # # # # # # # # val conj1Thm =
+    [] |- (p :bool) /\ (q :bool) ==> q /\ p:
+   thm
+> > # # # # # # # # val conj2Thm =
+    [] |- (q :bool) /\ (p :bool) ==> p /\ q:
+   thm
+> > # val conjSymThm =
+    [] |- (p :bool) /\ (q :bool) <=> q /\ p:
+   thm
+> > val conjSymThmAll =
+    [] |- !(p :bool) (q :bool). p /\ q <=> q /\ p:
+   thm
+> > # > 
+*** Emacs/HOL command completed ***
+
+> 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-3}
+The above results shows that theorem is proved.
+
+\chapter{Appendix A: Chapter 7}
+\label{cha:appendix-a:chapter7}
+
+The following code is from the file chapter7Answers.sml
+\lstinputlisting{../ML/chapter7Answers.sml}
+
+\chapter{Appendix B: Chapter 8}
+\label{cha:appendix-a:chapter8}
+
+The following code is from the file project3bScript.sml
+\lstinputlisting{../HOL/chapter8Script.sml}
+
+\end{document}
