@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.16)  18 AUG 2019 22:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.16)  20 AUG 2019 21:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -893,7 +893,7 @@ Overfull \hbox (10.2499pt too wide) in paragraph at lines 188--190
 .1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.298 \begin{session}
+l.297 \begin{session}
                       [16] [17] [18]
 Chapter 5.
 (../HOL/example1Script.sml
@@ -1450,19 +1450,19 @@ Overfull \hbox (10.2499pt too wide) in paragraph at lines 188--190
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 443.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 442.
  [28]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 443.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 442.
  (./Project6.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 443.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 443.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 442.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 442.
 Package rerunfilecheck Info: File `Project6.out' has not changed.
 (rerunfilecheck)             Checksum: 88DD0C0CECAE466B1935DB8400C9193F;1241.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 443.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 442.
  ) 
 Here is how much of TeX's memory you used:
  9342 strings out of 494953
@@ -1486,7 +1486,7 @@ msy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on Project6.pdf (30 pages, 252374 bytes).
+Output written on Project6.pdf (30 pages, 252192 bytes).
 PDF statistics:
  1228 PDF objects out of 1440 (max. 8388607)
  1169 compressed objects within 12 object streams
