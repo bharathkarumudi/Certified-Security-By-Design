@@ -1,0 +1,349 @@
+\documentclass{report}
+\title{Exam 1}
+\author{Bharath Karumudi}
+\date{\today}
+
+%%........................................%%
+%% Loading the Packages 
+%%........................................%%
+\usepackage{634format}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{holtex}
+\usepackage{holtexbasic}
+\usepackage{amssymb}
+\input{commands}
+\input{../HOL/HOLReports/HOLquestionOne}
+\input{../HOL/HOLReports/HOLquestionTwo}
+%.........................................%%
+%.........................................%%
+
+\begin{document}
+ \lstset{language=ML}
+ \maketitle{}
+
+ \begin{abstract}
+   This project is to demonstrate the capabilities of implementing
+   constructing and deconstructing HOL Terms using the tools and
+   techniques - \LaTeX{}, AcuTeX, emacs and ML. 
+
+   Each chapter documents the given problems with a structure of:
+   \begin{enumerate}
+   \item Problem Statement
+   \item Relevant Code
+   \item Execution Transcripts
+   \item Explanation of results
+   \end{enumerate}
+
+ \end{abstract}
+
+
+ \begin{acknowledgments}
+  Professor Marvine Hamner and Professor Shiu-Kai Chin who taught the
+  Certified Security By Design.
+ \end{acknowledgments}
+
+ \tableofcontents{}
+
+ \chapter{Executive Summary}
+ \label{cha:executive-summary}
+
+\textbf{All requirements for this project are statisfied specifically,}
+ and by using HOL solved the below questions:  
+
+   \begin{enumerate}
+   \item Question 1
+   \item Question 2
+   \item Question 3
+   \end{enumerate}  
+
+
+
+%%------Question 1 -------%%
+
+ \chapter{Question 1}
+ \label{cha:ques1}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-1}
+
+Consider the following situation. Jack is taking an Amtrak train to visit his parents over the
+winter break from school, University of the Brilliant. He purchased his ticket online and has
+printed it out.
+Jack arrives at the train depot and boards the train. As the train pulls out of the depot the
+conductor approaches and asks for Jack’s ticket. Using the programming and mathematical
+languages you have learned in CIS634 (emacs, LaTex, HOL, etc.) generate a report for Amtrak’s
+Security \& Operations manager giving a formal proof for why Jack should be allowed to
+complete his trip.
+
+\section{Relevant Code}
+\label{sec:relevant-code-1}
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+  1. Jack says <travel, train>                        Jack's Request  
+  2. Amtrack controls (Jack controls <travel, train>) Access Policy  
+  3. ticket => Amtrack                                Trust Assumption  
+  4. ticket says (Jack controls <travel, train>)      Jack's Ticket  
+  5. <travel, train>                                  1,2,3,4 ticket rule  
+\end{lstlisting}
+
+\lstinputlisting{../HOL/question1Script.sml}
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-1}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+[extending loadPath with Holmakefile INCLUDES variable]
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> # # <<HOL message: Defined type: "commands">>
+> # # # <<HOL message: Defined type: "staff">>
+> val term1 =
+   ``Name Jack says (prop travel :(commands, staff, 'd, 'e) Form)``:
+   term
+> val term2 =
+   ``Name Jack controls (prop travel :(commands, staff, 'd, 'e) Form)``:
+   term
+> val term3 =
+   ``(prop travel :(commands, staff, 'd, 'e) Form) impf
+  (prop deny :(commands, staff, 'd, 'e) Form)``:
+   term
+> val term4 =
+   ``((Name (Ticket :staff) speaks_for Name Amtrack)
+     :(commands, staff, 'd, 'e) Form)``:
+   term
+> 
+*** Emacs/HOL command completed ***
+
+> # # # # # # # # # # val question1Thm =
+   
+[((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),(Os :'e po)) sat
+ Name Jack controls (prop travel :(commands, staff, 'd, 'e) Form),
+ ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),(Os :'e po)) sat
+ (prop travel :(commands, staff, 'd, 'e) Form) impf
+ (prop deny :(commands, staff, 'd, 'e) Form),
+ ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),(Os :'e po)) sat
+ Name Jack says (prop travel :(commands, staff, 'd, 'e) Form)]
+|- ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name Jack says (prop deny :(commands, staff, 'd, 'e) Form):
+   thm
+> 
+
+ 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-1}
+The above results shows that the requirements are satisfied.
+
+%%------ Question 2 -------%%
+
+ \chapter{Question 2}
+ \label{cha:ques2}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-2}
+
+Consider the following situation. Alice has a lock box at her bank, the Bank of Riches. To
+access her lock box Alice needs an official state-issued identification card, typically her driver’s
+license, DL\#2507, and the key to her lock box,\#113.
+Alice wants to store a valuable document in her lock box. She proceeds to her bank and
+presents her credentials in order to access her lock box. Using the programming and
+mathematical languages you have learned in CIS634 (emacs, LaTex, HOL, etc.) generate a report
+for the Bank’s manager giving a formal proof for why Alice should have access. Hint: the key
+will act as a “ticket” while the driver’s license can be checked against an access control list
+(ACL).
+
+\section{Relevant Code}
+\label{sec:relevant-code-2}
+
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+  1. Face says <enter, lockerroom>                            Request
+  2. Bank controls ((Alice controls <113,lockerroom>)         Jurisdiction
+                    Alice controls <enter, lockerroom>
+  3. Bank says ((Alice controls <113, lockerroom>)            Access Policy 
+                Alice controls <enter, lockerroom>
+  4. DMV controls (Face => Alice)                             Jurisdiction
+  5. License says (Face => Alice)                             Drivers License
+  6. License => DMV                                           Trust Assumption
+  7. Bank controls (Alice controls <113, lockerroom>)         Jurisdiction
+  8. key says (Alice controls <113, lockerroom>)              Ticket
+  9. key => Bank                                              Trust Assumption
+  10.<enter, lockerroom>                                      1,2,3,4,5,6,7,8,9
+                                                              ID \& Ticket Rule    
+\end{lstlisting}
+
+\lstinputlisting{../HOL/question1Script.sml}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-2}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+[extending loadPath with Holmakefile INCLUDES variable]
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> 
+> 
+> # # <<HOL message: Defined type: "commands">>
+> # # # <<HOL message: Defined type: "people">>
+> # # <<HOL message: Defined type: "roles">>
+> # # <<HOL message: Defined type: "keyPrinc">>
+> # # <<HOL message: Defined type: "principals">>
+> val question2Thm =
+    []
+|- ((M :(commands, 'b, principals, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name (PR (Role Commander)) controls
+   (prop go :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   reps (Name (PR (Staff Alice))) (Name (PR (Role Commander)))
+     (prop go :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name (Key (Staff Alice)) quoting Name (PR (Role Commander)) says
+   (prop go :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   (prop go :(commands, principals, 'd, 'e) Form) impf
+   (prop nogo :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   ((Name (Key (Role CA)) speaks_for Name (PR (Role CA)))
+      :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name (Key (Role CA)) says
+   ((Name (Key (Staff Alice)) speaks_for Name (PR (Staff Alice)))
+      :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name (PR (Role CA)) controls
+   ((Name (Key (Staff Alice)) speaks_for Name (PR (Staff Alice)))
+      :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name (Key (Staff Bank)) quoting
+   Name (PR (Role (Operator :roles))) says
+   (prop nogo :(commands, principals, 'd, 'e) Form):
+   thm
+val it = (): unit
+> 
+*** Emacs/HOL command completed ***
+
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-2}
+The above results shows that the requirements are satisfied.
+
+
+%%------ Question 3 -------%%
+
+ \chapter{Question 3}
+ \label{cha:exercise-11.6.3}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-3}
+
+Discretionary access control poses real-world challenges in security. This problem is 
+intended to help you explore what those challenges are and some potential ways to mitigate
+negative impacts due to these challenges. Consider the 2005 paper, “On Safety in Discretionary
+Access Control,” written by Li and Tripunitara at Purdue University. I’ve uploaded this paper to
+our course website for you. You can use this paper, your textbook, or other resources at your
+disposal. But remember, whatever you use you will be on the clock to get your exam done.
+Given what you now know, this question asks you to consider whether or not you believe
+that safety in existing discretionary access control schemes being “decidable” means that these
+schemes are in fact safe. Or, if this merely means that we can decide what the level of safety in
+these schemes is. You are to include a 1 page summary in your report that expresses your
+thinking about this topic including a sentence that summarizes your conclusion.
+
+\section{Summary}
+\label{sec:summary-3}
+
+As mentioned by Ninghui et. al in the research paper “On safety in Discretionary Access
+Control” Safety analysis decides whether rights can be leaked to unauthorized principals in
+future states. Safety analysis was shown to be undecidable in the HRU scheme. Safety analysis,
+first formulated by Harrison, et. al for the access matrix model has been recognized as
+fundamental problem in access control. Solworth and Sloan safety is undecidable in DAC and
+use this assertion as the motivation for introducing a new access control scheme based on
+labels and relabeling that has decidable safety properties.
+DAC cannot be equated to the HRU scheme for the following reasons:
+First, the HRU scheme can be used to encode schemes that are not DAC schemes; therefore,
+the fact that safety is undecidable in the HRU scheme should not lead one to conclude that
+safety is undecidable in DAC.
+Second, features in DAC cannot always be encoded in the HRU scheme. For example, some DAC
+schemes require that each object be owned by exactly one subject; thus removal of a subject
+who has the ownership of some objects requires the transfer of ownership to some other
+subject (often times the owner of the subject being removed) so that this property is
+maintained. Both the removal of the subject and the transfer of ownership of objects it owns
+occur in a single state-change.
+The algorithm by authors, suggests that safety in these DAC schemes can be efficiently decided
+and there is no need to invent new access control schemes with decidable safety as the primary
+goal. The authors show that the proposed implementation of DAC schemes in the Solworth-
+Sloan scheme has significant deficiencies. Two particular limitations that discussed are the lack
+of support for removing subjects and objects and the inability to ensure that an object has only
+one owner, as required by DAC schemes. Solworth and Sloan presented a new DAC scheme
+based on labels and relabeling rules. To our knowledge, the work by Solworth and Sloan was
+the first to directly address safety in DAC.
+There is considerable overhead in implementing a relatively simple DAC scheme (SDCO) in the
+Solworth-Sloan scheme. For each object, we need to create a set of labels whose size is linear in
+the number of the subjects in the state. We also need to create a set of tags whose size is
+exponential in the number rights in the system. These tags are used to define groups, and the
+therefore, the number of entries in all the sets of patterns is also exponential in the number of
+rights in the system. This is considerable overhead considering the simplicity of SDCO, and the
+fact that one can “directly” implement it, with efficiently decidable safety.
+Conclusion, the existing general DAC schemes is decidable and there is no need to invent new
+DAC schemes with decidable safety as the primary goal.
+
+
+\subsection{Conclusion}
+\label{sec:conclusion-3}
+The existing general DAC schemes is decidable and there is no need to invent new
+DAC schemes with decidable safety as the primary goal.
+
+
+\chapter{Appendix A: Question 1}
+\label{cha:appendix-a:chapter13}
+
+The following code is from the file question1Script.sml
+\lstinputlisting{../HOL/question1Script.sml}
+
+\chapter{Appendix B: Question 2 }
+\label{cha:appendix-a:chapter13b}
+
+The following code is from the question2Script.sml
+\lstinputlisting{../HOL/question2Script.sml}
+
+\chapter{Appendix C}
+\label{cha:appendix-a:chapter13b}
+Ninghui Li , Mahesh V. Tripunitara, On Safety in Discretionary Access Control, Proceedings of the 2005 IEEE Symposium on Security and Privacy.
+
+\end{document}

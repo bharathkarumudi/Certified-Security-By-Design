@@ -1,0 +1,18 @@
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+[extending loadPath with Holmakefile INCLUDES variable]
+> > > > 
+
+> # # # # # # # # # Meson search level: ........................
+val exercise15_6_1b_thm =
+    []
+|- !(keyAlice :symKey) (k :symKey) (text :string).
+     (deciphS keyAlice (Es k (SOME text)) =
+      SOME "This is from Alice") <=>
+     (k = keyAlice) /\ (text = "This is from Alice"):
+   thm
+> 

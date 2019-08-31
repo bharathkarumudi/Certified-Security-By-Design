@@ -1,0 +1,15 @@
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> # # # # # # # <<HOL message: inventing new type variable names: 'a>>
+val exercise15_6_3_thm =
+    []
+|- !(signature :(string digest, 'a) asymMsg).
+     signVerify (pubK (Alice :'a)) signature
+       (SOME "This is from Alice") <=>
+     (signature = sign (privK Alice) (hash (SOME "This is from Alice"))):
+   thm
+> 

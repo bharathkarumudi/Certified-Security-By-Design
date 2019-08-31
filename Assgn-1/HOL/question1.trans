@@ -1,0 +1,44 @@
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+[extending loadPath with Holmakefile INCLUDES variable]
+> > > > # # # # # # # # # ** types trace now on
+> *** Globals.show_assums now true ***
+> # # # # # # # # # ** Unicode trace now off
+> # # <<HOL message: Defined type: "commands">>
+> # # # <<HOL message: Defined type: "staff">>
+> val term1 =
+   ``Name Jack says (prop travel :(commands, staff, 'd, 'e) Form)``:
+   term
+> val term2 =
+   ``Name Jack controls (prop travel :(commands, staff, 'd, 'e) Form)``:
+   term
+> val term3 =
+   ``(prop travel :(commands, staff, 'd, 'e) Form) impf
+  (prop deny :(commands, staff, 'd, 'e) Form)``:
+   term
+> val term4 =
+   ``((Name (Ticket :staff) speaks_for Name Amtrack)
+     :(commands, staff, 'd, 'e) Form)``:
+   term
+> 
+*** Emacs/HOL command completed ***
+
+> # # # # # # # # # # val question1Thm =
+   
+[((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),(Os :'e po)) sat
+ Name Jack controls (prop travel :(commands, staff, 'd, 'e) Form),
+ ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),(Os :'e po)) sat
+ (prop travel :(commands, staff, 'd, 'e) Form) impf
+ (prop deny :(commands, staff, 'd, 'e) Form),
+ ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),(Os :'e po)) sat
+ Name Jack says (prop travel :(commands, staff, 'd, 'e) Form)]
+|- ((M :(commands, 'b, staff, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name Jack says (prop deny :(commands, staff, 'd, 'e) Form):
+   thm
+> 

@@ -1,0 +1,16 @@
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+[extending loadPath with Holmakefile INCLUDES variable]
+> > > > 
+
+val exercise15_6_1a_thm =
+    []
+|- !(key :symKey) (enMsg :'a symMsg) (message :'a).
+     (deciphS key enMsg = SOME message) <=>
+     (enMsg = Es key (SOME message)):
+   thm
+> 

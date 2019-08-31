@@ -1,0 +1,335 @@
+\documentclass{report}
+\title{Project 7}
+\author{Bharath Karumudi}
+\date{\today}
+
+%%........................................%%
+%% Loading the Packages 
+%%........................................%%
+\usepackage{634format}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{holtex}
+\usepackage{holtexbasic}
+\usepackage{amssymb}
+\input{commands}
+\input{../HOL/HOLReports/HOLcipher}
+\input{../HOL/HOLReports/HOLcryptoExercises}
+%.........................................%%
+%.........................................%%
+
+\begin{document}
+ \lstset{language=ML}
+ \maketitle{}
+
+ \begin{abstract}
+   This project is to demonstrate the capabilities of implementing
+   constructing and deconstructing HOL Terms using the tools and
+   techniques - \LaTeX{}, AcuTeX, emacs and ML. 
+
+   Each chapter documents the given problems with a structure of:
+   \begin{enumerate}
+   \item Problem Statement
+   \item Relevant Code
+   \item Execution Transcripts
+   \item Explanation of results
+   \end{enumerate}
+
+ \end{abstract}
+
+
+ \begin{acknowledgments}
+  Professor Marvine Hamner and Professor Shiu-Kai Chin who taught the
+  Certified Security By Design.
+ \end{acknowledgments}
+
+ \tableofcontents{}
+
+ \chapter{Executive Summary}
+ \label{cha:executive-summary}
+
+\textbf{All requirements for this project are statisfied specifically,}
+ and by using HOL proved the below theorems:
+\begin{quote}
+
+
+
+\end{quote}
+
+
+%%------ Exercise 15.6.1 -------%%
+
+ \chapter{Exercise 15.6.1}
+ \label{cha:exercise-15.6.1}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-1}
+In this we need to prove:  
+
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{keyAlice} \HOLBoundVar{k} \HOLBoundVar{text}.
+     (\HOLConst{deciphS} \HOLBoundVar{keyAlice} (\HOLConst{Es} \HOLBoundVar{k} (\HOLConst{SOME} \HOLBoundVar{text})) \HOLSymConst{=}
+      \HOLConst{SOME} \HOLStringLit{This is from Alice}) \HOLSymConst{\HOLTokenEquiv{}}
+     (\HOLBoundVar{k} \HOLSymConst{=} \HOLBoundVar{keyAlice}) \HOLSymConst{\HOLTokenConj{}} (\HOLBoundVar{text} \HOLSymConst{=} \HOLStringLit{This is from Alice})
+
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{P} \HOLBoundVar{message}.
+     (\HOLConst{deciphP} (\HOLConst{pubK} \HOLBoundVar{P}) \HOLFreeVar{enMsg} \HOLSymConst{=} \HOLConst{SOME} \HOLBoundVar{message}) \HOLSymConst{\HOLTokenEquiv{}}
+     (\HOLFreeVar{enMsg} \HOLSymConst{=} \HOLConst{Ea} (\HOLConst{privK} \HOLBoundVar{P}) (\HOLConst{SOME} \HOLBoundVar{message}))
+
+\section{Proof of exercise15_6_1a_thm}
+\label{sec:proof-1a}
+
+\subsection{Relevant Code}
+\label{sec:relevant-code-1a}
+\lstinputlisting{HOLCode/ex-15-6-1a.sml}
+
+\subsection{Execution Transcripts}
+\label{sec:exec-transcr-1a}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+[extending loadPath with Holmakefile INCLUDES variable]
+> > > > 
+
+val exercise15_6_1a_thm =
+    []
+|- !(key :symKey) (enMsg :'a symMsg) (message :'a).
+     (deciphS key enMsg = SOME message) <=>
+     (enMsg = Es key (SOME message)):
+   thm
+> 
+ 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-1}
+The above results shows that the requirements are satisfied.
+
+\section{Proof of exercise15_6_1b_thm}
+\label{sec:proof-1b}
+
+\subsection{Relevant Code}
+\label{sec:relevant-code-1b}
+\lstinputlisting{HOLCode/ex-15-6-1b.sml}
+
+
+\subsection{Execution Transcripts}
+\label{sec:exec-transcr-1b}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+[extending loadPath with Holmakefile INCLUDES variable]
+> > > > 
+
+> # # # # # # # # # Meson search level: ........................
+val exercise15_6_1b_thm =
+    []
+|- !(keyAlice :symKey) (k :symKey) (text :string).
+     (deciphS keyAlice (Es k (SOME text)) =
+      SOME "This is from Alice") <=>
+     (k = keyAlice) /\ (text = "This is from Alice"):
+   thm
+>  
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-1b}
+The above results shows that the requirements are satisfied.
+
+
+%%------ Exercise 15.6.2 -------%%
+
+
+ \chapter{Exercise 15.6.2}
+ \label{cha:exercise-15.6.2}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-2}
+In this we need to prove:  
+
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{key} \HOLBoundVar{text}.
+     (\HOLConst{deciphP} (\HOLConst{pubK} \HOLFreeVar{Alice}) (\HOLConst{Ea} \HOLBoundVar{key} (\HOLConst{SOME} \HOLBoundVar{text})) \HOLSymConst{=}
+      \HOLConst{SOME} \HOLStringLit{This is from Alice}) \HOLSymConst{\HOLTokenEquiv{}}
+     (\HOLBoundVar{key} \HOLSymConst{=} \HOLConst{privK} \HOLFreeVar{Alice}) \HOLSymConst{\HOLTokenConj{}} (\HOLBoundVar{text} \HOLSymConst{=} \HOLStringLit{This is from Alice})
+
+
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{key} \HOLBoundVar{text}.
+     (\HOLConst{deciphP} (\HOLConst{pubK} \HOLFreeVar{Alice}) (\HOLConst{Ea} \HOLBoundVar{key} (\HOLConst{SOME} \HOLBoundVar{text})) \HOLSymConst{=}
+      \HOLConst{SOME} \HOLStringLit{This is from Alice}) \HOLSymConst{\HOLTokenEquiv{}}
+     (\HOLBoundVar{key} \HOLSymConst{=} \HOLConst{privK} \HOLFreeVar{Alice}) \HOLSymConst{\HOLTokenConj{}} (\HOLBoundVar{text} \HOLSymConst{=} \HOLStringLit{This is from Alice})
+
+\section{Proof of exercise15_6_2a_thm}
+\label{sec:proof-2a}
+
+\subsection{Relevant Code}
+\label{sec:relevant-code-2a}
+\lstinputlisting{HOLCode/ex-15-6-2a.sml}
+
+\subsection{Execution Transcripts}
+\label{sec:exec-transcr-2a}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> # # # # # # # <<HOL message: inventing new type variable names: 'a, 'b>>
+Meson search level: ..........
+val exercise15_6_2a_thm =
+    []
+|- !(P :'a) (message :'b).
+     (deciphP (pubK P) (enMsg :('b, 'a) asymMsg) = SOME message) <=>
+     (enMsg = Ea (privK P) (SOME message)):
+   thm
+> 
+ 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-2a}
+The above results shows that the requirements are satisfied.
+
+
+\section{Proof of exercise15_6_2b_thm}
+\label{sec:proof-2b}
+
+\subsection{Relevant Code}
+\label{sec:relevant-code-2b}
+\lstinputlisting{HOLCode/ex-15-6-2b.sml}
+
+\subsection{Execution Transcripts}
+\label{sec:exec-transcr-2b}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> # # # # # # # # <<HOL message: inventing new type variable names: 'a>>
+val exercise15_6_2b_thm =
+    []
+|- !(key :'a pKey) (text :string).
+     (deciphP (pubK (Alice :'a)) (Ea key (SOME text)) =
+      SOME "This is from Alice") <=>
+     (key = privK Alice) /\ (text = "This is from Alice"):
+   thm
+> 
+
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-2b}
+The above results shows that the requirements are satisfied.
+
+
+
+%%------ Exercise 15.6.3 -------%%
+
+
+ \chapter{Exercise 15.6.3}
+ \label{cha:exercise-15.6.3}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-3}
+In this we need to prove:  
+
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{signature}.
+     \HOLConst{signVerify} (\HOLConst{pubK} \HOLFreeVar{Alice}) \HOLBoundVar{signature}
+       (\HOLConst{SOME} \HOLStringLit{This is from Alice}) \HOLSymConst{\HOLTokenEquiv{}}
+     (\HOLBoundVar{signature} \HOLSymConst{=}
+      \HOLConst{sign} (\HOLConst{privK} \HOLFreeVar{Alice}) (\HOLConst{hash} (\HOLConst{SOME} \HOLStringLit{This is from Alice})))
+
+\subsection{Relevant Code}
+\label{sec:relevant-code-1a}
+\lstinputlisting{HOLCode/ex-15-6-3.sml}
+
+
+\subsection{Execution Transcripts}
+\label{sec:exec-transcr-2a}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> # # # # # # # <<HOL message: inventing new type variable names: 'a>>
+val exercise15_6_3_thm =
+    []
+|- !(signature :(string digest, 'a) asymMsg).
+     signVerify (pubK (Alice :'a)) signature
+       (SOME "This is from Alice") <=>
+     (signature = sign (privK Alice) (hash (SOME "This is from Alice"))):
+   thm
+> 
+ 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-1}
+The above results shows that the requirements are satisfied.
+
+
+%%------ Appendix -------%%
+
+\chapter{Appendix A: cipherScript}
+\label{cha:appendix-a:chapter15}
+
+The following code is from the file cipherScript.sml
+\lstinputlisting{../HOL/cipherScript.sml}
+
+\chapter{Appendix B: cryptoExericisesScript }
+\label{cha:appendix-a:chapter15}
+
+The following code is from the file cryptoExercisesScript.sml
+\lstinputlisting{../HOL/cryptoExercisesScript.sml}
+
+
+\end{document}
