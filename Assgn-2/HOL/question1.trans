@@ -1,0 +1,18 @@
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+w> # # # # # # # # <<HOL message: inventing new type variable names: 'a>>
+val question1Thm =
+    []
+|- !(signature :(string digest, 'a) asymMsg).
+     signVerify (pubK (TrueSignatures :'a)) signature
+       (SOME "pubK GoodBooks") <=>
+     (signature =
+      sign (privK TrueSignatures) (hash (SOME "pubK GoodBooks"))):
+   thm
+> > > # # # # # 
+*** Time taken: 0.001s

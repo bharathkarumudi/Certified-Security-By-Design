@@ -1,0 +1,291 @@
+\documentclass{report}
+\title{Exam 2}
+\author{Bharath Karumudi}
+\date{\today}
+
+%%........................................%%
+%% Loading the Packages 
+%%........................................%%
+\usepackage{634format}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{holtex}
+\usepackage{holtexbasic}
+\usepackage{amssymb}
+\input{commands}
+\input{../HOL/HOLReports/HOLquestionOne}
+\input{../HOL/HOLReports/HOLquestionTwo}
+%.........................................%%
+%.........................................%%
+
+\begin{document}
+ \lstset{language=ML}
+ \maketitle{}
+
+ \begin{abstract}
+   This project is to demonstrate the capabilities of implementing
+   constructing and deconstructing HOL Terms using the tools and
+   techniques - \LaTeX{}, AcuTeX, emacs and ML. 
+
+   Each chapter documents the given problems with a structure of:
+   \begin{enumerate}
+   \item Problem Statement
+   \item Relevant Code
+   \item Execution Transcripts
+   \item Explanation of results
+   \end{enumerate}
+
+ \end{abstract}
+
+
+ \begin{acknowledgments}
+  Professor Marvine Hamner and Professor Shiu-Kai Chin who taught the
+  Certified Security By Design.
+ \end{acknowledgments}
+
+ \tableofcontents{}
+
+ \chapter{Executive Summary}
+ \label{cha:executive-summary}
+
+\textbf{All requirements for this project are statisfied specifically,}
+ and by using HOL solved the below questions:  
+
+   \begin{enumerate}
+   \item Question 1
+   \item Question 2
+   \item Question 3
+   \end{enumerate}  
+
+
+
+%%------Question 1 -------%%
+
+ \chapter{Question 1}
+ \label{cha:ques1}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-1}
+
+ Sally purchases a new computer from a reputable company with the
+ operating sys- tem and applications such as web browsers already
+ installed.  Upon setting up her computer, Sally types the web address
+ of her favorite Internet bookstore (Good- Books.com) into her web
+ browser.  She connects with the bookstore’s web site and logs onto
+ her account, which is handled by a secure portion of the web site
+ that relies on a private and public key pair. Because she is a
+ careful computer user, she verifies that she has connected to the
+ real GoodBooks.com site by having her web browser authenticate the
+ identity of the site. Her browser reports the following: The identity
+ of this web site has been verified by TrueSignatures, Inc., a
+ certificate authority you trust for this purpose.  Using her browser,
+ she looks at the public-key certificate of GoodBooks.com and sees
+ that it is signed by TrueSignatures, Inc.  She then makes her
+ selections, places her order, enters her credit-card information, and
+ then leaves the site.
+
+\section{Relevant Code}
+\label{sec:relevant-code-1}
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+
+ 1. K TrueSignatures => TrueSignatures	 	        Trust assumption
+ 2. K TrueSignatures says K GoodBooks => GoodBooks	Public key Certificate
+ 3. TrueSignatures controls K GoodBooks => GoodBooks	Jurisdiction
+ 4. TrueSignatures says K GoodBooks => GoodBooks	1, 2 speaks for
+ 5. K GoodBooks	=> GoodBooks				3,4 controls
+
+\end{lstlisting}
+
+\lstinputlisting{../HOL/question1Script.sml}
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-1}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> # # # # # # # # <<HOL message: inventing new type variable names: 'a>>
+val question1Thm =
+    []
+|- !(signature :(string digest, 'a) asymMsg).
+     signVerify (pubK (TrueSignatures :'a)) signature
+       (SOME "pubK GoodBooks") <=>
+     (signature =
+      sign (privK TrueSignatures) (hash (SOME "pubK GoodBooks"))):
+   thm
+> > > # # # # # 
+*** Time taken: 0.001s
+ 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-1}
+The above results shows that the requirements are satisfied.
+
+%%------ Question 2 -------%%
+
+ \chapter{Question 2}
+ \label{cha:ques2}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-2}
+
+ In this, we need to show the formal proof for Simple checking rule.
+ Consider a situation where Alice wishes to purchase goods from Bob,
+ her local grocer.  For simplicity, we assume that Alice and Bob are
+ both depositors of the same bank. Alice wishes to pay Bob, but she
+ does not have sufficient cash on hand (or she chooses not to use
+ it). Instead, she writes a check to Bob, which is in fact an order to
+ the bank to debit the given amount from her account and to pay it to
+ Bob. Alice hands the check to Bob. Because Bob wishes to be paid, he
+ heads to the bank, endorses Alice’s check by signing the back of it,
+ and presents the check to the teller for payment.
+
+\section{Relevant Code}
+\label{sec:relevant-code-2}
+
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+Signature Bob | Signature Alice says  
+                  (<pay amount, Bob> ^ <debit amt, acct Alice>)
+Signature Alice => Alice
+Signature Bob => Bob
+<amt covered, acct Alice>
+<amt covered, acct Alice> > Allice controls 
+                  (<pay amount, Bob> ^ <debit amt, acct Alice>)
+Bob reps Alice on (<pay amt, Bob> ^ <debit amt, acct Alice>)
+   
+\end{lstlisting}
+
+\lstinputlisting{../HOL/question2Script.sml}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-2}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+> # # # <<HOL message: Defined type: "commands">>
+> # # # <<HOL message: Defined type: "people">>
+> # # # <<HOL message: Defined type: "roles">>
+> # # # <<HOL message: Defined type: "keyPrinc">>
+> # # # <<HOL message: Defined type: "principals">>
+> val question2Thm =
+    []
+|- ((M :(commands, 'b, principals, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name (PR (Role payer)) controls
+   (prop pay :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   reps (Name (PR (Staff Alice))) (Name (PR (Role payer)))
+     (prop pay :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name (Key (Staff Alice)) quoting Name (PR (Role payer)) says
+   (prop pay :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   (prop pay :(commands, principals, 'd, 'e) Form) impf
+   (prop debit :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   ((Name (Key (Role payee)) speaks_for Name (PR (Role payee)))
+      :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name (Key (Role payee)) says
+   ((Name (Key (Staff Alice)) speaks_for Name (PR (Staff Alice)))
+      :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name (PR (Role payee)) controls
+   ((Name (Key (Staff Alice)) speaks_for Name (PR (Staff Alice)))
+      :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name (Key (Staff Bob)) quoting
+   Name (PR (Role (Operator :roles))) says
+   (prop debit :(commands, principals, 'd, 'e) Form):
+   thm
+val it = (): unit
+> 
+*** Emacs/HOL command completed ***
+
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-2}
+The above results shows that the requirements are satisfied.
+
+
+%%------ Question 3 -------%%
+
+ \chapter{Question 3}
+ \label{cha:exercise-11.6.3}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-3}
+
+This question asks you to consider what you know about access control, particularly
+discretionary access control as we’ve discussed, and delegation. As you consider this you
+need to briefly state your opinion about whether or not delegation adds to the
+“decidability” of access control, and most importantly if delegation adds to the security of
+access control.
+
+\section{Summary}
+\label{sec:summary-3}
+
+In the discretionary access control (DAC) model, every object (such as files and folders) has an owner, and the owner establishes access for the objects.
+Many Operating systems such as Windows and most Unix-based systems, use the DAC model.
+A common example of the DAC model is the NTFS used in Windows. 
+NTFS provides security by allowing users and administrators to restrict the access to files and folders with permissions.
+
+Microsoft systems identify users with SIDs and every object includes a discretionary access control list (DACL) that identifies who can access it in a system using the DAC model. 
+THe DACL is a list of Access Control Entries. Each ACE is composed of a SID and the permissions granted to the SID.
+
+If user create a file, they are designated as the owner and have explicit control over the file. 
+As the owner, users can modify the permissions on the object by adding user or group accounts to the DACL and assigning the desired permissions. 
+The DAC model is significantly more flexible than the Mandatory Access Control (MAC) model.
+
+An inherent flaw associated with the DAC model is the susceptibility to Trojan horses. 
+These Trojan horses injects the malware and when required they work on behalf of the user (delegation) unknowingly and make the damage to the system. 
+Beside malware, if a user want to delegate the privileges, the delegation comes with trust and trustworthy. 
+If the user is not trustworthy, then the delegation will create a loop-hole in the system security. 
+
+
+\subsection{Conclusion}
+\label{sec:conclusion-3}
+In my opinion, delegation, especially with DAC, may potentially creates the damage to the system in long run.
+
+\chapter{Appendix A: Question 1}
+\label{cha:appendix-a:1}
+
+The following code is from the file question1Script.sml
+\lstinputlisting{../HOL/question1Script.sml}
+
+\chapter{Appendix B: Question 2 }
+\label{cha:appendix-b:2}
+
+The following code is from the question2Script.sml
+\lstinputlisting{../HOL/question2Script.sml}
+
+\chapter{Appendix C}
+\label{cha:appendix-c:3}
+https://www.techotopia.com/index.php/Mandatory,_Discretionary,_Role_and_Rule_Based
+_Access_Control
+
+\end{document}

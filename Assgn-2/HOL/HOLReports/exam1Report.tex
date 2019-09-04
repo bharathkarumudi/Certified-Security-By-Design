@@ -1,0 +1,59 @@
+\documentclass[11pt, twoside]{article}
+\usepackage{holtex}
+
+\makeindex
+
+\begin{document}
+
+\input{HOLquestionOne}
+\input{HOLquestionTwo}
+
+\tableofcontents
+\cleardoublepage
+\HOLpagestyle
+
+% ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+\section{question1 Theory}
+\index{question1 Theory@\textbf  {question1 Theory}}
+\begin{flushleft}
+\textbf{Built:} \HOLquestionOneDate \\[2pt]
+\textbf{Parent Theories:} cipher, string
+\end{flushleft}
+% ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+% No datatypes
+
+% No definitions
+
+\subsection{Theorems}
+\index{question1 Theory@\textbf  {question1 Theory}!Theorems}
+% .....................................
+
+\HOLquestionOneTheorems
+
+% ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+\section{question2 Theory}
+\index{question2 Theory@\textbf  {question2 Theory}}
+\begin{flushleft}
+\textbf{Built:} \HOLquestionTwoDate \\[2pt]
+\textbf{Parent Theories:} aclDrules
+\end{flushleft}
+% ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+\subsection{Datatypes}
+\index{question2 Theory@\textbf  {question2 Theory}!Datatypes}
+% .....................................
+
+\HOLquestionTwoDatatypes
+
+% No definitions
+
+\subsection{Theorems}
+\index{question2 Theory@\textbf  {question2 Theory}!Theorems}
+% .....................................
+
+\HOLquestionTwoTheorems
+
+\HOLindex
+
+\end{document}

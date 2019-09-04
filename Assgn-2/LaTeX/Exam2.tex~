@@ -1,0 +1,219 @@
+\documentclass{report}
+\title{Exam 2}
+\author{Bharath Karumudi}
+\date{\today}
+
+%%........................................%%
+%% Loading the Packages 
+%%........................................%%
+\usepackage{634format}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{holtex}
+\usepackage{holtexbasic}
+\usepackage{amssymb}
+\input{commands}
+\input{../HOL/HOLReports/HOLquestionOne}
+\input{../HOL/HOLReports/HOLquestionTwo}
+%.........................................%%
+%.........................................%%
+
+\begin{document}
+ \lstset{language=ML}
+ \maketitle{}
+
+ \begin{abstract}
+   This project is to demonstrate the capabilities of implementing
+   constructing and deconstructing HOL Terms using the tools and
+   techniques - \LaTeX{}, AcuTeX, emacs and ML. 
+
+   Each chapter documents the given problems with a structure of:
+   \begin{enumerate}
+   \item Problem Statement
+   \item Relevant Code
+   \item Execution Transcripts
+   \item Explanation of results
+   \end{enumerate}
+
+ \end{abstract}
+
+
+ \begin{acknowledgments}
+  Professor Marvine Hamner and Professor Shiu-Kai Chin who taught the
+  Certified Security By Design.
+ \end{acknowledgments}
+
+ \tableofcontents{}
+
+ \chapter{Executive Summary}
+ \label{cha:executive-summary}
+
+\textbf{All requirements for this project are statisfied specifically,}
+ and by using HOL solved the below questions:  
+
+   \begin{enumerate}
+   \item Question 1
+   \item Question 2
+   \item Question 3
+   \end{enumerate}  
+
+
+
+%%------Question 1 -------%%
+
+ \chapter{Question 1}
+ \label{cha:ques1}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-1}
+
+We need to prove, Sally who bought a computer with software from a reputable firm. 
+She is not a high-value target, it is extremely unlikely that Sally is the target of an elaborate fraud scheme to plant a fraudulent key in place of
+the authentic K TrueSignatures in her computer. 
+The company that sold her the computer is reputable and has safeguards against such fraud (e.g., they use legitimate copies
+of operating systems and application software).  It is therefore reasonable for her to trust that the root certification authority’s key
+K TrueSignatures is installed correctly on her machine.
+
+
+\section{Relevant Code}
+\label{sec:relevant-code-1}
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+  1. Jack says <travel, train>                        Jack's Request  
+
+\end{lstlisting}
+
+\lstinputlisting{../HOL/question1Script.sml}
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-1}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+
+ 
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-1}
+The above results shows that the requirements are satisfied.
+
+%%------ Question 2 -------%%
+
+ \chapter{Question 2}
+ \label{cha:ques2}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-2}
+
+In this, we need to show the formal proof for Simple checking rule.
+
+\section{Relevant Code}
+\label{sec:relevant-code-2}
+
+
+\lstset{frameround=tttt}
+\begin{lstlisting}[frame=tRBL]
+  1. Face says <enter, lockerroom>                            Request
+   
+\end{lstlisting}
+
+\lstinputlisting{../HOL/question1Script.sml}
+
+
+\section{Execution Transcripts}
+\label{sec:exec-transcr-2}
+
+\setcounter{sessioncount}{0}
+\begin{session}
+  \begin{scriptsize}
+\begin{verbatim}
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+
+\end{verbatim}
+  \end{scriptsize}
+\end{session}
+
+\subsection{Explanation of Results}
+\label{sec:explanation-results-2}
+The above results shows that the requirements are satisfied.
+
+
+%%------ Question 3 -------%%
+
+ \chapter{Question 3}
+ \label{cha:exercise-11.6.3}
+  
+ \section{Problem Statement}
+ \label{sec:problem-statement-3}
+
+This question asks you to consider what you know about access control, particularly
+discretionary access control as we’ve discussed, and delegation. As you consider this you
+need to briefly state your opinion about whether or not delegation adds to the
+“decidability” of access control, and most importantly if delegation adds to the security of
+access control.
+
+\section{Summary}
+\label{sec:summary-3}
+
+In the discretionary access control (DAC) model, every object (such as files and folders) has an owner, and the owner establishes access for the objects.
+Many Operating systems such as Windows and most Unix-based systems, use the DAC model.
+A common example of the DAC model is the NTFS used in Windows. 
+NTFS provides security by allowing users and administrators to restrict the access to files and folders with permissions.
+
+Microsoft systems identify users with SIDs and every object includes a discretionary access control list (DACL) that identifies who can access it in a system using the DAC model. 
+THe DACL is a list of Access Control Entries. Each ACE is composed of a SID and the permissions granted to the SID.
+
+If user create a file, they are designated as the owner and have explicit control over the file. 
+As the owner, users can modify the permissions on the object by adding user or group accounts to the DACL and assigning the desired permissions. 
+The DAC model is significantly more flexible than the Mandatory Access Control (MAC) model.
+
+An inherent flaw associated with the DAC model is the susceptibility to Trojan horses. 
+These Trojan horses injects the malware and when required they work on behalf of the user (delegation) unknowingly and make the damage to the system. 
+Beside malware, if a user want to delegate the privileges, the delegation comes with trust and trustworthy. 
+If the user is not trustworthy, then the delegation will create a loop-hole in the system security. 
+
+
+\subsection{Conclusion}
+\label{sec:conclusion-3}
+In my opinion, delegation, especially with DAC, may potentially creates the damage to the system in long run.
+
+\chapter{Appendix A: Question 1}
+\label{cha:appendix-a:1}
+
+The following code is from the file question1Script.sml
+\lstinputlisting{../HOL/question1Script.sml}
+
+\chapter{Appendix B: Question 2 }
+\label{cha:appendix-b:2}
+
+The following code is from the question2Script.sml
+\lstinputlisting{../HOL/question2Script.sml}
+
+\chapter{Appendix C}
+\label{cha:appendix-c:3}
+https://www.techotopia.com/index.php/Mandatory,_Discretionary,_Role_and_Rule_Based
+_Access_Control
+
+\end{document}

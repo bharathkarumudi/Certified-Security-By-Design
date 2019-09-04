@@ -1,0 +1,14 @@
+\newcommand{\HOLquestionOneDate}{03 September 2019}
+\newcommand{\HOLquestionOneTime}{21:32}
+\begin{SaveVerbatim}{HOLquestionOneTheoremsquestionOneThm}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{signature}.
+     \HOLConst{signVerify} (\HOLConst{pubK} \HOLFreeVar{TrueSignatures}) \HOLBoundVar{signature}
+       (\HOLConst{SOME} \HOLStringLit{pubK GoodBooks}) \HOLSymConst{\HOLTokenEquiv{}}
+     (\HOLBoundVar{signature} \HOLSymConst{=}
+      \HOLConst{sign} (\HOLConst{privK} \HOLFreeVar{TrueSignatures})
+        (\HOLConst{hash} (\HOLConst{SOME} \HOLStringLit{pubK GoodBooks})))
+\end{SaveVerbatim}
+\newcommand{\HOLquestionOneTheoremsquestionOneThm}{\UseVerbatim{HOLquestionOneTheoremsquestionOneThm}}
+\newcommand{\HOLquestionOneTheorems}{
+\HOLThmTag{question1}{question1Thm}\HOLquestionOneTheoremsquestionOneThm
+}

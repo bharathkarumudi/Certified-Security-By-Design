@@ -1,0 +1,47 @@
+
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+> # # # <<HOL message: Defined type: "commands">>
+> # # # <<HOL message: Defined type: "people">>
+> # # # <<HOL message: Defined type: "roles">>
+> # # # <<HOL message: Defined type: "keyPrinc">>
+> # # # <<HOL message: Defined type: "principals">>
+> val question2Thm =
+    []
+|- ((M :(commands, 'b, principals, 'd, 'e) Kripke),(Oi :'d po),
+    (Os :'e po)) sat
+   Name (PR (Role payer)) controls
+   (prop pay :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   reps (Name (PR (Staff Alice))) (Name (PR (Role payer)))
+     (prop pay :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name (Key (Staff Alice)) quoting Name (PR (Role payer)) says
+   (prop pay :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   (prop pay :(commands, principals, 'd, 'e) Form) impf
+   (prop debit :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   ((Name (Key (Role payee)) speaks_for Name (PR (Role payee)))
+      :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name (Key (Role payee)) says
+   ((Name (Key (Staff Alice)) speaks_for Name (PR (Staff Alice)))
+      :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name (PR (Role payee)) controls
+   ((Name (Key (Staff Alice)) speaks_for Name (PR (Staff Alice)))
+      :(commands, principals, 'd, 'e) Form) ==>
+   (M,Oi,Os) sat
+   Name (Key (Staff Bob)) quoting
+   Name (PR (Role (Operator :roles))) says
+   (prop debit :(commands, principals, 'd, 'e) Form):
+   thm
+val it = (): unit
+> 
+*** Emacs/HOL command completed ***
