@@ -13,8 +13,8 @@ struct
   in end;
   val _ = Theory.link_parents
           ("cipher",
-          Arbnum.fromString "1567560762",
-          Arbnum.fromString "43904")
+          Arbnum.fromString "1567724176",
+          Arbnum.fromString "350372")
           [("indexedLists",
            Arbnum.fromString "1503148856",
            Arbnum.fromString "404777"),

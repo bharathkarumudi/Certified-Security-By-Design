@@ -13,11 +13,11 @@ struct
   in end;
   val _ = Theory.link_parents
           ("question1",
-          Arbnum.fromString "1567560765",
-          Arbnum.fromString "466152")
+          Arbnum.fromString "1567724183",
+          Arbnum.fromString "4511")
           [("cipher",
-           Arbnum.fromString "1567560762",
-           Arbnum.fromString "43904"),
+           Arbnum.fromString "1567724176",
+           Arbnum.fromString "350372"),
            ("string",
            Arbnum.fromString "1503148899",
            Arbnum.fromString "21753")];

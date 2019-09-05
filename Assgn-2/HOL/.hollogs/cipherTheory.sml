@@ -391,5 +391,5 @@ Theorems:
       |- ∀a0 a1 a0' a1'.
            (Es a0 a1 = Es a0' a1') ⇔ (a0 = a0') ∧ (a1 = a1')
 Exporting theory "cipher" ... done.
-Theory "cipher" took 1.3s to build
+Theory "cipher" took 1.6s to build
 Completed load of cipherScript

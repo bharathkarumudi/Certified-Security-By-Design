@@ -14,5 +14,5 @@ Theorems:
            (signature =
             sign (privK TrueSignatures) (hash (SOME "pubK GoodBooks")))
 Exporting theory "question1" ... done.
-Theory "question1" took 0.00398s to build
+Theory "question1" took 0.00337s to build
 Completed load of question1Script

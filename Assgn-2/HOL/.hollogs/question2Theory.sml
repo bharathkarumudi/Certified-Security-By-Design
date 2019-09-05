@@ -438,5 +438,5 @@ Theorems:
     roles_nchotomy
       |- ∀a. (a = payer) ∨ (a = payee)
 Exporting theory "question2" ... done.
-Theory "question2" took 0.23233s to build
+Theory "question2" took 0.22933s to build
 Completed load of question2Script
