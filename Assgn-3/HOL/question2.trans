@@ -1,0 +1,40 @@
+
+---------------------------------------------------------------------
+       HOL-4 [Kananaskis 11 (stdknl, built Sat Aug 19 09:30:06 2017)]
+
+       For introductory HOL help, type: help "hol";
+       To exit type <Control>-D
+---------------------------------------------------------------------
+[extending loadPath with Holmakefile INCLUDES variable]
+> > > > *** Globals.show_assums now true ***
+> *** Globals.show_assums now false ***
+> # # <<HOL message: Defined type: "commands">>
+> # # <<HOL message: Defined type: "people">>
+> # # <<HOL message: Defined type: "roles">>
+> # # <<HOL message: Defined type: "keyPrinc">>
+> # # <<HOL message: Defined type: "principals">>
+> val question2Thm =
+   |- (M,Oi,Os) sat Name (PR (Role owner)) controls prop grant ⇒
+   (M,Oi,Os) sat
+   reps (Name (PR (Staff Eve))) (Name (PR (Role owner))) (prop grant) ⇒
+   (M,Oi,Os) sat
+   Name (Key (Staff Eve)) quoting Name (PR (Role owner)) says
+   prop grant ⇒
+   (M,Oi,Os) sat prop grant impf prop deny ⇒
+   (M,Oi,Os) sat
+   Name (Key (Role requester)) speaks_for Name (PR (Role requester)) ⇒
+   (M,Oi,Os) sat
+   Name (Key (Role requester)) says
+   Name (Key (Staff Eve)) speaks_for Name (PR (Staff Eve)) ⇒
+   (M,Oi,Os) sat
+   Name (PR (Role requester)) controls
+   Name (Key (Staff Eve)) speaks_for Name (PR (Staff Eve)) ⇒
+   (M,Oi,Os) sat
+   Name (Key (Staff Bob)) quoting Name (PR (Role Operator)) says
+   prop deny:
+   thm
+val it = (): unit
+> 
+*** Emacs/HOL command completed ***
+
+> 

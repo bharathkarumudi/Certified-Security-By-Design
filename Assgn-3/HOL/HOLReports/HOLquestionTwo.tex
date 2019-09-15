@@ -1,0 +1,50 @@
+\newcommand{\HOLquestionTwoDate}{15 September 2019}
+\newcommand{\HOLquestionTwoTime}{13:22}
+\begin{SaveVerbatim}{HOLquestionTwoDatatypescommands}
+\HOLFreeVar{commands} = \HOLConst{grant} \HOLTokenBar{} \HOLConst{deny}
+\end{SaveVerbatim}
+\newcommand{\HOLquestionTwoDatatypescommands}{\UseVerbatim{HOLquestionTwoDatatypescommands}}
+\begin{SaveVerbatim}{HOLquestionTwoDatatypeskeyPrinc}
+\HOLFreeVar{keyPrinc} = \HOLConst{Staff} \HOLTyOp{people} \HOLTokenBar{} \HOLConst{Role} \HOLTyOp{roles} \HOLTokenBar{} \HOLConst{Ap} \HOLTyOp{num}
+\end{SaveVerbatim}
+\newcommand{\HOLquestionTwoDatatypeskeyPrinc}{\UseVerbatim{HOLquestionTwoDatatypeskeyPrinc}}
+\begin{SaveVerbatim}{HOLquestionTwoDatatypespeople}
+\HOLFreeVar{people} = \HOLConst{Eve} \HOLTokenBar{} \HOLConst{Bob}
+\end{SaveVerbatim}
+\newcommand{\HOLquestionTwoDatatypespeople}{\UseVerbatim{HOLquestionTwoDatatypespeople}}
+\begin{SaveVerbatim}{HOLquestionTwoDatatypesprincipals}
+\HOLFreeVar{principals} = \HOLConst{PR} \HOLTyOp{keyPrinc} \HOLTokenBar{} \HOLConst{Key} \HOLTyOp{keyPrinc}
+\end{SaveVerbatim}
+\newcommand{\HOLquestionTwoDatatypesprincipals}{\UseVerbatim{HOLquestionTwoDatatypesprincipals}}
+\begin{SaveVerbatim}{HOLquestionTwoDatatypesroles}
+\HOLFreeVar{roles} = \HOLConst{owner} \HOLTokenBar{} \HOLConst{requester}
+\end{SaveVerbatim}
+\newcommand{\HOLquestionTwoDatatypesroles}{\UseVerbatim{HOLquestionTwoDatatypesroles}}
+\newcommand{\HOLquestionTwoDatatypes}{
+\HOLquestionTwoDatatypescommands\HOLquestionTwoDatatypeskeyPrinc\HOLquestionTwoDatatypespeople\HOLquestionTwoDatatypesprincipals\HOLquestionTwoDatatypesroles}
+\begin{SaveVerbatim}{HOLquestionTwoTheoremsquestionTwoThm}
+\HOLTokenTurnstile{} (\HOLFreeVar{M}\HOLSymConst{,}\HOLFreeVar{Oi}\HOLSymConst{,}\HOLFreeVar{Os}) \HOLConst{sat} \HOLConst{Name} (\HOLConst{PR} (\HOLConst{Role} \HOLConst{owner})) \HOLConst{controls} \HOLConst{prop} \HOLConst{grant} \HOLSymConst{\HOLTokenImp{}}
+   (\HOLFreeVar{M}\HOLSymConst{,}\HOLFreeVar{Oi}\HOLSymConst{,}\HOLFreeVar{Os}) \HOLConst{sat}
+   \HOLConst{reps} (\HOLConst{Name} (\HOLConst{PR} (\HOLConst{Staff} \HOLConst{Eve}))) (\HOLConst{Name} (\HOLConst{PR} (\HOLConst{Role} \HOLConst{owner})))
+     (\HOLConst{prop} \HOLConst{grant}) \HOLSymConst{\HOLTokenImp{}}
+   (\HOLFreeVar{M}\HOLSymConst{,}\HOLFreeVar{Oi}\HOLSymConst{,}\HOLFreeVar{Os}) \HOLConst{sat}
+   \HOLConst{Name} (\HOLConst{Key} (\HOLConst{Staff} \HOLConst{Eve})) \HOLConst{quoting} \HOLConst{Name} (\HOLConst{PR} (\HOLConst{Role} \HOLConst{owner})) \HOLConst{says}
+   \HOLConst{prop} \HOLConst{grant} \HOLSymConst{\HOLTokenImp{}}
+   (\HOLFreeVar{M}\HOLSymConst{,}\HOLFreeVar{Oi}\HOLSymConst{,}\HOLFreeVar{Os}) \HOLConst{sat} \HOLConst{prop} \HOLConst{grant} \HOLConst{impf} \HOLConst{prop} \HOLConst{deny} \HOLSymConst{\HOLTokenImp{}}
+   (\HOLFreeVar{M}\HOLSymConst{,}\HOLFreeVar{Oi}\HOLSymConst{,}\HOLFreeVar{Os}) \HOLConst{sat}
+   \HOLConst{Name} (\HOLConst{Key} (\HOLConst{Role} \HOLConst{requester})) \HOLConst{speaks_for}
+   \HOLConst{Name} (\HOLConst{PR} (\HOLConst{Role} \HOLConst{requester})) \HOLSymConst{\HOLTokenImp{}}
+   (\HOLFreeVar{M}\HOLSymConst{,}\HOLFreeVar{Oi}\HOLSymConst{,}\HOLFreeVar{Os}) \HOLConst{sat}
+   \HOLConst{Name} (\HOLConst{Key} (\HOLConst{Role} \HOLConst{requester})) \HOLConst{says}
+   \HOLConst{Name} (\HOLConst{Key} (\HOLConst{Staff} \HOLConst{Eve})) \HOLConst{speaks_for} \HOLConst{Name} (\HOLConst{PR} (\HOLConst{Staff} \HOLConst{Eve})) \HOLSymConst{\HOLTokenImp{}}
+   (\HOLFreeVar{M}\HOLSymConst{,}\HOLFreeVar{Oi}\HOLSymConst{,}\HOLFreeVar{Os}) \HOLConst{sat}
+   \HOLConst{Name} (\HOLConst{PR} (\HOLConst{Role} \HOLConst{requester})) \HOLConst{controls}
+   \HOLConst{Name} (\HOLConst{Key} (\HOLConst{Staff} \HOLConst{Eve})) \HOLConst{speaks_for} \HOLConst{Name} (\HOLConst{PR} (\HOLConst{Staff} \HOLConst{Eve})) \HOLSymConst{\HOLTokenImp{}}
+   (\HOLFreeVar{M}\HOLSymConst{,}\HOLFreeVar{Oi}\HOLSymConst{,}\HOLFreeVar{Os}) \HOLConst{sat}
+   \HOLConst{Name} (\HOLConst{Key} (\HOLConst{Staff} \HOLConst{Bob})) \HOLConst{quoting} \HOLConst{Name} (\HOLConst{PR} (\HOLConst{Role} \HOLFreeVar{Operator})) \HOLConst{says}
+   \HOLConst{prop} \HOLConst{deny}
+\end{SaveVerbatim}
+\newcommand{\HOLquestionTwoTheoremsquestionTwoThm}{\UseVerbatim{HOLquestionTwoTheoremsquestionTwoThm}}
+\newcommand{\HOLquestionTwoTheorems}{
+\HOLThmTag{question2}{question2Thm}\HOLquestionTwoTheoremsquestionTwoThm
+}
